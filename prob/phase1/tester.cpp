@@ -1,8 +1,26 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "receiver.h"
+
 using namespace std;
+
+
+//______________________________________Utility Functions___________________________________________________________________________________________________
+
+//simple function to convert string to integer both negative and positive
+int stringToInt(const std::string& str) {
+    int result = 0;
+    for (char c : str) {
+        if (c >= '0' && c <= '9') {
+            // Convert the character to an integer and add it to the result
+            result = result * 10 + (c - '0');
+        } 
+    }
+    if(str[0]=='-')
+        return -1*result;
+    else    
+        return result;
+}
 
 //last token doesnt include \n
 vector<string> tokenize(string input){
@@ -30,6 +48,12 @@ vector<string> tokenize(string input){
     return tokens;
 }
 
+//______________________________________Useful Functions for Part 1________________________________________________________________________________________
+
+
+//______________________________________Useful Functions for Part 2________________________________________________________________________________________
+
+
 //given a number n and k being the size of inputs upto that point, get binary representation of n
 vector<int> getBinary(int n, int k){
 
@@ -50,22 +74,7 @@ vector<int> getBinary(int n, int k){
     return binary_vec;
 }
 
-//simple function to convert string to integer
-int stringToInt(const std::string& str) {
-    int result = 0;
-    for (char c : str) {
-        if (c >= '0' && c <= '9') {
-            // Convert the character to an integer and add it to the result
-            result = result * 10 + (c - '0');
-        } 
-    }
-    if(str[0]=='-')
-        return -1*result;
-    else    
-        return result;
-}
-
-// function to find token in tickers
+//function to find token in tickers
 int findTicker(vector<string> tickers, string token){
     for(int i=0;i<tickers.size(); i++){
         if(tickers[i] == token){
@@ -165,42 +174,218 @@ vector<int> findBestArbitrage(vector<string> inputs, int k, int& total_profit){
     return best_arbitrage;
 }
 
-int main(){
+bool checkEquality(string old_order, string name){
 
-    Receiver rcv;
-    sleep(5);
-    bool foundDollar = false;
-    int iterator = 0;
-    string message="";
+    bool flag = false;
+   
+    vector<string> tokens = tokenize(old_order);
+    vector<string> name_tokens = tokenize(name);
 
-    while(!foundDollar){
-        std::string msg = rcv.readIML();
-        message+=msg;
-        if(msg.find('$')!= string::npos){
-            rcv.terminate();
-            foundDollar = true;
+    int counter = 0;
+
+    for(int j = 0; j<tokens.size()-2; j++){
+        for(int k = 0; k<name_tokens.size();k+=2){
+            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
+                counter++;
         }
     }
 
-    vector<string> inputs;
-    inputs.push_back("");
-    int index = 0;  //index of the vector : inputs
-    for(int i = 0; i<message.length(); i++){
-        if(message[i]=='$'){    // edge case where we have the last line
-            inputs.pop_back(); // pops the empty "" and breaks;
-            break;
-        }
-        if(message[i]!='\r') //ignores random characters
-            inputs[index].push_back(message[i]);
-        if(message[i] == '#'){
-            inputs.push_back("");
-            index++;
-        }
+    if(counter == name_tokens.size()/2 && counter == (tokens.size()-2)/2){
+        flag = true;
     }
 
-    for(int i = 0; i<inputs.size(); i++){
-        cout<<tokenize(inputs[i])[0]<<endl;
+    return flag;
+}
+
+void updateOrderBook(vector<string>& order_book, string input){
+    vector<string> tokens = tokenize(input); //converts new orders into tokens 
+    int price = stringToInt(tokens[tokens.size()-2]); //gets the price of order
+
+    cerr << price<<endl;
+
+    string name=""; // to store the name of the bundle
+    char mode= tokens[tokens.size()-1][0];
+
+    for(int i=0; i<tokens.size()-2;i++){
+        name+=tokens[i];
+        name+=" "; //adding space after every token
+    }
+
+    cerr<<name<<endl;
+
+    //gets atmost two matches with buy in first index and sell in second index
+    int bestbuy = -1;
+    vector<string> bbtokens;
+    int bestsell = -1;
+    vector<string> bstokens;
+
+    for(int i=0; i<order_book.size(); i++){
+        if(checkEquality(order_book[i],name)){ //if it matches we have possible cancellation
+            vector<string> line_toks = tokenize(order_book[i]);
+            if(line_toks[line_toks.size()-1][0] == 'b'){
+                bestbuy = i;
+                bbtokens = line_toks;
+            }
+            if(line_toks[line_toks.size()-1][0] == 's'){
+                bestsell = i;
+                bstokens = line_toks;
+            }
+        }
     }
     
+    cerr<<bestbuy<<endl;
+    cerr<<bestsell<<endl;
+    
+    if(bestbuy == -1 && bestsell == -1){ //in this case we do not bother and simply add the line
+        order_book.push_back(input);
+    }
+
+    else if(mode == 'b'){
+        //first we compare with its own category
+        if(bestbuy == -1){
+            //this is the only buy so we check if there is a matching sell which exists otherwise we would not be here
+            if(price == stringToInt(bstokens[bstokens.size()-2])){
+                //we must cancel the sell and not push in the new order
+                order_book.erase(order_book.begin()+bestsell);
+            }
+            else{ //if their prices do not match we can simply add the new order in
+                order_book.push_back(input);
+            }
+        }
+        if(bestbuy != -1){ //in which case we must first check with best buy prices and then best sell
+            if(price <= stringToInt(bbtokens[bbtokens.size()-2])){ //if the new order has lower or equal price to the old best buy
+                // we straight up dont care about the new order
+            }
+            else{
+                // if the prices is more than the old best buy, the old best buy gets cancelled
+                order_book.erase(order_book.begin()+bestbuy);
+
+                // now we add a check if the new order cancels with any previous sell
+                if(bestsell == -1){
+                    // no cancellation simply add the new order
+                    order_book.push_back(input);
+                }
+                else{
+                    if(price == stringToInt(bstokens[bstokens.size()-2])){
+                        //we must cancel the sell and not push in the new order
+                        order_book.erase(order_book.begin()+bestsell);
+                    }
+                    else{ //if their prices do not match we can simply add the new order in
+                        order_book.push_back(input);
+                    }
+                }
+            }
+        }
+    }
+    else if(mode == 's'){
+        //first we compare with its own category
+        if(bestsell == -1){
+            //this is the only sell so we check if there is a matching buy which exists otherwise we would not be here
+            if(price == stringToInt(bbtokens[bbtokens.size()-2])){
+                //we must cancel the buy and not push in the new sell order
+                order_book.erase(order_book.begin()+bestbuy);
+            }
+            else{ //if their prices do not match we can simply add the new order in
+                order_book.push_back(input);
+            }
+        }
+        if(bestsell != -1){ //in which case we must first check with best sell price and then best buy
+            if(price >= stringToInt(bstokens[bstokens.size()-2])){ //if the new order has higher or equal price to the old best sell
+                // we straight up dont care about the new order
+            }
+            else{
+                // if the price is less than the old best sell, the old best sell gets cancelled
+                order_book.erase(order_book.begin()+bestsell);
+
+                // now we add a check if the new order cancels with any previous sell
+                if(bestbuy == -1){
+                    // no cancellation simply add the new order
+                    order_book.push_back(input);
+                }
+                else{
+                    if(price == stringToInt(bbtokens[bbtokens.size()-2])){
+                        //we must cancel the buy and not push in the new order
+                        order_book.erase(order_book.begin()+bestbuy);
+                    }
+                    else{ //if their prices do not match we can simply add the new order in
+                        order_book.push_back(input);
+                    }
+                }
+            }
+        }
+    }
+    
+    for(int i = 0; i<order_book.size(); i++){
+        cerr<<order_book[i];
+    }
+    cerr<<"\n";
+}
+
+int main(){
+
+    vector<string> inputs;
+    inputs.push_back("B 1 A 1 10 s#");
+    inputs.push_back("A 1 B 1 5 s#");
+    inputs.push_back("A 1 B 1 10 b#");
+    inputs.push_back("B 1 A 1 C 6 10 s#");
+    inputs.push_back("A 1 B 1 5 s#");
+    inputs.push_back("A 1 B 1 10 b#");
+    inputs.push_back("B 1 C 6 A 1 10 b#");
+    inputs.push_back("B 1 A 1 C 6 10 b#");
+    inputs.push_back("B 1 10 b#");
+    inputs.push_back("B 1 C 6 A 1 10 b#");
+    inputs.push_back("A 1 B 1 5 b#");
+    // inputs.push_back("B 1 10 b#");
+    // inputs.push_back("A 2 B 1 10 s#");
+
+    // Here we start the logic
+    // If we have k lines in our input, we will do 2^k checks for arbitrage
+    // In each check, we will go through all our tokens in the active strings and add it to a 
+    // map: ticker->amnt assuming all as b orders. We check for cost and add it into a vector.
+    
+    vector<string> order_book;
+
+    int total_profit = 0;
+
+    for(int i=0; i<inputs.size(); i++){
+        //NEED TO INSERT CODE FOR PROCESSING HERE FIRST -- WAIT FOR BRIAN LOGIC SIMILAR TO PHASE 1
+        updateOrderBook(order_book, inputs[i]);
+
+        //find the best arbitrage
+        vector<int> best_arbitrage = findBestArbitrage(order_book, order_book.size(),total_profit); //given the number of lines
+
+        bool flag = true;
+        for(int j=0; j<best_arbitrage.size(); j++){
+            if(best_arbitrage[j]==1){
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag){
+            cout<<"No Trade\n";
+            continue;
+        }
+
+        
+        // if there exists an arbitrage
+        // we display the arbitrage in reverse order
+        for(int iterator = order_book.size()-1; iterator>=0; iterator--){
+            if(best_arbitrage[iterator] == 1){ // this is a part of our arbitrage so we display it
+                order_book[iterator][order_book[iterator].size()-2] = (order_book[iterator][order_book[iterator].size()-2]=='b')? 's':'b'; // assuming new line character is there
+                cout<<order_book[iterator]<<"\n";
+            }
+        }
+
+        // we delete the lines from the order book in reverse order
+        for(int j=order_book.size()-1; j>=0; j--){
+            if(best_arbitrage[j]==1){
+                order_book.erase(order_book.begin()+j);
+            }
+        }
+    }
+
+    cout<<total_profit;
     return 0;
 }
+

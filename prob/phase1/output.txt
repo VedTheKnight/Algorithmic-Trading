@@ -1,11 +1,1 @@
 Receiver is listening on port 50000
-ASML 1000 s
-ASML 999 b
-ASML 998 b
-ASML 997 b
-ASML 996 b
-ASML 995 b
-ASML 994 b
-ASML 993 b
-ASML 992 b
-ASML 991 b

@@ -271,6 +271,143 @@ vector<int> findBestArbitrage(vector<string> inputs, int k, int& total_profit){
     return best_arbitrage;
 }
 
+//checks equality between an order line and a stock bundle accounting for all permutations as well
+bool checkEquality(string old_order, string name){
+
+    bool flag = false;
+   
+    vector<string> tokens = tokenize(old_order);
+    vector<string> name_tokens = tokenize(name);
+
+    int counter = 0;
+
+    for(int j = 0; j<tokens.size()-2; j++){
+        for(int k = 0; k<name_tokens.size();k+=2){
+            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
+                counter++;
+        }
+    }
+
+    if(counter == name_tokens.size()/2 && counter == (tokens.size()-2)/2){
+        flag = true;
+    }
+
+    return flag;
+}
+
+// updates order book with new line after checking for all cancellations
+void updateOrderBook(vector<string>& order_book, string input){
+    vector<string> tokens = tokenize(input); //converts new orders into tokens 
+    int price = stringToInt(tokens[tokens.size()-2]); //gets the price of order
+    string name=""; // to store the name of the bundle
+    char mode= tokens[tokens.size()-1][0];
+
+    for(int i=0; i<tokens.size()-2;i++){
+        name+=tokens[i];
+        name+=" "; //adding space after every token
+    }
+
+    //gets atmost two matches with buy in first index and sell in second index
+    int bestbuy = -1;
+    vector<string> bbtokens;
+    int bestsell = -1;
+    vector<string> bstokens;
+
+    for(int i=0; i<order_book.size(); i++){
+        if(checkEquality(order_book[i],name)){ //if it matches we have possible cancellation
+            vector<string> line_toks = tokenize(order_book[i]);
+            if(line_toks[line_toks.size()-1][0] == 'b'){
+                bestbuy = i;
+                bbtokens = line_toks;
+            }
+            if(line_toks[line_toks.size()-1][0] == 's'){
+                bestsell = i;
+                bstokens = line_toks;
+            }
+        }
+    }
+    
+    
+    if(bestbuy == -1 && bestsell == -1){ //in this case we do not bother and simply add the line
+        order_book.push_back(input);
+    }
+
+    else if(mode == 'b'){
+        //first we compare with its own category
+        if(bestbuy == -1){
+            //this is the only buy so we check if there is a matching sell which exists otherwise we would not be here
+            if(price == stringToInt(bstokens[bstokens.size()-2])){
+                //we must cancel the sell and not push in the new order
+                order_book.erase(order_book.begin()+bestsell);
+            }
+            else{ //if their prices do not match we can simply add the new order in
+                order_book.push_back(input);
+            }
+        }
+        if(bestbuy != -1){ //in which case we must first check with best buy prices and then best sell
+            if(price <= stringToInt(bbtokens[bbtokens.size()-2])){ //if the new order has lower or equal price to the old best buy
+                // we straight up dont care about the new order
+            }
+            else{
+                // if the prices is more than the old best buy, the old best buy gets cancelled
+                order_book.erase(order_book.begin()+bestbuy);
+
+                // now we add a check if the new order cancels with any previous sell
+                if(bestsell == -1){
+                    // no cancellation simply add the new order
+                    order_book.push_back(input);
+                }
+                else{
+                    if(price == stringToInt(bstokens[bstokens.size()-2])){
+                        //we must cancel the sell and not push in the new order
+                        order_book.erase(order_book.begin()+bestsell);
+                    }
+                    else{ //if their prices do not match we can simply add the new order in
+                        order_book.push_back(input);
+                    }
+                }
+            }
+        }
+    }
+    else if(mode == 's'){
+        //first we compare with its own category
+        if(bestsell == -1){
+            //this is the only sell so we check if there is a matching buy which exists otherwise we would not be here
+            if(price == stringToInt(bbtokens[bbtokens.size()-2])){
+                //we must cancel the buy and not push in the new sell order
+                order_book.erase(order_book.begin()+bestbuy);
+            }
+            else{ //if their prices do not match we can simply add the new order in
+                order_book.push_back(input);
+            }
+        }
+        if(bestsell != -1){ //in which case we must first check with best sell price and then best buy
+            if(price >= stringToInt(bstokens[bstokens.size()-2])){ //if the new order has higher or equal price to the old best sell
+                // we straight up dont care about the new order
+            }
+            else{
+                // if the price is less than the old best sell, the old best sell gets cancelled
+                order_book.erase(order_book.begin()+bestsell);
+
+                // now we add a check if the new order cancels with any previous sell
+                if(bestbuy == -1){
+                    // no cancellation simply add the new order
+                    order_book.push_back(input);
+                }
+                else{
+                    if(price == stringToInt(bbtokens[bbtokens.size()-2])){
+                        //we must cancel the buy and not push in the new order
+                        order_book.erase(order_book.begin()+bestbuy);
+                    }
+                    else{ //if their prices do not match we can simply add the new order in
+                        order_book.push_back(input);
+                    }
+                }
+            }
+        }
+    }
+    
+}
 
 //______________________________________Logic for different parts______________________________________________________________________________________
 
@@ -316,6 +453,7 @@ void runPart1(){
 }
 
 void runPart2(){
+
     Receiver rcv;
     sleep(5);
     bool foundDollar = false;
@@ -355,19 +493,20 @@ void runPart2(){
     // map: ticker->amnt assuming all as b orders. We check for cost and add it into a vector.
     
     vector<string> order_book;
+
     int total_profit = 0;
+
     for(int i=0; i<inputs.size(); i++){
 
-        order_book.push_back(inputs[i]);
-
         //NEED TO INSERT CODE FOR PROCESSING HERE FIRST -- WAIT FOR BRIAN LOGIC SIMILAR TO PHASE 1
+        updateOrderBook(order_book, inputs[i]);
 
         //find the best arbitrage
         vector<int> best_arbitrage = findBestArbitrage(order_book, order_book.size(),total_profit); //given the number of lines
 
         bool flag = true;
-        for(int i=0; i<best_arbitrage.size(); i++){
-            if(best_arbitrage[i]==1){
+        for(int j=0; j<best_arbitrage.size(); j++){
+            if(best_arbitrage[j]==1){
                 flag = false;
                 break;
             }
@@ -383,7 +522,7 @@ void runPart2(){
         // we display the arbitrage in reverse order
         for(int iterator = order_book.size()-1; iterator>=0; iterator--){
             if(best_arbitrage[iterator] == 1){ // this is a part of our arbitrage so we display it
-                order_book[iterator][order_book[iterator].size()-2] = (order_book[iterator][order_book[iterator].size()-2]=='b')? 's':'b'; // assuming new line character is there
+                order_book[iterator][order_book[iterator].size()-2] = (order_book[iterator][order_book[iterator].size()-2]=='b')? 's':'b'; // assuming new line character is not there
                 cout<<order_book[iterator]<<"\n";
             }
         }
@@ -403,7 +542,7 @@ void runPart3(){
 
 }
 
-//_____________________________________________________________________________________________________________________________________________________
+//______________________________________Main Function_______________________________________________________________________________________________________________
 
 int main(int argc, char** argv) {
     if(argc != 2){
