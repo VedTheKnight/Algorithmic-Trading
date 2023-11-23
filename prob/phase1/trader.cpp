@@ -49,6 +49,17 @@ vector<string> tokenize(string input){
     return tokens;
 }
 
+//removes special characters from the input
+string processOrder(string input){
+    string result;
+    for(char ch : input){
+        if(std::isalnum(ch) || std::isspace(ch) || ch == '#'){
+            result += ch;
+        }
+    }
+    return result;
+}
+
 //______________________________________Useful Functions for Part 1________________________________________________________________________________________
 
 bool orderoutput(string name,int price,char option,Map M)
@@ -137,13 +148,13 @@ void process_problem1(Map M,string message)
     if (flag==1)
     {
         if (option=='b')
-            cout <<order_name<<" "<< price<<" s"<<endl;
+            std::cout <<order_name<<" "<< price<<" s"<<endl;
         else
-            cout <<order_name<<" "<<price<<" b"<<endl;
+            std::cout <<order_name<<" "<<price<<" b"<<endl;
     }
     else
     {
-       cout<<"No Trade"<<endl;
+       std::cout<<"No Trade"<<endl;
     }
 
 }
@@ -221,7 +232,7 @@ bool isZeroSum(vector<string> combination){
 }
 
 //finds the best arbitrage given valid orders upto a point and the number of lines
-vector<int> findBestArbitrage(vector<string> inputs, int k, int& total_profit){
+vector<int> findBestArbitrageP2(vector<string> inputs, int k, int& total_profit){
 
     //code to find best arbitrage given k input lines
 
@@ -296,7 +307,8 @@ bool checkEquality(string old_order, string name){
 }
 
 // updates order book with new line after checking for all cancellations
-void updateOrderBook(vector<string>& order_book, string input){
+void updateOrderBookP2(vector<string>& order_book, string input){
+    
     vector<string> tokens = tokenize(input); //converts new orders into tokens 
     int price = stringToInt(tokens[tokens.size()-2]); //gets the price of order
     string name=""; // to store the name of the bundle
@@ -409,6 +421,268 @@ void updateOrderBook(vector<string>& order_book, string input){
     
 }
 
+
+//______________________________________Useful Functions for Part 3________________________________________________________________________________________
+
+// recursive function to generate all possible quantities
+void generateQuantities(vector<int>& inputArray, vector<int>& currentArray, int index, vector<vector<int>>& result) {
+    if(index == inputArray.size()){
+        result.push_back(currentArray);
+        return;
+    }
+
+    for(int i = 1; i <= inputArray[index]; i++){
+        currentArray[index] = i;
+        generateQuantities(inputArray, currentArray, index + 1, result);
+    }
+}
+
+//checks for matching buy and sell orders with 
+bool checkBuySellPairs(string old_order, string name, int price, char mode){
+    bool flag = false;
+    
+    vector<string> tokens = tokenize(old_order);
+    vector<string> name_tokens = tokenize(name);
+
+    //if the order mode is the same OR prices don't match we return false by default
+    if(mode == tokens[tokens.size()-1][0] || price != stringToInt(tokens[tokens.size()-3])){ // i.e. this order isn't buy/sell compatible or prices arent exactly equal
+        return flag;
+    }
+
+    //now check if it is a matching bundle
+    int counter = 0;
+
+    for(int j = 0; j<tokens.size()-3; j+=2){ // since we have one extra quantity term
+        for(int k = 0; k<name_tokens.size();k+=2){
+            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
+                counter++;
+        }
+    }
+
+    if(counter == name_tokens.size()/2 && counter == (tokens.size()-3)/2){ //add an extra condition to check for buy/sell compatibility
+        flag = true;
+    }
+
+    return flag;
+}
+
+// updates order book with line after checking all the buy/sell orders
+void updateOrderBookP3(vector<string>& order_book, string input){
+
+    vector<string> tokens = tokenize(input); //converts new orders into tokens 
+    int price = stringToInt(tokens[tokens.size()-3]); //gets the price of order
+    int quantity = stringToInt(tokens[tokens.size()-2]); //gets the quantity of the order
+    string name=""; // to store the name of the bundle
+    char mode= tokens[tokens.size()-1][0]; //gets b/s
+
+    for(int i=0; i<tokens.size()-3;i++){
+        name+=tokens[i];
+        name+=" "; //adding space after every token
+    }
+
+    int ctr = 0;
+    for(int i=0; i<order_book.size(); i++){ // we check all the existing orders in the book
+        if(checkBuySellPairs(order_book[i],name,price,mode)){ //if it matches we have possible cancellation
+            vector<string> line_toks = tokenize(order_book[i]);
+            
+            if(stringToInt(line_toks[line_toks.size()-2]) > quantity){ //if the quantity of the order book line is more than the quantity of the new input line 
+                int delta = stringToInt(line_toks[line_toks.size()-2]) - quantity;
+                line_toks[line_toks.size()-2] = to_string(delta);
+                string updated_entry="";
+                // quantity is fully consumed so we dont need to bother about it. Simply adjust the order book entry to reflect the changes
+                for(int j = 0; j<line_toks.size(); j++){
+                    updated_entry+=line_toks[j];
+                    if(j != line_toks.size()-1)
+                        updated_entry+=" ";
+                }
+                order_book[i] = updated_entry;
+                break;
+            }
+            else if(stringToInt(line_toks[line_toks.size()-2]) < quantity){
+                order_book.erase(order_book.begin()+i);
+
+                // now adjust the quantity of the inputs and insert it into the order book
+                int delta = quantity - stringToInt(line_toks[line_toks.size()-2]);
+                tokens[tokens.size()-2] = to_string(delta); 
+                string updated_entry="";
+
+                // quantity is fully consumed so we dont need to bother about it. Simply adjust the order book entry to reflect the changes
+                for(int j = 0; j<tokens.size(); j++){
+                    updated_entry+=tokens[j];
+                    if(j != tokens.size()-1)
+                        updated_entry+=" ";
+                }
+
+                input = updated_entry; //update the input
+                order_book.push_back(input);
+                break;
+                //order_book[i] = updated_entry;
+            }
+            else{ //both exactly cancel out and we just need to delete the old entry
+                order_book.erase(order_book.begin()+i);
+                break;
+            }
+        }    
+        else{
+            ctr++;
+        }
+    }
+
+    //now if there was no cancellation anywhere we simply want to add the stock to the orderbook
+    //this takes care of the zero size case as well
+    if(ctr == order_book.size()){
+        order_book.push_back(input);
+    }
+}
+
+// checks if a given combination of inputs could lead to a possible arbitrage and outputs null vector if no 
+// and returns a vector of optimal quantities if yes. 
+vector<int> checkArbitrage(vector<string> combination){
+
+    vector<string> tickers;
+    vector<int> quantities;
+
+    //first we filter out all the tickers and all the quantities 
+    for(auto line : combination){
+        vector<string> tokens = tokenize(line);
+        quantities.push_back(stringToInt(tokens[tokens.size()-2]));
+        for(int i = 0; i<tokens.size()-3; i+=2){
+            if(i%2 == 0 && findTicker(tickers,tokens[i])==-1){ //if string and it is not in tickers already we add it into tickers
+                tickers.push_back(tokens[i]);
+            }
+        }
+    }
+
+    vector<vector<int>> quantity_combinations;
+
+    // we need to fill in the code to get all the possible quantity combinations
+    vector<int> currentArray(quantities.size(), 0);
+    generateQuantities(quantities, currentArray, 0, quantity_combinations);
+
+    //now that we have the tickers we again go through the combinations and compute the corresponding quantities for the ticker
+    for(auto quantity_combo : quantity_combinations){
+        vector<int> corresponding_quantities(tickers.size(), 0);
+
+        for(int j=0; j<combination.size(); j++){ //we go through all the lines so the correspondiing quantity is quantity_combo[j]
+            string line = combination[j];
+            vector<string> tokens = tokenize(line);
+            for(int i = 1; i<tokens.size()-3; i+=2){
+                if(i%2 == 1){ // update the quantities based on the bundle quantity and the quantity of the stock in the bundle itself
+                    int it = findTicker(tickers, tokens[i-1]);
+                    if(tokens[tokens.size()-1][0] == 'b')
+                        corresponding_quantities[it] += quantity_combo[j]*stringToInt(tokens[i]);
+                    else //in case it is a sell so we just invert it
+                        corresponding_quantities[it] -= quantity_combo[j]*stringToInt(tokens[i]);
+                }
+            }
+        }
+
+        // now if all the corresponding quantities are zero then we are done
+        int ctr = 0;
+        for(auto i:corresponding_quantities){
+            if(i==0)
+                ctr++;
+        }
+
+        if(ctr == corresponding_quantities.size()){ //i.e there exists some combination that makes all the tickers have 0 quantity
+            // we must output the max possible multiple of quantity combo present in quantity combinations
+            bool flag = true;
+            int x = 1;
+            while(flag){
+                x++;
+                for(int i=0; i<quantity_combo.size(); i++){
+                    if(quantity_combo[i]*x>quantities[i]){
+                        flag = false;
+                    }
+                }
+            }
+
+            for(int i=0; i<quantity_combo.size(); i++){
+                quantity_combo[i] *= (x-1);
+            }
+            return quantity_combo;
+        }
+        else{
+            continue; // check other combinations
+        }
+    }
+    
+    return vector<int>(combination.size(),0);
+}
+
+//finds the best arbitrage given valid orders upto a point and the number of lines
+//returns the relevant orders and their corresponding quantities
+vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& total_profit){
+
+    //code to find best arbitrage given k input lines
+
+    vector<int> best_arbitrage(k,0);
+    int max_profit = 0;
+    vector<int> best_quantities(k,0);
+
+    int pow = 1;
+    for(int i=1; i<=k;i++){
+        pow*=2;
+    } //gets 2^k which is the number of states we iterate over
+
+    for(int arb=1; arb<pow; arb++){ //arbitrage 0 is useless so we go from 1 to 2^k-1
+        //first we find the binary representation of the arbitrage "arb"
+        vector<int> binary_arbitrage = getBinary(arb,k); //arb is an integer and k is the size of the vector we receive ultimately
+        int profit = 0;
+
+        // get relevant lines
+        vector<string> possible_arbitrage;
+        for(int i=0; i<k; i++){
+            if(binary_arbitrage[i]==1){
+                possible_arbitrage.push_back(inputs[i]);
+            }
+        }
+
+        //we first compute the possible linear combinations which satisfy are zero sum. 
+        //calling this function gets us the optimal maximum quantities for the given combination corresponding to the
+        //possible arbitrage vector
+
+        vector<int> quantities = checkArbitrage(possible_arbitrage);
+
+        int zcount = 0;
+        for(int i = 0; i<quantities.size(); i++){
+            if(quantities[i]==0)
+                zcount++;
+        }
+
+        if(zcount == quantities.size()) //all zeros which means no arbitrage
+            continue;
+        
+        //if we reach here it means we have a possible arbitrage on our hands
+        //first we do a profit computation
+        int ctr = 0;
+        for(auto line: possible_arbitrage){
+            vector<string> line_tokens = tokenize(line);
+            if(line_tokens[line_tokens.size()-1][0] == 'b'){
+                profit += quantities[ctr]*stringToInt(line_tokens[line_tokens.size()-3]); //price is at minus 3, quantity at minus 2
+            }else{
+                profit -= quantities[ctr]*stringToInt(line_tokens[line_tokens.size()-3]);
+            }
+            ctr++;
+        }
+
+        //now if this cost is greater than max_profit, and it is an arbitrage
+        if(profit>max_profit && zcount != quantities.size()){
+            max_profit = profit;    //update the max profit
+            best_arbitrage = binary_arbitrage;
+            best_quantities = quantities;
+        }
+    }
+
+    total_profit+=max_profit;
+    vector<pair<int,int>> best;
+    for(int i=0; i<best_arbitrage.size(); i++){
+        best.push_back(make_pair(best_arbitrage[i], best_quantities[i]));
+    }
+    return best;
+}
+
+
 //______________________________________Logic for different parts______________________________________________________________________________________
 
 void runPart1(){
@@ -428,6 +702,8 @@ void runPart1(){
         }
     }
 
+    //first we store each line in a vector of strings called inputs 
+
     vector<string> inputs;
     inputs.push_back("");
     int index = 0;  //index of the vector : inputs
@@ -444,6 +720,25 @@ void runPart1(){
         }
     }
 
+    // vector<string> tinputs;
+    // tinputs.push_back("A 40 s#");
+    // tinputs.push_back("A 50 s#");
+    // tinputs.push_back("A 50 s#");
+    // tinputs.push_back("B 40 s#");
+    // tinputs.push_back("B 50 s#");
+    // tinputs.push_back("B 50 s#");
+    // tinputs.push_back("B 50 b#");
+    // tinputs.push_back("B 50 b#");
+    // tinputs.push_back("A 50 b#");
+    // tinputs.push_back("A 50 b#");
+    
+    // for(int i =0; i<inputs.size(); i++){
+    //     //inputs[i] = processOrder(inputs[i]);
+    //     cout<<(inputs[i]==tinputs[i])<<endl;
+    //     cout<<inputs[i].length()<<endl;
+    //     cout<<tinputs[i].length()<<endl;
+    // }
+    // cout<<"hi";
     Map M;
 
     for(int i=0;i<inputs.size();i++)
@@ -499,10 +794,10 @@ void runPart2(){
     for(int i=0; i<inputs.size(); i++){
 
         //NEED TO INSERT CODE FOR PROCESSING HERE FIRST -- WAIT FOR BRIAN LOGIC SIMILAR TO PHASE 1
-        updateOrderBook(order_book, inputs[i]);
+        updateOrderBookP2(order_book, inputs[i]);
 
         //find the best arbitrage
-        vector<int> best_arbitrage = findBestArbitrage(order_book, order_book.size(),total_profit); //given the number of lines
+        vector<int> best_arbitrage = findBestArbitrageP2(order_book, order_book.size(),total_profit); //given the number of lines
 
         bool flag = true;
         for(int j=0; j<best_arbitrage.size(); j++){
@@ -513,7 +808,7 @@ void runPart2(){
         }
 
         if(flag){
-            cout<<"No Trade\n";
+            std::cout<<"No Trade\n";
             continue;
         }
 
@@ -523,7 +818,7 @@ void runPart2(){
         for(int iterator = order_book.size()-1; iterator>=0; iterator--){
             if(best_arbitrage[iterator] == 1){ // this is a part of our arbitrage so we display it
                 order_book[iterator][order_book[iterator].size()-2] = (order_book[iterator][order_book[iterator].size()-2]=='b')? 's':'b'; // assuming new line character is not there
-                cout<<order_book[iterator]<<"\n";
+                std::cout<<order_book[iterator]<<"\n";
             }
         }
 
@@ -535,11 +830,116 @@ void runPart2(){
         }
     }
 
-    cout<<total_profit;
+    std::cout<<total_profit;
 }
 
 void runPart3(){
+    
+    Receiver rcv;
+    sleep(5);
+    bool foundDollar = false;
+    int iterator = 0;
+    string message="";
 
+    while(!foundDollar){
+        string msg = rcv.readIML();
+        message+=msg;
+        if(msg.find('$')!= string::npos){
+            rcv.terminate();
+            foundDollar = true;
+        }
+    }
+
+    // first we store each line in a vector of strings called inputs 
+
+    vector<string> inputs;
+    inputs.push_back("");
+    int index = 0;  //index of the vector : inputs
+    for(int i = 0; i<message.length(); i++){
+        if(message[i]=='$'){    // edge case where we have the last line
+            inputs.pop_back(); // pops the empty "" and breaks;
+            break;
+        }
+        if(message[i]!='\r') //ignores random characters
+            inputs[index].push_back(message[i]);
+        if(message[i] == '#'){
+            inputs.push_back("");
+            index++;
+        }
+    }
+
+    // here we store the logic for part3 which is similar to that for part 2 but the only difference being in the 
+    // way we process the order book and treat arbitrages.
+
+    vector<string> order_book;
+
+    int total_profit = 0;
+
+    for(int i=0; i<inputs.size(); i++){
+
+        //Create modified processing for this phase
+        updateOrderBookP3(order_book, inputs[i]);
+
+        //find the best arbitrage and update the quantities in the order book as well and update the total profit
+        vector<pair<int,int>> best_arbitrage = findBestArbitrageP3(order_book, order_book.size(), total_profit); //given the number of lines
+
+        //to check if valid arbitrage not present in which case output no trade and continue
+        bool flag = true;
+        for(int j=0; j<best_arbitrage.size(); j++){
+            if(best_arbitrage[j].first==1){
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag){
+            std::cout<<"No Trade\n";
+            continue;
+        }
+
+
+        // if there exists an arbitrage
+        // we display the arbitrage in reverse order
+        // as we display we update the quantities in the order book and delete the ones where quantities become zero
+        for(int iterator = order_book.size()-1; iterator>=0; iterator--){
+            if(best_arbitrage[iterator].first == 1){ // this is a part of our arbitrage so we display it
+
+                // we must modify this best arbitrage by subtracting the quantity returned
+                vector<string> line_toks = tokenize(order_book[iterator]);
+                int delta = stringToInt(line_toks[line_toks.size()-2]) - best_arbitrage[iterator].second; //subtract the quantities which will definitely be less than the orignal quantites
+                line_toks[line_toks.size()-2] = to_string(delta); //this is the new updated
+                
+                string updated_entry="";
+                string displayed_entry = "";
+                // quantity is fully consumed so we dont need to bother about it. We simply adjust the order book entry to reflect the changes
+                for(int j = 0; j<line_toks.size(); j++){
+                    updated_entry+=line_toks[j];
+
+                    if(j != line_toks.size()-2){
+                        displayed_entry+=line_toks[j];
+                    }
+                    else{
+                        displayed_entry+=to_string(best_arbitrage[iterator].second); //quantity traded
+                    }
+
+                    if(j != line_toks.size()-1){
+                        updated_entry+=" ";
+                        displayed_entry+=" ";
+                    }
+                }
+                order_book[iterator] = updated_entry;
+                //if delta is zero, i.e. the line is exhausted we must remove the line from the order book
+                if(delta==0){
+                    order_book.erase(order_book.begin()+iterator);
+                }
+                
+                displayed_entry[displayed_entry.size()-2] = (displayed_entry[displayed_entry.size()-2]=='b')? 's':'b'; // assuming new line character is not there
+                std::cout<<displayed_entry<<"\n";
+            }
+        }
+    }
+
+    std::cout<<total_profit;
 }
 
 //______________________________________Main Function_______________________________________________________________________________________________________________
