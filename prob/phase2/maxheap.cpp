@@ -3,7 +3,7 @@
 //u->(price,time-entry,quantity,time exit) while be the type of vectors in our store
 
 #include "maxheap.h"
-
+using namespace std;
 bool comparemax(pair<string,vector<int>>u,pair<string,vector<int>>v)//function should return 1 when u>v;u->(price,time-entry,quantity,time exit)
 {
   if (u.second[0]<v.second[0])

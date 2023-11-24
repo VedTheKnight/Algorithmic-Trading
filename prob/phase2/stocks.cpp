@@ -236,42 +236,42 @@ else
     }
 }
 }
-int main()
-{
-    int n;
-    vector<stocks> stocklist;
-    vector<accounts> accountlist;
-    int trades=0;
-    int total=0;
-    int shares=0;
-    string input;
-    MaxHeap B;
-    MinHeap S;
-    std::cin>>n;//number of entries
-    for (int i=0;i<n;i++)
-    {
-        int time_entry;
-        string name;
-        string option;
-        string stock;
-        int price; 
-        int quantity;
-        int delay;
-        cin>>time_entry>>name>>option>>stock>>price>>quantity>>delay;
-        neworder(time_entry,name, option,stock, price,quantity,delay,stocklist,accountlist,trades,total,shares);
-    }
-    cout<<endl<<"---End of Day---"<<endl;
-    cout<<"Total Amount of Money Transferred: $"<<total<<endl;
-    cout<<"Number of Completed Trades: "<<trades<<endl;
-    cout<<"Number of Shares Traded: "<<shares<<endl;
-    for(int i=0;i<accountlist.size();i++)
-    {
-        cout<<accountlist[i].name<<" bought "<<accountlist[i].buy_no<<" and sold "<<accountlist[i].sell_no<<" for a net transfer of $"<<accountlist[i].net<<endl;
-    }
-    //computeMaxHeap("AM",100,0,"Kargocorp",30,10,B,S);
-    //computeMinHeap("AM",130,1,"KargoKrab",12,1,B,S);
-    //computeMinHeap("AM",110,1,"KargoKrab",20,1,B,S);
+// int main()
+// {
+//     int n;
+//     vector<stocks> stocklist;
+//     vector<accounts> accountlist;
+//     int trades=0;
+//     int total=0;
+//     int shares=0;
+//     string input;
+//     MaxHeap B;
+//     MinHeap S;
+//     std::cin>>n;//number of entries
+//     for (int i=0;i<n;i++)
+//     {
+//         int time_entry;
+//         string name;
+//         string option;
+//         string stock;
+//         int price; 
+//         int quantity;
+//         int delay;
+//         cin>>time_entry>>name>>option>>stock>>price>>quantity>>delay;
+//         neworder(time_entry,name, option,stock, price,quantity,delay,stocklist,accountlist,trades,total,shares);
+//     }
+//     cout<<endl<<"---End of Day---"<<endl;
+//     cout<<"Total Amount of Money Transferred: $"<<total<<endl;
+//     cout<<"Number of Completed Trades: "<<trades<<endl;
+//     cout<<"Number of Shares Traded: "<<shares<<endl;
+//     for(int i=0;i<accountlist.size();i++)
+//     {
+//         cout<<accountlist[i].name<<" bought "<<accountlist[i].buy_no<<" and sold "<<accountlist[i].sell_no<<" for a net transfer of $"<<accountlist[i].net<<endl;
+//     }
+//     //computeMaxHeap("AM",100,0,"Kargocorp",30,10,B,S);
+//     //computeMinHeap("AM",130,1,"KargoKrab",12,1,B,S);
+//     //computeMinHeap("AM",110,1,"KargoKrab",20,1,B,S);
     
     
     
-}
+// }
