@@ -1,12 +1,30 @@
-ASML 650 s#
-ASML 645 b#
-AAPL 430 b#
-AAPL 435 b#
-AAPL 435 s#
-ASML 646 b#
-ASML 647 b#
-ASML 651 b#
-AAPL 432 s#
-ASML 654 s#
-ASML 652 s#
-ASML 650 s#
+A
+40 
+s
+A
+50 
+s
+A
+50 
+s
+B
+40 
+s
+B
+50 
+s
+B
+50 
+s
+B
+50
+b
+B
+50
+b
+A
+50
+b
+A
+50
+b
