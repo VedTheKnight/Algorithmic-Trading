@@ -43,7 +43,7 @@ vector<string> final_tokenize(vector<string> tokens){
     {
         if(tokens[i]!="SELL" && tokens[i]!="BUY")
         {
-            //name+=tokens[i]+" ";
+            name+=tokens[i]+" ";
             continue;
         }
         break;
