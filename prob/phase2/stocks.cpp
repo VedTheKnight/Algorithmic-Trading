@@ -172,6 +172,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+    for(int i=0;i<arbitrage.size();i++)
+    {
+        S.insert(arbitrage[i]);
+    }
 }
 
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)

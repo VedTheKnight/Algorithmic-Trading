@@ -32,16 +32,21 @@ vector<string> tokenize(string input){
     return tokens;
 }
 
+string rename(vector<string>tokens,int i)//1 to i ko sort
+{
 
+}
 
 vector<string> final_tokenize(vector<string> tokens){
     vector<string> final_tokens;
     final_tokens.push_back(tokens[0]);//pushes back the time of entry
+    final_tokens.push_back(tokens[1]);//pushes back the name
+    final_tokens.push_back(tokens[2]);//pushes back the BUY or SELL
     string name;
     int i;
-    for( i=1;i<tokens.size();i++)
+    for( i=3;i<tokens.size();i++)
     {
-        if(tokens[i]!="SELL" && tokens[i]!="BUY")
+        if(tokens[i][0]!='$')
         {
             name+=tokens[i]+" ";
             continue;
@@ -49,10 +54,10 @@ vector<string> final_tokenize(vector<string> tokens){
         break;
     }
     //remove last space in the name which will be extra and we dont want it
-    //name.pop_back();
+    name.pop_back();
     // so now our name has "XYZ -1 ABC 1"
     //IMP at this pt i is basically the i at which i becomes SELL or BUY so at the old values SO 1 to i-1 will have alternate name and coeff
-    //name=
+    //name=rename(tokens,i)
     final_tokens.push_back(name);
     for (i;i<tokens.size();i++)
     {
@@ -66,6 +71,44 @@ vector<string> final_tokenize(vector<string> tokens){
         {final_tokens.push_back(tokens[i]);}
     }
     return final_tokens;
+}
+bool checkEquality(string old_order, string name){
+
+    bool flag = false;
+   
+    vector<string> tokens = tokenize(old_order);
+    vector<string> name_tokens = tokenize(name);
+
+    int counter = 0;
+    if(tokens.size()==1 && name_tokens.size()==1)
+    {
+        if(name==old_order)
+        {
+            return 1;
+        }
+        else
+        return 0;
+        
+    }
+    
+    if(tokens.size()!= name_tokens.size())
+    {
+        return 0;
+        
+    }
+
+    for(int j = 0; j<tokens.size(); j++){
+        for(int k = 0; k<name_tokens.size();k+=2){
+            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
+                counter++;
+        }
+    }
+
+    if(counter == name_tokens.size()/2 && counter == (tokens.size())/2){
+        flag = true;
+    }
+
+    return flag;
 }
 
 int stringToInt(const std::string& str) {
@@ -104,6 +147,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
 {//name is the new order wala 
 //so basically abhi we have a new sell order which i will sell to the highest possible buy order if it is valid and has all other quantity and time valid
 // fix the issue of infinite time
+    vector<pair<string,vector<int>>> arbitrage; 
     while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
 
@@ -113,8 +157,10 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
         {
-            //if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            //break;
+            if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+            break;//default escape if its not valid 
+            arbitrage.push_back({B.max()->first,B.max()->second});
+            B.deleteMax();
             //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
             //return;
         }
@@ -172,12 +218,16 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
     S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+    for(int i=0;i<arbitrage.size();i++)
+    {
+        B.insert(arbitrage[i]);
+    }
 }
 
 void computeMinHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S,vector<accounts>& accountlist,int& trades,int& total,int& shares)//its a min heap implying the new order is a buy order ready to buy from someone with lowest sell price
 {
 //so basically abhi we have a new buy order which i will buy from the lowest possible sell order if it is valid and has all other quantity and time valid
-
+    vector<pair<string,vector<int>>> arbitrage;
     while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
         if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -186,8 +236,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
         {
-            //if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            //break;
+            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+            break;
+            arbitrage.push_back({S.min()->first,S.min()->second});
+            S.deleteMin();
             //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
             //return;
         }
@@ -245,6 +297,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+    for(int i=0;i<arbitrage.size();i++)
+    {
+        S.insert(arbitrage[i]);
+    }
 }
 
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)
@@ -253,8 +309,11 @@ void neworder(int time_entry,string name,string option,string stock,int price, i
 auto j=accountlist.begin();
 for(j;j<accountlist.end();j++)
 {
-    if(j->name==name)
-    break;
+    if(checkEquality(j->name,name)==1)
+    {
+
+        break;
+    }
 }
 if(j==accountlist.end())//basically we do not have the new guys name in the list of valid accountholders so we will add his acc now so at every computing step for orders each memeber has his account already established
 {
@@ -269,8 +328,11 @@ stocklist.push_back({stock,B,S});
 auto i=stocklist.begin();
 for(i;i<stocklist.end();i++)
 {
-    if(i->name==stock)
-    break;
+    if(checkEquality(i->name,stock)==1)
+    {
+        stock=i->name;
+        break;
+    }
 }
 if(i==stocklist.end())
 {

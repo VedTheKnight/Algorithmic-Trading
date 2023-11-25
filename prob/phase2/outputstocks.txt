@@ -1,43 +1,13 @@
-KG purchased 5 shares of AAPL from AA for $118/share
-KA purchased 9 shares of AMD from AA for $70/share
-KG purchased 7 shares of AAPL from OT for $118/share
-SM purchased 5 shares of AAPL from OT for $58/share
-KG purchased 5 shares of AMD from AA for $70/share
-KG purchased 9 shares of AMD from SM for $250/share
-SM purchased 5 shares of GE from GS for $165/share
-KA purchased 6 shares of AAPL from AKG for $22/share
-SM purchased 9 shares of AMD from OT for $83/share
-SM purchased 3 shares of AMD from GS for $242/share
-KG purchased 9 shares of NFLX from AA for $188/share
-GS purchased 2 shares of AMD from OT for $193/share
-KA purchased 4 shares of AMD from OT for $132/share
-KA purchased 1 shares of AMD from GS for $242/share
-OT purchased 4 shares of NFLX from AA for $188/share
-OT purchased 2 shares of NFLX from KA for $270/share
-AKG purchased 7 shares of NFLX from KA for $204/share
-SV purchased 11 shares of AMZN from AKG for $407/share
-OT purchased 11 shares of AMZN from SM for $274/share
-AA purchased 7 shares of AAPL from AKG for $22/share
-AA purchased 1 shares of AAPL from OT for $58/share
-AA purchased 8 shares of AAPL from SM for $102/share
-AA purchased 1 shares of GE from GS for $157/share
-SM purchased 1 shares of NFLX from AKG for $480/share
-AA purchased 1 shares of AMZN from AKG for $295/share
-SM purchased 9 shares of NFLX from OT for $480/share
-AKG purchased 1 shares of GE from GS for $165/share
-AKG purchased 6 shares of GE from AKG for $218/share
-GS purchased 5 shares of NFLX from KG for $437/share
-AKG purchased 2 shares of NFLX from KG for $182/share
+Brian purchased 12 shares of AAPL from KG for $118/share
+Brian purchased 1 shares of AAPL from Ved for $130/share
+Ekans purchased 1 shares of AAPL from Brian for $101/share
+Ekans purchased 1 shares of AAPL from Brian for $125/share
 
 ---End of Day---
-Total Amount of Money Transferred: $30727
-Number of Completed Trades: 30
-Number of Shares Traded: 156
-KG bought 35 and sold 7 for a net transfer of $-3159
-GS bought 7 and sold 11 for a net transfer of $-456
-AA bought 18 and sold 32 for a net transfer of $2534
-SV bought 11 and sold 0 for a net transfer of $-4477
-KA bought 20 and sold 9 for a net transfer of $436
-SM bought 32 and sold 28 for a net transfer of $-1308
-OT bought 17 and sold 37 for a net transfer of $2849
-AKG bought 16 and sold 32 for a net transfer of $3581
+Total Amount of Money Transferred: $1772
+Number of Completed Trades: 4
+Number of Shares Traded: 15
+KG bought 0 and sold 12 for a net transfer of $1416
+Brian bought 13 and sold 2 for a net transfer of $-1320
+Ved bought 0 and sold 1 for a net transfer of $130
+Ekans bought 2 and sold 0 for a net transfer of $-226
