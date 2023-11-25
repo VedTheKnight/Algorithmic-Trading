@@ -9,6 +9,21 @@ using namespace std;
 
 //______________________________________Utility Functions___________________________________________________________________________________________________
 
+// removes /r and /n and extra spaces at the end of the line
+void removeHiddenCharacters(std::string& str) {
+    std::string result;
+    for (char c : str) {
+        if (c != '\r' && c != '\n') {
+            result += c;
+        }
+    }
+    str = result;
+    int back = str.size()-1;
+    while(str[back--] == ' '){
+        str.pop_back();
+    }
+}
+
 //simple function to convert string to integer both negative and positive
 int stringToInt(const std::string& str) {
     int result = 0;
@@ -63,7 +78,8 @@ string processOrder(string input){
 
 //______________________________________Useful Functions for Part 1________________________________________________________________________________________
 
-bool orderoutput(string name,int price,char option,TrieNode* root)
+//Trie Processing
+bool orderoutputT(string name,int price,char option,TrieNode* root)
 {
     bool flag;
     TrieNode* query=search(root,name);
@@ -131,7 +147,7 @@ bool orderoutput(string name,int price,char option,TrieNode* root)
 
 }
 
-void process_problem1(  TrieNode* root,string message)
+void process_problem1T(TrieNode* root,string message)
 {
     string order_name="",temp="";
     int price=0;
@@ -165,7 +181,7 @@ void process_problem1(  TrieNode* root,string message)
     {
         price+=(pricestring[i]-48)*(pow(10,(pricestring.size()-1-i)));
     }
-    bool flag=orderoutput(order_name,price,option,root);
+    bool flag=orderoutputT(order_name,price,option,root);
     if (flag==1)
     {
         
@@ -178,6 +194,104 @@ void process_problem1(  TrieNode* root,string message)
     else
     {
        cout<<"No trade"<<endl;
+    }
+
+}
+
+// Map Processing
+bool orderoutputM(string name,int price,char option,Map M)
+{
+    bool flag;
+    Map* query=M.find(name);
+    if (query==nullptr)//insert
+    {
+        M.insert(name,vector<int>{price,0,0});//order is bestprice,bestbuy,bestsell
+        return 1;
+    }
+    if (option=='b')
+    {
+
+        if (query->second[1]<price || query->second[1]==0)//price>best buy and is the new best order cancelling others
+        {
+            query->second[1]=price;
+            if (query->second[1]==query->second[2])
+            {
+                query->second[1]=0;
+                query->second[2]=0;//both trades cancel
+                return 0;
+            }
+            if(query->second[1]>query->second[0])//current trade is best buy and also better than best price
+            {
+                query->second[0]=query->second[1];//its the new best price and no pending best buy
+                query->second[1]=0;
+                return 1;
+            }
+            else//the current trade is best buy but not the better than best price
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
+    if (option=='s')
+    {
+        if (query->second[2]>price ||query->second[2]==0)//price<best sell and is the new best order cancelling others
+        {
+            query->second[2]=price;
+            if (query->second[1]==query->second[2])
+            {
+                query->second[1]=0;
+                query->second[2]=0;//both trades cancel
+                return 0;
+            }
+            if(query->second[2]<query->second[0])//current trade is best sell and also better than best price
+            {
+                query->second[0]=query->second[2];//its the new best price and no pending best buy
+                query->second[2]=0;
+                return 1;
+            }
+            else//the current trade is best buy but not the better than best price
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0;//directly cancelled and not traded on
+        }
+    }
+    return 0;
+}
+
+void process_problem1M(Map M,string message)
+{
+    string order_name="",temp="";
+    int price=0;
+    int flagstr=0;
+
+    char option;
+
+    vector<string> tokens = tokenize(message);
+    price = stringToInt(tokens[tokens.size()-2]);
+    order_name = tokens[0];
+    option = tokens[tokens.size()-1][0];
+
+    bool flag = orderoutputM(order_name,price,option,M);
+
+    if (flag==1)
+    {
+        if (option=='b')
+            std::cout <<order_name<<" "<< price<<" s"<<endl;
+        else
+            std::cout <<order_name<<" "<<price<<" b"<<endl;
+    }
+    else
+    {
+       std::cout<<"No Trade"<<endl;
     }
 
 }
@@ -713,7 +827,7 @@ vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& tot
 void runPart1(){
 
     Receiver rcv;
-    //sleep(5);
+    sleep(5);
     bool foundDollar = false;
     int iterator = 0;
     string message="";
@@ -745,17 +859,16 @@ void runPart1(){
         }
     }
 
-    // vector<string> tinputs;
-    // for(int i = 0; i<1000; i++){
-    //     tinputs.push_back("A "+to_string(1000-i)+" s#");
-    // }
+    for(int i=0; i<inputs.size(); i++){
+        removeHiddenCharacters(inputs[i]);
+    }
 
     //Map M;
     TrieNode* M = new TrieNode;
 
     for(int i=0;i<inputs.size();i++)
     {
-        process_problem1(M,inputs[i]);
+        process_problem1T(M,inputs[i]);
     }
 }
 
@@ -794,6 +907,9 @@ void runPart2(){
         }
     }
 
+    for(int i=0; i<inputs.size(); i++){
+        removeHiddenCharacters(inputs[i]);
+    }
     // Here we start the logic
     // If we have k lines in our input, we will do 2^k checks for arbitrage
     // In each check, we will go through all our tokens in the active strings and add it to a 
@@ -880,6 +996,10 @@ void runPart3(){
         }
     }
 
+    for(int i=0; i<inputs.size(); i++){
+        removeHiddenCharacters(inputs[i]);
+    }
+    
     // here we store the logic for part3 which is similar to that for part 2 but the only difference being in the 
     // way we process the order book and treat arbitrages.
 

@@ -1,8 +1,19 @@
 Receiver is listening on port 50000
-A 50 b
-No trade
-No trade
-No trade
-No trade
-A 60 s
-No trade
+No Trade
+No Trade
+Z 1 X -1 10 2 s
+Z -1 Y 1 -15 2 s
+X 1 Y -1 10 2 s
+No Trade
+No Trade
+No Trade
+B -8 C 1 13 8 s
+A -2 C 2 10 8 s
+C -3 B 5 12 8 s
+A 2 B 3 10 8 s
+No Trade
+No Trade
+X -2 Z 2 Y -1 10 1 s
+Y 4 Z -2 10 1 s
+X 2 Y -3 15 1 s
+405
