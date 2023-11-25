@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "map.h"
+#include "trie.cpp"
 #define ALPHABET_SIZE 26
 
 using namespace std;
@@ -62,14 +63,14 @@ string processOrder(string input){
 
 //______________________________________Useful Functions for Part 1________________________________________________________________________________________
 
-bool orderoutput(string name,int price,char option,Map M)
+bool orderoutput(string name,int price,char option,TrieNode* root)
 {
     bool flag;
-    Map* query=M.find(name);
-    if (query==nullptr)//insert
+    TrieNode* query=search(root,name);
+    if (query==NULL)//insert
     {
-        M.insert(name,vector<int>{price,0,0});//order is bestprice,bestbuy,bestsell
-        return 1;
+        insert_trie(root,name,vector<int>{price,0,0});//order is bestprice,bestbuy,bestsell
+        flag= 1;return flag;
     }
     if (option=='b')
     {
@@ -81,22 +82,22 @@ bool orderoutput(string name,int price,char option,Map M)
             {
                 query->second[1]=0;
                 query->second[2]=0;//both trades cancel
-                return 0;
+                flag= 0;return flag;//best buy and best sell are same so output is (best price,0,0)
             }
-            if(query->second[1]>query->second[0])//current trade is best buy and also better than best price
+            if(query->second[1]>query->second[0])//current trade is best buy and also better than best price 
             {
                 query->second[0]=query->second[1];//its the new best price and no pending best buy
                 query->second[1]=0;
-                return 1;
+                flag= 1;return flag;//best buy and best sell are same so output is (updated best price,0,bestsell/)
             }
             else//the current trade is best buy but not the better than best price
             {
-                return 0;
+                flag= 0;return flag;//output ->no change in your vector and new order just rejected
             }
         }
         else
         {
-            return 0;
+            flag= 0;return flag;
         }
 
     }
@@ -109,58 +110,79 @@ bool orderoutput(string name,int price,char option,Map M)
             {
                 query->second[1]=0;
                 query->second[2]=0;//both trades cancel
-                return 0;
+                flag= 0;return flag;
             }
             if(query->second[2]<query->second[0])//current trade is best sell and also better than best price
             {
                 query->second[0]=query->second[2];//its the new best price and no pending best buy
                 query->second[2]=0;
-                return 1;
+                flag= 1;return flag;
             }
             else//the current trade is best buy but not the better than best price
             {
-                return 0;
+                flag= 0;return flag;
             }
         }
         else
         {
-            return 0;//directly cancelled and not traded on
+            flag= 0;return flag;//directly cancelled and not traded on
         }
     }
-    return 0;
+
 }
 
-void process_problem1(Map M,string message)
+void process_problem1(  TrieNode* root,string message)
 {
     string order_name="",temp="";
     int price=0;
     int flagstr=0;
 
     char option;
+    string pricestring="";
+    for (auto i : message)
+    {
+        if(i==' ')
+        {
 
-    vector<string> tokens = tokenize(message);
-    price = stringToInt(tokens[tokens.size()-2]);
-    order_name = tokens[0];
-    option = tokens[tokens.size()-1][0];
+            if (flagstr==0)
+            order_name=temp;
+            else if (flagstr==1)
+            pricestring=temp;
+            flagstr++;
+            temp="";
+            continue;
+        }
+        if (i=='#')
+        {
+            option=temp[0];
+            break;
+        }
 
-    bool flag = orderoutput(order_name,price,option,M);
+        temp+=i;
+    }
 
+        for (int i=0;i<pricestring.size();i++)
+    {
+        price+=(pricestring[i]-48)*(pow(10,(pricestring.size()-1-i)));
+    }
+    bool flag=orderoutput(order_name,price,option,root);
     if (flag==1)
     {
+        
         if (option=='b')
-            std::cout <<order_name<<" "<< price<<" s"<<endl;
+        cout <<order_name<<" "<< price<<" s"<<endl;
         else
-            std::cout <<order_name<<" "<<price<<" b"<<endl;
+        cout <<order_name<<" "<<price<<" b"<<endl;
+
     }
     else
     {
-       std::cout<<"No Trade"<<endl;
+       cout<<"No trade"<<endl;
     }
 
 }
 
 //______________________________________Useful Functions for Part 2________________________________________________________________________________________
-
 
 //given a number n and k being the size of inputs upto that point, get binary representation of n
 vector<int> getBinary(int n, int k){
@@ -670,7 +692,10 @@ vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& tot
         if(profit>max_profit && zcount != quantities.size()){
             max_profit = profit;    //update the max profit
             best_arbitrage = binary_arbitrage;
-            best_quantities = quantities;
+            int x = 0;
+            for(int i=0; i<best_arbitrage.size(); i++){
+                best_quantities[i] = (best_arbitrage[i] == 1)? quantities[x++]:0; //copies in the quantities vector
+            }
         }
     }
 
@@ -688,7 +713,7 @@ vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& tot
 void runPart1(){
 
     Receiver rcv;
-    sleep(5);
+    //sleep(5);
     bool foundDollar = false;
     int iterator = 0;
     string message="";
@@ -721,25 +746,12 @@ void runPart1(){
     }
 
     // vector<string> tinputs;
-    // tinputs.push_back("A 40 s#");
-    // tinputs.push_back("A 50 s#");
-    // tinputs.push_back("A 50 s#");
-    // tinputs.push_back("B 40 s#");
-    // tinputs.push_back("B 50 s#");
-    // tinputs.push_back("B 50 s#");
-    // tinputs.push_back("B 50 b#");
-    // tinputs.push_back("B 50 b#");
-    // tinputs.push_back("A 50 b#");
-    // tinputs.push_back("A 50 b#");
-    
-    // for(int i =0; i<inputs.size(); i++){
-    //     //inputs[i] = processOrder(inputs[i]);
-    //     cout<<(inputs[i]==tinputs[i])<<endl;
-    //     cout<<inputs[i].length()<<endl;
-    //     cout<<tinputs[i].length()<<endl;
+    // for(int i = 0; i<1000; i++){
+    //     tinputs.push_back("A "+to_string(1000-i)+" s#");
     // }
-    // cout<<"hi";
-    Map M;
+
+    //Map M;
+    TrieNode* M = new TrieNode;
 
     for(int i=0;i<inputs.size();i++)
     {
@@ -818,7 +830,7 @@ void runPart2(){
         for(int iterator = order_book.size()-1; iterator>=0; iterator--){
             if(best_arbitrage[iterator] == 1){ // this is a part of our arbitrage so we display it
                 order_book[iterator][order_book[iterator].size()-2] = (order_book[iterator][order_book[iterator].size()-2]=='b')? 's':'b'; // assuming new line character is not there
-                std::cout<<order_book[iterator]<<"\n";
+                std::cout<<order_book[iterator].substr(0,order_book[iterator].length()-1)<<"\n";
             }
         }
 
@@ -934,7 +946,7 @@ void runPart3(){
                 }
                 
                 displayed_entry[displayed_entry.size()-2] = (displayed_entry[displayed_entry.size()-2]=='b')? 's':'b'; // assuming new line character is not there
-                std::cout<<displayed_entry<<"\n";
+                std::cout<<displayed_entry.substr(0,displayed_entry.length()-1)<<"\n";
             }
         }
     }

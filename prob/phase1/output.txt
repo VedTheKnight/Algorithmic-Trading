@@ -1,1 +1,8 @@
 Receiver is listening on port 50000
+A 50 b
+No trade
+No trade
+No trade
+No trade
+A 60 s
+No trade
