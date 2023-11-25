@@ -1,134 +1,9 @@
-#include "market.h"
-#include "iostream"
-#include "vector"
-#include "string"
-#include "fstream"
 #include "maxheap.h"
 #include "minheap.h"
+#include <vector>
+#include <string>
+#include <iostream>
 using namespace std;
-//--------------------------------------------STRINGPROCESS-----------------------------------------------------
-vector<string> tokenize(string input){
-
-    vector<string> tokens;
-
-    size_t start = 0;
-    size_t end = input.find(' ');
-
-    while (end != string::npos) {
-        // Extract the token from the input string
-        string token = input.substr(start, end - start);
-
-        // Add the token to the vector
-        tokens.push_back(token);
-
-        // Update the start and end positions for the next token
-        start = end + 1;
-        end = input.find(' ', start);
-    }
-
-    // Add the last token after the loop
-    tokens.push_back(input.substr(start));
-
-    return tokens;
-}
-
-string rename(vector<string>tokens,int i)//1 to i ko sort
-{
-
-}
-
-vector<string> final_tokenize(vector<string> tokens){
-    vector<string> final_tokens;
-    final_tokens.push_back(tokens[0]);//pushes back the time of entry
-    final_tokens.push_back(tokens[1]);//pushes back the name
-    final_tokens.push_back(tokens[2]);//pushes back the BUY or SELL
-    string name;
-    int i;
-    for( i=3;i<tokens.size();i++)
-    {
-        if(tokens[i][0]!='$')
-        {
-            name+=tokens[i]+" ";
-            continue;
-        }
-        break;
-    }
-    //remove last space in the name which will be extra and we dont want it
-    name.pop_back();
-    // so now our name has "XYZ -1 ABC 1"
-    //IMP at this pt i is basically the i at which i becomes SELL or BUY so at the old values SO 1 to i-1 will have alternate name and coeff
-    //name=rename(tokens,i)
-    final_tokens.push_back(name);
-    for (i;i<tokens.size();i++)
-    {
-        if(tokens[i][0]=='$')
-        final_tokens.push_back(tokens[i].substr(1,tokens[i].size()-1));
-        else if (tokens[i][0]=='#')
-        {
-            final_tokens.push_back(tokens[i].substr(1,tokens[i].size()-1));
-        }
-        else 
-        {final_tokens.push_back(tokens[i]);}
-    }
-    return final_tokens;
-}
-bool checkEquality(string old_order, string name){
-
-    bool flag = false;
-   
-    vector<string> tokens = tokenize(old_order);
-    vector<string> name_tokens = tokenize(name);
-
-    int counter = 0;
-    if(tokens.size()==1 && name_tokens.size()==1)
-    {
-        if(name==old_order)
-        {
-            return 1;
-        }
-        else
-        return 0;
-        
-    }
-    
-    if(tokens.size()!= name_tokens.size())
-    {
-        return 0;
-        
-    }
-
-    for(int j = 0; j<tokens.size(); j++){
-        for(int k = 0; k<name_tokens.size();k+=2){
-            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
-                counter++;
-        }
-    }
-
-    if(counter == name_tokens.size()/2 && counter == (tokens.size())/2){
-        flag = true;
-    }
-
-    return flag;
-}
-
-int stringToInt(const std::string& str) {
-    int result = 0;
-    for (char c : str) {
-        if (c >= '0' && c <= '9') {
-            // Convert the character to an integer and add it to the result
-            result = result * 10 + (c - '0');
-        } 
-    }
-    if(str[0]=='-')
-        return -1*result;
-    else    
-        return result;
-}
-
-
-//--------------------------------------------STRINGPROCESS-----------------------------------------------------
-
-//--------------------------------------------STOCKS.CPP--------------------------------------------------------
 struct accounts
 {
     string name;
@@ -169,7 +44,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];//just in case calling max twice cleans the top making max inaccessible
-            cout<<B.max()->first<<" purchased "<<quantity<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             total+=p*quantity;
             trades++;
             shares+=quantity;
@@ -195,7 +70,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];
-            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=B.max()->second[2];
             total+=B.max()->second[2]*p;
@@ -248,7 +123,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<quantity<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=quantity;
             total+=quantity*p;
@@ -274,7 +149,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<S.min()->second[2]<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<S.min()->second[2]<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=S.min()->second[2];
             total+=S.min()->second[2]*p;
@@ -297,10 +172,6 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        S.insert(arbitrage[i]);
-    }
 }
 
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)
@@ -309,11 +180,8 @@ void neworder(int time_entry,string name,string option,string stock,int price, i
 auto j=accountlist.begin();
 for(j;j<accountlist.end();j++)
 {
-    if(checkEquality(j->name,name)==1)
-    {
-
-        break;
-    }
+    if(j->name==name)
+    break;
 }
 if(j==accountlist.end())//basically we do not have the new guys name in the list of valid accountholders so we will add his acc now so at every computing step for orders each memeber has his account already established
 {
@@ -328,11 +196,8 @@ stocklist.push_back({stock,B,S});
 auto i=stocklist.begin();
 for(i;i<stocklist.end();i++)
 {
-    if(checkEquality(i->name,stock)==1)
-    {
-        stock=i->name;
-        break;
-    }
+    if(i->name==stock)
+    break;
 }
 if(i==stocklist.end())
 {
@@ -419,48 +284,3 @@ else
     
     
 // }
-
-//--------------------------------------------STOCKS.CPP--------------------------------------------------------
-
-
-
-market::market(int argc, char** argv)
-{
-	
-}
-
-void market::start()
-{
-    vector<stocks> stocklist;
-    vector<accounts> accountlist;
-     int trades=0;
-     int total=0;
-     int shares=0;
-    vector<string> lines;
-    vector<string> inputs;
-	std::ifstream inputFile ("output.txt");
-    std::string line;
-    while (std::getline(inputFile,line)) {
-        if (line.compare("TL") == 0) {
-            continue;
-        }
-        if (line.compare("!@") == 0 ) {
-            break;
-        }
-         inputs=final_tokenize(tokenize(line));//inputs ke tokens
-        neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,accountlist,trades,total,shares);
-    }
-    //for (int i=0;i<lines.size();i++)
-    // {
-    //     inputs=final_tokenize(tokenize(lines[i]));//inputs ke tokens
-    //     neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,accountlist,trades,total,shares);
-    // }
-    cout<<endl<<"---End of Day---"<<endl;
-    cout<<"Total Amount of Money Transferred: $"<<total<<endl;
-    cout<<"Number of Completed Trades: "<<trades<<endl;
-    cout<<"Number of Shares Traded: "<<shares<<endl;
-    for(int i=0;i<accountlist.size();i++)
-    {
-        cout<<accountlist[i].name<<" bought "<<accountlist[i].buy_no<<" and sold "<<accountlist[i].sell_no<<" for a net transfer of $"<<accountlist[i].net<<endl;
-    }
-}
