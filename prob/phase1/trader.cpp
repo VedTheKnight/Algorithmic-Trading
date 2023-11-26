@@ -76,12 +76,31 @@ string processOrder(string input){
     return result;
 }
 
+//normal power computation function computes a^b
+int power(int a,int b){
+    int res = 1;
+    for(int i=0; i<b;i++){
+        res*=a;
+    }
+    return res;
+}
+
+//function to convert a lower case string to upper case in place
+void UpperCase(std::string& str) {
+    for(int i=0;i<str.length();i++)
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')   //checking for lowercase characters
+        str[i] = str[i] - 32; 
+    }
+}
+
 //______________________________________Useful Functions for Part 1________________________________________________________________________________________
 
 //Trie Processing
-bool orderoutputT(string name,int price,char option,TrieNode* root)
+bool orderoutput(string name,int price,char option,TrieNode* root)
 {
     bool flag;
+    
     TrieNode* query=search(root,name);
     if (query==NULL)//insert
     {
@@ -147,7 +166,7 @@ bool orderoutputT(string name,int price,char option,TrieNode* root)
 
 }
 
-void process_problem1T(TrieNode* root,string message)
+void process_problem1(TrieNode* root,string message)
 {
     string order_name="",temp="";
     int price=0;
@@ -155,33 +174,14 @@ void process_problem1T(TrieNode* root,string message)
 
     char option;
     string pricestring="";
-    for (auto i : message)
-    {
-        if(i==' ')
-        {
-
-            if (flagstr==0)
-            order_name=temp;
-            else if (flagstr==1)
-            pricestring=temp;
-            flagstr++;
-            temp="";
-            continue;
-        }
-        if (i=='#')
-        {
-            option=temp[0];
-            break;
-        }
-
-        temp+=i;
-    }
-
-        for (int i=0;i<pricestring.size();i++)
-    {
-        price+=(pricestring[i]-48)*(pow(10,(pricestring.size()-1-i)));
-    }
-    bool flag=orderoutputT(order_name,price,option,root);
+ 
+    vector<string>inputs=tokenize(message);
+    removeHiddenCharacters(inputs[0]);
+    order_name=inputs[0];
+    UpperCase(inputs[0]);
+    bool flag=orderoutput((inputs[0]),stringToInt(inputs[1]),inputs[2][0],root);
+    option=inputs[2][0];
+    price=stringToInt(inputs[1]);
     if (flag==1)
     {
         
@@ -194,104 +194,6 @@ void process_problem1T(TrieNode* root,string message)
     else
     {
        cout<<"No trade"<<endl;
-    }
-
-}
-
-// Map Processing
-bool orderoutputM(string name,int price,char option,Map M)
-{
-    bool flag;
-    Map* query=M.find(name);
-    if (query==nullptr)//insert
-    {
-        M.insert(name,vector<int>{price,0,0});//order is bestprice,bestbuy,bestsell
-        return 1;
-    }
-    if (option=='b')
-    {
-
-        if (query->second[1]<price || query->second[1]==0)//price>best buy and is the new best order cancelling others
-        {
-            query->second[1]=price;
-            if (query->second[1]==query->second[2])
-            {
-                query->second[1]=0;
-                query->second[2]=0;//both trades cancel
-                return 0;
-            }
-            if(query->second[1]>query->second[0])//current trade is best buy and also better than best price
-            {
-                query->second[0]=query->second[1];//its the new best price and no pending best buy
-                query->second[1]=0;
-                return 1;
-            }
-            else//the current trade is best buy but not the better than best price
-            {
-                return 0;
-            }
-        }
-        else
-        {
-            return 0;
-        }
-
-    }
-    if (option=='s')
-    {
-        if (query->second[2]>price ||query->second[2]==0)//price<best sell and is the new best order cancelling others
-        {
-            query->second[2]=price;
-            if (query->second[1]==query->second[2])
-            {
-                query->second[1]=0;
-                query->second[2]=0;//both trades cancel
-                return 0;
-            }
-            if(query->second[2]<query->second[0])//current trade is best sell and also better than best price
-            {
-                query->second[0]=query->second[2];//its the new best price and no pending best buy
-                query->second[2]=0;
-                return 1;
-            }
-            else//the current trade is best buy but not the better than best price
-            {
-                return 0;
-            }
-        }
-        else
-        {
-            return 0;//directly cancelled and not traded on
-        }
-    }
-    return 0;
-}
-
-void process_problem1M(Map M,string message)
-{
-    string order_name="",temp="";
-    int price=0;
-    int flagstr=0;
-
-    char option;
-
-    vector<string> tokens = tokenize(message);
-    price = stringToInt(tokens[tokens.size()-2]);
-    order_name = tokens[0];
-    option = tokens[tokens.size()-1][0];
-
-    bool flag = orderoutputM(order_name,price,option,M);
-
-    if (flag==1)
-    {
-        if (option=='b')
-            std::cout <<order_name<<" "<< price<<" s"<<endl;
-        else
-            std::cout <<order_name<<" "<<price<<" b"<<endl;
-    }
-    else
-    {
-       std::cout<<"No Trade"<<endl;
     }
 
 }
@@ -557,7 +459,6 @@ void updateOrderBookP2(vector<string>& order_book, string input){
     
 }
 
-
 //______________________________________Useful Functions for Part 3________________________________________________________________________________________
 
 // recursive function to generate all possible quantities
@@ -617,7 +518,12 @@ void updateOrderBookP3(vector<string>& order_book, string input){
     }
 
     int ctr = 0;
-    for(int i=0; i<order_book.size(); i++){ // we check all the existing orders in the book
+    int obs = order_book.size();
+    for(int i=0; i<obs; i++){ // we check all the existing orders in the book
+        if(order_book[i] == "X"){
+            ctr++;
+            continue;
+        }
         if(checkBuySellPairs(order_book[i],name,price,mode)){ //if it matches we have possible cancellation
             vector<string> line_toks = tokenize(order_book[i]);
             
@@ -632,13 +538,13 @@ void updateOrderBookP3(vector<string>& order_book, string input){
                         updated_entry+=" ";
                 }
                 order_book[i] = updated_entry;
+                order_book.push_back("X");
                 break;
             }
             else if(stringToInt(line_toks[line_toks.size()-2]) < quantity){
-                order_book.erase(order_book.begin()+i);
-
+                order_book[i] = "X";
                 // now adjust the quantity of the inputs and insert it into the order book
-                int delta = quantity - stringToInt(line_toks[line_toks.size()-2]);
+                int delta = stringToInt(tokens[tokens.size()-2]) - stringToInt(line_toks[line_toks.size()-2]);
                 tokens[tokens.size()-2] = to_string(delta); 
                 string updated_entry="";
 
@@ -650,12 +556,15 @@ void updateOrderBookP3(vector<string>& order_book, string input){
                 }
 
                 input = updated_entry; //update the input
-                order_book.push_back(input);
-                break;
-                //order_book[i] = updated_entry;
+                if(order_book.size() == obs)
+                    order_book.push_back(input);
+                else
+                    order_book[order_book.size()-1] = input;
+
             }
             else{ //both exactly cancel out and we just need to delete the old entry
-                order_book.erase(order_book.begin()+i);
+                order_book[i] = "X";
+                order_book.push_back("X");
                 break;
             }
         }    
@@ -673,7 +582,7 @@ void updateOrderBookP3(vector<string>& order_book, string input){
 
 // checks if a given combination of inputs could lead to a possible arbitrage and outputs null vector if no 
 // and returns a vector of optimal quantities if yes. 
-vector<int> checkArbitrage(vector<string> combination){
+vector<int> checkArbitrage(vector<string> combination, int n, vector<int>& cache){
 
     vector<string> tickers;
     vector<int> quantities;
@@ -694,6 +603,9 @@ vector<int> checkArbitrage(vector<string> combination){
     // we need to fill in the code to get all the possible quantity combinations
     vector<int> currentArray(quantities.size(), 0);
     generateQuantities(quantities, currentArray, 0, quantity_combinations);
+
+    int max_profit = 0;
+    vector<int> best_combo = vector<int>(combination.size(),0);
 
     //now that we have the tickers we again go through the combinations and compute the corresponding quantities for the ticker
     for(auto quantity_combo : quantity_combinations){
@@ -721,34 +633,42 @@ vector<int> checkArbitrage(vector<string> combination){
         }
 
         if(ctr == corresponding_quantities.size()){ //i.e there exists some combination that makes all the tickers have 0 quantity
-            // we must output the max possible multiple of quantity combo present in quantity combinations
-            bool flag = true;
-            int x = 1;
-            while(flag){
-                x++;
-                for(int i=0; i<quantity_combo.size(); i++){
-                    if(quantity_combo[i]*x>quantities[i]){
-                        flag = false;
-                    }
+            //must do cost computation
+            int c = 0;
+            int profit = 0;
+            for(auto line: combination){
+                vector<string> line_tokens = tokenize(line);
+                if(line_tokens[line_tokens.size()-1][0] == 'b'){
+                    profit += quantity_combo[c]*stringToInt(line_tokens[line_tokens.size()-3]); //price is at minus 3, quantity at minus 2
+                }else{
+                    profit -= quantity_combo[c]*stringToInt(line_tokens[line_tokens.size()-3]);
                 }
+                c++;
             }
 
-            for(int i=0; i<quantity_combo.size(); i++){
-                quantity_combo[i] *= (x-1);
+            if(profit > max_profit){
+                max_profit = profit;
+                best_combo = quantity_combo;
             }
-            return quantity_combo;
         }
         else{
             continue; // check other combinations
         }
+
     }
-    
+
+    if(max_profit>0){
+        return best_combo;
+    }
+
+    //if we reach here means that there is not possibility for arbitrage
+    cache[n] = -1;
     return vector<int>(combination.size(),0);
 }
 
 //finds the best arbitrage given valid orders upto a point and the number of lines
 //returns the relevant orders and their corresponding quantities
-vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& total_profit){
+vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int n, int k, int& total_profit, vector<int>& cache){
 
     //code to find best arbitrage given k input lines
 
@@ -756,10 +676,7 @@ vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& tot
     int max_profit = 0;
     vector<int> best_quantities(k,0);
 
-    int pow = 1;
-    for(int i=1; i<=k;i++){
-        pow*=2;
-    } //gets 2^k which is the number of states we iterate over
+    int pow = power(2,k);
 
     for(int arb=1; arb<pow; arb++){ //arbitrage 0 is useless so we go from 1 to 2^k-1
         //first we find the binary representation of the arbitrage "arb"
@@ -768,17 +685,28 @@ vector<pair<int,int>> findBestArbitrageP3(vector<string> inputs, int k, int& tot
 
         // get relevant lines
         vector<string> possible_arbitrage;
+        bool flag = 0;
         for(int i=0; i<k; i++){
             if(binary_arbitrage[i]==1){
+                if(inputs[i] == "X"){
+                    flag = 1;
+                    break;
+                }
                 possible_arbitrage.push_back(inputs[i]);
             }
         }
-
+        if(flag){
+            continue; //we ignore that iteration if there is a X in the combination
+        }
+        if(cache[arb*power(2,n-k)] == -1){ //already checked and no arbitrage 
+            //cout<<"REJECTED"<<endl;
+            continue; 
+        }
         //we first compute the possible linear combinations which satisfy are zero sum. 
         //calling this function gets us the optimal maximum quantities for the given combination corresponding to the
         //possible arbitrage vector
-
-        vector<int> quantities = checkArbitrage(possible_arbitrage);
+        
+        vector<int> quantities = checkArbitrage(possible_arbitrage, arb*power(2,n-k), cache);
 
         int zcount = 0;
         for(int i = 0; i<quantities.size(); i++){
@@ -863,12 +791,11 @@ void runPart1(){
         removeHiddenCharacters(inputs[i]);
     }
 
-    //Map M;
     TrieNode* M = new TrieNode;
 
     for(int i=0;i<inputs.size();i++)
     {
-        process_problem1T(M,inputs[i]);
+        process_problem1(M,inputs[i]);
     }
 }
 
@@ -1004,7 +931,7 @@ void runPart3(){
     // way we process the order book and treat arbitrages.
 
     vector<string> order_book;
-
+    vector<int> cache = vector<int>(power(2,inputs.size()),0);
     int total_profit = 0;
 
     for(int i=0; i<inputs.size(); i++){
@@ -1013,8 +940,7 @@ void runPart3(){
         updateOrderBookP3(order_book, inputs[i]);
 
         //find the best arbitrage and update the quantities in the order book as well and update the total profit
-        vector<pair<int,int>> best_arbitrage = findBestArbitrageP3(order_book, order_book.size(), total_profit); //given the number of lines
-
+        vector<pair<int,int>> best_arbitrage = findBestArbitrageP3(order_book,inputs.size(),order_book.size(),total_profit,cache); //given the number of lines
         //to check if valid arbitrage not present in which case output no trade and continue
         bool flag = true;
         for(int j=0; j<best_arbitrage.size(); j++){
@@ -1038,7 +964,7 @@ void runPart3(){
 
                 // we must modify this best arbitrage by subtracting the quantity returned
                 vector<string> line_toks = tokenize(order_book[iterator]);
-                int delta = stringToInt(line_toks[line_toks.size()-2]) - best_arbitrage[iterator].second; //subtract the quantities which will definitely be less than the orignal quantites
+                int delta = stringToInt(line_toks[line_toks.size()-2]) - best_arbitrage[iterator].second; //subtract the quantities which will definitely be less than or equal to the orignal quantites
                 line_toks[line_toks.size()-2] = to_string(delta); //this is the new updated
                 
                 string updated_entry="";
@@ -1062,7 +988,7 @@ void runPart3(){
                 order_book[iterator] = updated_entry;
                 //if delta is zero, i.e. the line is exhausted we must remove the line from the order book
                 if(delta==0){
-                    order_book.erase(order_book.begin()+iterator);
+                    order_book[iterator] = "X";
                 }
                 
                 displayed_entry[displayed_entry.size()-2] = (displayed_entry[displayed_entry.size()-2]=='b')? 's':'b'; // assuming new line character is not there

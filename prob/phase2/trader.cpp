@@ -16,7 +16,7 @@ extern std::atomic<int> commonTimer;
 //___________________________________________________Utility Functions______________________________________________________
 
 // removes /r and /n and extra spaces at the end of the line
-void removeHiddenCharacters(std::string& str) {
+void removeHC(std::string& str) {
     std::string result;
     for (char c : str) {
         if (c != '\r' && c != '\n') {
@@ -376,16 +376,71 @@ vector<pair<int,int>> findBestArbitrage(vector<string> inputs, int k){
     return best;
 }
 
+//runs our trading algorithm
+void trade(vector<string> window){
+    vector<pair<int,int>> best_arbitrage = findBestArbitrage(window, window.size()); //given the number of lines
+
+    //to check if valid arbitrage not present in which case output no trade and continue
+    bool flag = true;
+    for(int j=0; j<best_arbitrage.size(); j++){
+        if(best_arbitrage[j].first==1){
+            flag = false;
+            break;
+        }
+    }
+
+    
+    // if there exists an arbitrage
+    // we display the arbitrage in reverse order
+    // as we display we update the quantities in the order book and delete the ones where quantities become zero
+    int min_time_to_expiry = 2147483647;
+    for(int iterator = 0; iterator<window.size(); iterator++){
+        if(best_arbitrage[iterator].first == 1 && s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1])!= -1)
+            min_time_to_expiry = min(min_time_to_expiry, s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1]));
+    }
+    for(int iterator = window.size()-1; iterator>=0; iterator--){
+        if(best_arbitrage[iterator].first == 1){ // this is a part of our arbitrage so we display it
+
+            vector<string> line_toks = tokZ(window[iterator]);
+            string order="";
+            order = order + to_string(commonTimer.load()) + " ";
+            order = order + "VD ";
+            order += (line_toks[2] == "BUY")? "SELL":"BUY";
+            order += " ";
+
+            for(int i=3; i<line_toks.size();i++){
+                if(line_toks[i][0] == '#'){
+                    break;
+                }
+                order+= line_toks[i];
+                order+= " ";
+            }
+            
+            //now concatenate the quantity
+            order += "#";
+            order +=to_string(best_arbitrage[iterator].second);
+            order += " ";
+
+            order += to_string(min_time_to_expiry);
+
+            std::lock_guard<std::mutex> lock(printMutex);
+            std::cout<<order<<" \n";
+        }
+    }
+}
+
 //___________________________________________________Main Code______________________________________________________________
 
+//our strategy is to break the orderbook into windows of size 4 and run our arbitrage strategy on it 
 int reader(int time)
 {
     vector<string> order_book;
-    ifstream inputFile("output.txt");
     string line;
     std::this_thread::sleep_for(std::chrono::seconds(1));
     bool flag = true;
     while(flag){
+        ifstream inputFile("output.txt");
+        int ctr = 0;
         while(getline(inputFile,line)){
             if (line.compare("TL") == 0) {
                 continue;
@@ -395,70 +450,29 @@ int reader(int time)
                 break;
             }
             int index = find(order_book,line);
-            if(index==-1){
-                removeHiddenCharacters(line);
+            if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "VD"){
+                removeHC(line);
                 order_book.push_back(line);
-            }else{
-                order_book.erase(order_book.begin()+index);
             }
         }
         
         if(!flag)
             break;
+        //cout<<commonTimer.load()<<" VD SELL AMD $1 #32 "<<order_book.size()<<endl;
+        //TESTING
+        // std::lock_guard<std::mutex> lock(printMutex);
+        // for(auto line:order_book){
+        //     cout<<line<<endl;
+        // }
+        // cout<<"hi"<<order_book.size()<<endl;
+
+        // now that we have the order book let us run phase 1 part 3 on it 
+        // find the best arbitrage and update the quantities in the order book as well and update the total profit
+        vector<string> window = vector<string>{order_book[order_book.size()-1],order_book[order_book.size()-2],order_book[order_book.size()-3],order_book[order_book.size()-4]};
+        trade(window);
         
-        cout<<"hi"<<order_book.size()<<endl;
-        //now that we have the order book let us run phase 1 part 3 on it 
-        //find the best arbitrage and update the quantities in the order book as well and update the total profit
-        // vector<pair<int,int>> best_arbitrage = findBestArbitrage(order_book, order_book.size()); //given the number of lines
-
-        // //to check if valid arbitrage not present in which case output no trade and continue
-        // bool flag = true;
-        // for(int j=0; j<best_arbitrage.size(); j++){
-        //     if(best_arbitrage[j].first==1){
-        //         flag = false;
-        //         break;
-        //     }
-        // }
-
-        // // if there exists an arbitrage
-        // // we display the arbitrage in reverse order
-        // // as we display we update the quantities in the order book and delete the ones where quantities become zero
-        // int min_time_to_expiry = 2147483647;
-        // for(int iterator = 0; iterator<order_book.size(); iterator++){
-        //     if(best_arbitrage[iterator].first == 1 && s2I(tokZ(order_book[iterator])[tokZ(order_book[iterator]).size()-1])!= -1)
-        //         min_time_to_expiry = min(min_time_to_expiry, s2I(tokZ(order_book[iterator])[tokZ(order_book[iterator]).size()-1]));
-        // }
-        // for(int iterator = order_book.size()-1; iterator>=0; iterator--){
-        //     if(best_arbitrage[iterator].first == 1){ // this is a part of our arbitrage so we display it
-
-        //         vector<string> line_toks = tokZ(order_book[iterator]);
-        //         string order="";
-        //         order = order + to_string(commonTimer.load()) + " ";
-        //         order = order + "VD ";
-        //         order += (line_toks[2] == "BUY")? "SELL":"BUY";
-        //         order += " ";
-
-        //         for(int i=3; i<line_toks.size();i++){
-        //             if(line_toks[i][0] == '#'){
-        //                 break;
-        //             }
-        //             order+= line_toks[i];
-        //             order+= " ";
-        //         }
-                
-        //         //now concatenate the quantity
-        //         order += "#";
-        //         order +=to_string(best_arbitrage[iterator].second);
-        //         order += " ";
-
-        //         order += to_string(min_time_to_expiry);
-
-        //         std::lock_guard<std::mutex> lock(printMutex);
-        //         std::cout<<order<<" \n";
-        //     }
-        // }
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        //order_book.clear();
+        order_book.clear();
     }
     return 1;
 }

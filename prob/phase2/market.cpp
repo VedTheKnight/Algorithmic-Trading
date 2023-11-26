@@ -32,6 +32,21 @@ vector<string> tokenize(string input){
     return tokens;
 }
 
+// removes /r and /n and extra spaces at the end of the line
+void removeHiddenCharacters(std::string& str) {
+    std::string result;
+    for (char c : str) {
+        if (c != '\r' && c != '\n') {
+            result += c;
+        }
+    }
+    str = result;
+    int back = str.size()-1;
+    while(str[back--] == ' '){
+        str.pop_back();
+    }
+}
+
 string rename(vector<string>tokens,int i)//1 to i ko sort
 {
 
@@ -447,7 +462,8 @@ void market::start()
         if (line.compare("!@") == 0 ) {
             break;
         }
-         inputs=final_tokenize(tokenize(line));//inputs ke tokens
+        removeHiddenCharacters(line);
+        inputs=final_tokenize(tokenize(line));//inputs ke tokens
         neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,accountlist,trades,total,shares);
     }
     //for (int i=0;i<lines.size();i++)
