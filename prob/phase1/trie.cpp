@@ -1,6 +1,5 @@
 
 #include "string"
-#include<bits/stdc++.h>
 #include<vector> 
 using namespace std;
 #define ALPHABET_SIZE 26
@@ -11,11 +10,17 @@ struct TrieNode
      // represents end of a word 
      bool isEndOfWord=false; 
      vector<int> second={-1,-1,-1};
+     TrieNode()
+     {
+        for(int i=0;i<ALPHABET_SIZE;i++)
+        children[i] = NULL;
+     }
 }; 
 
 void insert_trie(TrieNode* root,string key,vector<int> prices)
 {
-    TrieNode* travel= root;
+    TrieNode* travel=new TrieNode;
+     travel= root;
     for (int i=0;i<key.length();i++)
     {
         int index= key[i]-'A';
@@ -33,8 +38,7 @@ void insert_trie(TrieNode* root,string key,vector<int> prices)
 
 TrieNode* search(TrieNode* root,string key) //will return the last node in the search and null if it does not exist
 {
-
-    TrieNode* travel= root;
+    TrieNode* travel=root;
     for (int i=0;i<key.length();i++)
     {
         int index= key[i]-'A';

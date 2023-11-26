@@ -50,9 +50,17 @@ int stringToInt(const std::string& str) {
 void removeHiddenCharacters(std::string& str) {
     std::string result;
     for (char c : str) {
-        if (c != '\r' && c != '\n') {
+        if (c >= 'a' && c <= 'z') {
             result += c;
         }
+        if (c >= 'A' && c <= 'Z') {
+            result += c;
+        }
+        if (c >= '0' && c <= '9') {
+            result += c;
+        }
+        if(c==' '||c=='#')
+        result += c;
     }
     str = result;
     int back = str.size()-1;
@@ -60,6 +68,8 @@ void removeHiddenCharacters(std::string& str) {
         str.pop_back();
     }
 }
+
+
 
 void UpperCase(std::string& str) {
 for(int i=0;i<str.length();i++)
@@ -244,9 +254,10 @@ void process_problem1(  TrieNode* root,string message)
     vector<string>inputs=tokenize(message);
     // bool flag=orderoutput(order_name,price,option,root);
     removeHiddenCharacters(inputs[0]);
-    bool flag=orderoutput(inputs[0],stringToInt(inputs[1]),inputs[2][0],root);
-    option=inputs[2][0];
     order_name=inputs[0];
+    UpperCase(inputs[0]);
+    bool flag=orderoutput((inputs[0]),stringToInt(inputs[1]),inputs[2][0],root);
+    option=inputs[2][0];
     price=stringToInt(inputs[1]);
     if (flag==1)
     {
@@ -366,90 +377,96 @@ void process_problem1T(TrieNode* root,string message)
 
 }
 
-// int main() {
-
-// Receiver rcv;
-//     sleep(5);
-//     bool foundDollar = false;
-//     int iterator = 0;
-//     string message="";
-
-//     while(!foundDollar){
-//         std::string msg = rcv.readIML();
-//         message+=msg;
-//         if(msg.find('$')!= string::npos){
-//             rcv.terminate();
-//             foundDollar = true;
-//         }
-//     }
-
-//     //first we store each line in a vector of strings called inputs 
-
-//     vector<string> inputs;
-//     inputs.push_back("");
-//     int index = 0;  //index of the vector : inputs
-//     for(int i = 0; i<message.length(); i++){
-//         if(message[i]=='$'){    // edge case where we have the last line
-//             inputs.pop_back(); // pops the empty "" and breaks;
-//             break;
-//         }
-//         if(message[i]!='\r') //ignores random characters
-//             inputs[index].push_back(message[i]);
-//         if(message[i] == '#'){
-//             inputs.push_back("");
-//             index++;
-//         }
-//     }
-
-//     // for(int i=0; i<inputs.size(); i++){
-//     //     removeHiddenCharacters(inputs[i]);
-//     // }
-
-//     //Map M;
-//     TrieNode* M = new TrieNode;
-
-//     for(int i=0;i<inputs.size();i++)
-//     {
-//         //cout<<inputs[i]<<endl;
-//         removeHiddenCharacters(inputs[i]);
-//         //cout<<inputs[i]<<endl;
-//         process_problem1(M,inputs[i]);
-//     }
-
-
-// return 0;
-// }
-
-
-
 int main() {
 
-string message;
+    Receiver rcv;
+    sleep(5);
+    bool foundDollar = false;
+    int iterator = 0;
+    string message="";
 
-    string line="";
-    int n;
-    char option;
-    vector<string> v;
-
-    TrieNode* M=new TrieNode;
-
-    for ( int i=1;i!=2674;i++)//388 times run
-    {
-        if(i%3==1)
-        {
-            cin>>line;
-        }
-        if(i%3==2)
-        {
-            cin>>n;
-        }
-        if(i%3==0)
-        {
-            cin>>option;
-            cout<<orderoutput(line,n,option,M)<<endl;
+    while(!foundDollar){
+        std::string msg = rcv.readIML();
+        message+=msg;
+        if(msg.find('$')!= string::npos){
+            rcv.terminate();
+            foundDollar = true;
         }
     }
 
+    //first we store each line in a vector of strings called inputs 
+    // std::ifstream inputFile ("inputs/data1.txt");
+    // std::string line;
+    // while (std::getline(inputFile,line))
+    // {
+    //     message+=line;
+    // }
+    vector<string> inputs;
+    inputs.push_back("");
+    int index = 0;  //index of the vector : inputs
+    for(int i = 0; i<message.length(); i++){
+        if(message[i]=='$'){    // edge case where we have the last line
+            inputs.pop_back(); // pops the empty "" and breaks;
+            break;
+        }
+        if(message[i]!='\r') //ignores random characters
+            inputs[index].push_back(message[i]);
+        if(message[i] == '#'){
+            inputs.push_back("");
+            index++;
+        }
+    }
+
+    // for(int i=0; i<inputs.size(); i++){
+    //     removeHiddenCharacters(inputs[i]);
+    // }
+
+    //Map M;
+    TrieNode* M = new TrieNode;
+
+    for(int i=0;i<inputs.size();i++)
+    {
+        //cout<<inputs[i]<<endl;
+        removeHiddenCharacters(inputs[i]);
+        //cout<<inputs[i]<<endl;
+
+        process_problem1(M,inputs[i]);
+    }
+
+
 return 0;
 }
+
+
+
+// int main() {
+
+// string message;
+
+//     string line="";
+//     int n;
+//     char option;
+//     vector<string> v;
+
+//     TrieNode* M=new TrieNode;
+
+//     for ( int i=1;i!=2674;i++)//388 times run
+//     {
+//         if(i%3==1)
+//         {
+//             cin>>line;
+//         }
+//         if(i%3==2)
+//         {
+//             cin>>n;
+//         }
+//         if(i%3==0)
+//         {
+//             cin>>option;
+//             cout<<orderoutput(line,n,option,M)<<endl;
+//         }
+//     }
+
+// return 0;
+// }
 

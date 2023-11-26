@@ -1,2673 +1,891 @@
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-ASML
-100 
-s
-BSML
-100
-b   
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+asml 100 s#
+BSML 100 b#   

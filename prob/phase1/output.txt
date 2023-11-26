@@ -1,891 +1,892 @@
-1
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-1
+Receiver is listening on port 50000
+asml 100 b
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+No trade
+BSML 100 s
