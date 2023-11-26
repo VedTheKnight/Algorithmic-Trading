@@ -1,7 +1,6 @@
 #include "receiver.h"
 #include <vector>
 #include <string>
-#include "map.h"
 #include "trie.cpp"
 #define ALPHABET_SIZE 26
 
@@ -1022,3 +1021,5 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
+//_______________________________________________End___________________________________________________________________________________________________________
