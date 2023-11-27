@@ -155,15 +155,15 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if(B.max()->second[0]<price)//no more elements in the heap to trade with since the max element is lesser than my sell price
         break;
-        if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
-        {
-            if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;//default escape if its not valid 
-            arbitrage.push_back({B.max()->first,B.max()->second});
-            B.deleteMax();
-            //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;//default escape if its not valid 
+        //     arbitrage.push_back({B.max()->first,B.max()->second});
+        //     B.deleteMax();
+        //     //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=B.max()->second[2])
         {
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -218,10 +218,10 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
     S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        B.insert(arbitrage[i]);
-    }
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     B.insert(arbitrage[i]);
+    // }
 }
 
 void computeMinHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S,vector<accounts>& accountlist,int& trades,int& total,int& shares)//its a min heap implying the new order is a buy order ready to buy from someone with lowest sell price
@@ -234,15 +234,15 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if(S.min()->second[0]>price)//no more elements in the heap can be traded with since lowest sell is greater than our buy price
         break;
-        if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
-        {
-            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;
-            arbitrage.push_back({S.min()->first,S.min()->second});
-            S.deleteMin();
-            //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;
+        //     arbitrage.push_back({S.min()->first,S.min()->second});
+        //     S.deleteMin();
+        //     //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=S.min()->second[2])
         { 
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -297,10 +297,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        S.insert(arbitrage[i]);
-    }
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     S.insert(arbitrage[i]);
+    // }
 }
 
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)

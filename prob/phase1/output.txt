@@ -1,892 +1,1001 @@
 Receiver is listening on port 50000
+asml 1000 s
+asml 999 b
+asml 998 b
+asml 997 b
+asml 996 b
+asml 995 b
+asml 994 b
+asml 993 b
+asml 992 b
+asml 991 b
+asml 990 b
+asml 989 b
+asml 988 b
+asml 987 b
+asml 986 b
+asml 985 b
+asml 984 b
+asml 983 b
+asml 982 b
+asml 981 b
+asml 980 b
+asml 979 b
+asml 978 b
+asml 977 b
+asml 976 b
+asml 975 b
+asml 974 b
+asml 973 b
+asml 972 b
+asml 971 b
+asml 970 b
+asml 969 b
+asml 968 b
+asml 967 b
+asml 966 b
+asml 965 b
+asml 964 b
+asml 963 b
+asml 962 b
+asml 961 b
+asml 960 b
+asml 959 b
+asml 958 b
+asml 957 b
+asml 956 b
+asml 955 b
+asml 954 b
+asml 953 b
+asml 952 b
+asml 951 b
+asml 950 b
+asml 949 b
+asml 948 b
+asml 947 b
+asml 946 b
+asml 945 b
+asml 944 b
+asml 943 b
+asml 942 b
+asml 941 b
+asml 940 b
+asml 939 b
+asml 938 b
+asml 937 b
+asml 936 b
+asml 935 b
+asml 934 b
+asml 933 b
+asml 932 b
+asml 931 b
+asml 930 b
+asml 929 b
+asml 928 b
+asml 927 b
+asml 926 b
+asml 925 b
+asml 924 b
+asml 923 b
+asml 922 b
+asml 921 b
+asml 920 b
+asml 919 b
+asml 918 b
+asml 917 b
+asml 916 b
+asml 915 b
+asml 914 b
+asml 913 b
+asml 912 b
+asml 911 b
+asml 910 b
+asml 909 b
+asml 908 b
+asml 907 b
+asml 906 b
+asml 905 b
+asml 904 b
+asml 903 b
+asml 902 b
+asml 901 b
+asml 900 b
+asml 899 b
+asml 898 b
+asml 897 b
+asml 896 b
+asml 895 b
+asml 894 b
+asml 893 b
+asml 892 b
+asml 891 b
+asml 890 b
+asml 889 b
+asml 888 b
+asml 887 b
+asml 886 b
+asml 885 b
+asml 884 b
+asml 883 b
+asml 882 b
+asml 881 b
+asml 880 b
+asml 879 b
+asml 878 b
+asml 877 b
+asml 876 b
+asml 875 b
+asml 874 b
+asml 873 b
+asml 872 b
+asml 871 b
+asml 870 b
+asml 869 b
+asml 868 b
+asml 867 b
+asml 866 b
+asml 865 b
+asml 864 b
+asml 863 b
+asml 862 b
+asml 861 b
+asml 860 b
+asml 859 b
+asml 858 b
+asml 857 b
+asml 856 b
+asml 855 b
+asml 854 b
+asml 853 b
+asml 852 b
+asml 851 b
+asml 850 b
+asml 849 b
+asml 848 b
+asml 847 b
+asml 846 b
+asml 845 b
+asml 844 b
+asml 843 b
+asml 842 b
+asml 841 b
+asml 840 b
+asml 839 b
+asml 838 b
+asml 837 b
+asml 836 b
+asml 835 b
+asml 834 b
+asml 833 b
+asml 832 b
+asml 831 b
+asml 830 b
+asml 829 b
+asml 828 b
+asml 827 b
+asml 826 b
+asml 825 b
+asml 824 b
+asml 823 b
+asml 822 b
+asml 821 b
+asml 820 b
+asml 819 b
+asml 818 b
+asml 817 b
+asml 816 b
+asml 815 b
+asml 814 b
+asml 813 b
+asml 812 b
+asml 811 b
+asml 810 b
+asml 809 b
+asml 808 b
+asml 807 b
+asml 806 b
+asml 805 b
+asml 804 b
+asml 803 b
+asml 802 b
+asml 801 b
+asml 800 b
+asml 799 b
+asml 798 b
+asml 797 b
+asml 796 b
+asml 795 b
+asml 794 b
+asml 793 b
+asml 792 b
+asml 791 b
+asml 790 b
+asml 789 b
+asml 788 b
+asml 787 b
+asml 786 b
+asml 785 b
+asml 784 b
+asml 783 b
+asml 782 b
+asml 781 b
+asml 780 b
+asml 779 b
+asml 778 b
+asml 777 b
+asml 776 b
+asml 775 b
+asml 774 b
+asml 773 b
+asml 772 b
+asml 771 b
+asml 770 b
+asml 769 b
+asml 768 b
+asml 767 b
+asml 766 b
+asml 765 b
+asml 764 b
+asml 763 b
+asml 762 b
+asml 761 b
+asml 760 b
+asml 759 b
+asml 758 b
+asml 757 b
+asml 756 b
+asml 755 b
+asml 754 b
+asml 753 b
+asml 752 b
+asml 751 b
+asml 750 b
+asml 749 b
+asml 748 b
+asml 747 b
+asml 746 b
+asml 745 b
+asml 744 b
+asml 743 b
+asml 742 b
+asml 741 b
+asml 740 b
+asml 739 b
+asml 738 b
+asml 737 b
+asml 736 b
+asml 735 b
+asml 734 b
+asml 733 b
+asml 732 b
+asml 731 b
+asml 730 b
+asml 729 b
+asml 728 b
+asml 727 b
+asml 726 b
+asml 725 b
+asml 724 b
+asml 723 b
+asml 722 b
+asml 721 b
+asml 720 b
+asml 719 b
+asml 718 b
+asml 717 b
+asml 716 b
+asml 715 b
+asml 714 b
+asml 713 b
+asml 712 b
+asml 711 b
+asml 710 b
+asml 709 b
+asml 708 b
+asml 707 b
+asml 706 b
+asml 705 b
+asml 704 b
+asml 703 b
+asml 702 b
+asml 701 b
+asml 700 b
+asml 699 b
+asml 698 b
+asml 697 b
+asml 696 b
+asml 695 b
+asml 694 b
+asml 693 b
+asml 692 b
+asml 691 b
+asml 690 b
+asml 689 b
+asml 688 b
+asml 687 b
+asml 686 b
+asml 685 b
+asml 684 b
+asml 683 b
+asml 682 b
+asml 681 b
+asml 680 b
+asml 679 b
+asml 678 b
+asml 677 b
+asml 676 b
+asml 675 b
+asml 674 b
+asml 673 b
+asml 672 b
+asml 671 b
+asml 670 b
+asml 669 b
+asml 668 b
+asml 667 b
+asml 666 b
+asml 665 b
+asml 664 b
+asml 663 b
+asml 662 b
+asml 661 b
+asml 660 b
+asml 659 b
+asml 658 b
+asml 657 b
+asml 656 b
+asml 655 b
+asml 654 b
+asml 653 b
+asml 652 b
+asml 651 b
+asml 650 b
+asml 649 b
+asml 648 b
+asml 647 b
+asml 646 b
+asml 645 b
+asml 644 b
+asml 643 b
+asml 642 b
+asml 641 b
+asml 640 b
+asml 639 b
+asml 638 b
+asml 637 b
+asml 636 b
+asml 635 b
+asml 634 b
+asml 633 b
+asml 632 b
+asml 631 b
+asml 630 b
+asml 629 b
+asml 628 b
+asml 627 b
+asml 626 b
+asml 625 b
+asml 624 b
+asml 623 b
+asml 622 b
+asml 621 b
+asml 620 b
+asml 619 b
+asml 618 b
+asml 617 b
+asml 616 b
+asml 615 b
+asml 614 b
+asml 613 b
+asml 612 b
+asml 611 b
+asml 610 b
+asml 609 b
+asml 608 b
+asml 607 b
+asml 606 b
+asml 605 b
+asml 604 b
+asml 603 b
+asml 602 b
+asml 601 b
+asml 600 b
+asml 599 b
+asml 598 b
+asml 597 b
+asml 596 b
+asml 595 b
+asml 594 b
+asml 593 b
+asml 592 b
+asml 591 b
+asml 590 b
+asml 589 b
+asml 588 b
+asml 587 b
+asml 586 b
+asml 585 b
+asml 584 b
+asml 583 b
+asml 582 b
+asml 581 b
+asml 580 b
+asml 579 b
+asml 578 b
+asml 577 b
+asml 576 b
+asml 575 b
+asml 574 b
+asml 573 b
+asml 572 b
+asml 571 b
+asml 570 b
+asml 569 b
+asml 568 b
+asml 567 b
+asml 566 b
+asml 565 b
+asml 564 b
+asml 563 b
+asml 562 b
+asml 561 b
+asml 560 b
+asml 559 b
+asml 558 b
+asml 557 b
+asml 556 b
+asml 555 b
+asml 554 b
+asml 553 b
+asml 552 b
+asml 551 b
+asml 550 b
+asml 549 b
+asml 548 b
+asml 547 b
+asml 546 b
+asml 545 b
+asml 544 b
+asml 543 b
+asml 542 b
+asml 541 b
+asml 540 b
+asml 539 b
+asml 538 b
+asml 537 b
+asml 536 b
+asml 535 b
+asml 534 b
+asml 533 b
+asml 532 b
+asml 531 b
+asml 530 b
+asml 529 b
+asml 528 b
+asml 527 b
+asml 526 b
+asml 525 b
+asml 524 b
+asml 523 b
+asml 522 b
+asml 521 b
+asml 520 b
+asml 519 b
+asml 518 b
+asml 517 b
+asml 516 b
+asml 515 b
+asml 514 b
+asml 513 b
+asml 512 b
+asml 511 b
+asml 510 b
+asml 509 b
+asml 508 b
+asml 507 b
+asml 506 b
+asml 505 b
+asml 504 b
+asml 503 b
+asml 502 b
+asml 501 b
+asml 500 b
+asml 499 b
+asml 498 b
+asml 497 b
+asml 496 b
+asml 495 b
+asml 494 b
+asml 493 b
+asml 492 b
+asml 491 b
+asml 490 b
+asml 489 b
+asml 488 b
+asml 487 b
+asml 486 b
+asml 485 b
+asml 484 b
+asml 483 b
+asml 482 b
+asml 481 b
+asml 480 b
+asml 479 b
+asml 478 b
+asml 477 b
+asml 476 b
+asml 475 b
+asml 474 b
+asml 473 b
+asml 472 b
+asml 471 b
+asml 470 b
+asml 469 b
+asml 468 b
+asml 467 b
+asml 466 b
+asml 465 b
+asml 464 b
+asml 463 b
+asml 462 b
+asml 461 b
+asml 460 b
+asml 459 b
+asml 458 b
+asml 457 b
+asml 456 b
+asml 455 b
+asml 454 b
+asml 453 b
+asml 452 b
+asml 451 b
+asml 450 b
+asml 449 b
+asml 448 b
+asml 447 b
+asml 446 b
+asml 445 b
+asml 444 b
+asml 443 b
+asml 442 b
+asml 441 b
+asml 440 b
+asml 439 b
+asml 438 b
+asml 437 b
+asml 436 b
+asml 435 b
+asml 434 b
+asml 433 b
+asml 432 b
+asml 431 b
+asml 430 b
+asml 429 b
+asml 428 b
+asml 427 b
+asml 426 b
+asml 425 b
+asml 424 b
+asml 423 b
+asml 422 b
+asml 421 b
+asml 420 b
+asml 419 b
+asml 418 b
+asml 417 b
+asml 416 b
+asml 415 b
+asml 414 b
+asml 413 b
+asml 412 b
+asml 411 b
+asml 410 b
+asml 409 b
+asml 408 b
+asml 407 b
+asml 406 b
+asml 405 b
+asml 404 b
+asml 403 b
+asml 402 b
+asml 401 b
+asml 400 b
+asml 399 b
+asml 398 b
+asml 397 b
+asml 396 b
+asml 395 b
+asml 394 b
+asml 393 b
+asml 392 b
+asml 391 b
+asml 390 b
+asml 389 b
+asml 388 b
+asml 387 b
+asml 386 b
+asml 385 b
+asml 384 b
+asml 383 b
+asml 382 b
+asml 381 b
+asml 380 b
+asml 379 b
+asml 378 b
+asml 377 b
+asml 376 b
+asml 375 b
+asml 374 b
+asml 373 b
+asml 372 b
+asml 371 b
+asml 370 b
+asml 369 b
+asml 368 b
+asml 367 b
+asml 366 b
+asml 365 b
+asml 364 b
+asml 363 b
+asml 362 b
+asml 361 b
+asml 360 b
+asml 359 b
+asml 358 b
+asml 357 b
+asml 356 b
+asml 355 b
+asml 354 b
+asml 353 b
+asml 352 b
+asml 351 b
+asml 350 b
+asml 349 b
+asml 348 b
+asml 347 b
+asml 346 b
+asml 345 b
+asml 344 b
+asml 343 b
+asml 342 b
+asml 341 b
+asml 340 b
+asml 339 b
+asml 338 b
+asml 337 b
+asml 336 b
+asml 335 b
+asml 334 b
+asml 333 b
+asml 332 b
+asml 331 b
+asml 330 b
+asml 329 b
+asml 328 b
+asml 327 b
+asml 326 b
+asml 325 b
+asml 324 b
+asml 323 b
+asml 322 b
+asml 321 b
+asml 320 b
+asml 319 b
+asml 318 b
+asml 317 b
+asml 316 b
+asml 315 b
+asml 314 b
+asml 313 b
+asml 312 b
+asml 311 b
+asml 310 b
+asml 309 b
+asml 308 b
+asml 307 b
+asml 306 b
+asml 305 b
+asml 304 b
+asml 303 b
+asml 302 b
+asml 301 b
+asml 300 b
+asml 299 b
+asml 298 b
+asml 297 b
+asml 296 b
+asml 295 b
+asml 294 b
+asml 293 b
+asml 292 b
+asml 291 b
+asml 290 b
+asml 289 b
+asml 288 b
+asml 287 b
+asml 286 b
+asml 285 b
+asml 284 b
+asml 283 b
+asml 282 b
+asml 281 b
+asml 280 b
+asml 279 b
+asml 278 b
+asml 277 b
+asml 276 b
+asml 275 b
+asml 274 b
+asml 273 b
+asml 272 b
+asml 271 b
+asml 270 b
+asml 269 b
+asml 268 b
+asml 267 b
+asml 266 b
+asml 265 b
+asml 264 b
+asml 263 b
+asml 262 b
+asml 261 b
+asml 260 b
+asml 259 b
+asml 258 b
+asml 257 b
+asml 256 b
+asml 255 b
+asml 254 b
+asml 253 b
+asml 252 b
+asml 251 b
+asml 250 b
+asml 249 b
+asml 248 b
+asml 247 b
+asml 246 b
+asml 245 b
+asml 244 b
+asml 243 b
+asml 242 b
+asml 241 b
+asml 240 b
+asml 239 b
+asml 238 b
+asml 237 b
+asml 236 b
+asml 235 b
+asml 234 b
+asml 233 b
+asml 232 b
+asml 231 b
+asml 230 b
+asml 229 b
+asml 228 b
+asml 227 b
+asml 226 b
+asml 225 b
+asml 224 b
+asml 223 b
+asml 222 b
+asml 221 b
+asml 220 b
+asml 219 b
+asml 218 b
+asml 217 b
+asml 216 b
+asml 215 b
+asml 214 b
+asml 213 b
+asml 212 b
+asml 211 b
+asml 210 b
+asml 209 b
+asml 208 b
+asml 207 b
+asml 206 b
+asml 205 b
+asml 204 b
+asml 203 b
+asml 202 b
+asml 201 b
+asml 200 b
+asml 199 b
+asml 198 b
+asml 197 b
+asml 196 b
+asml 195 b
+asml 194 b
+asml 193 b
+asml 192 b
+asml 191 b
+asml 190 b
+asml 189 b
+asml 188 b
+asml 187 b
+asml 186 b
+asml 185 b
+asml 184 b
+asml 183 b
+asml 182 b
+asml 181 b
+asml 180 b
+asml 179 b
+asml 178 b
+asml 177 b
+asml 176 b
+asml 175 b
+asml 174 b
+asml 173 b
+asml 172 b
+asml 171 b
+asml 170 b
+asml 169 b
+asml 168 b
+asml 167 b
+asml 166 b
+asml 165 b
+asml 164 b
+asml 163 b
+asml 162 b
+asml 161 b
+asml 160 b
+asml 159 b
+asml 158 b
+asml 157 b
+asml 156 b
+asml 155 b
+asml 154 b
+asml 153 b
+asml 152 b
+asml 151 b
+asml 150 b
+asml 149 b
+asml 148 b
+asml 147 b
+asml 146 b
+asml 145 b
+asml 144 b
+asml 143 b
+asml 142 b
+asml 141 b
+asml 140 b
+asml 139 b
+asml 138 b
+asml 137 b
+asml 136 b
+asml 135 b
+asml 134 b
+asml 133 b
+asml 132 b
+asml 131 b
+asml 130 b
+asml 129 b
+asml 128 b
+asml 127 b
+asml 126 b
+asml 125 b
+asml 124 b
+asml 123 b
+asml 122 b
+asml 121 b
+asml 120 b
+asml 119 b
+asml 118 b
+asml 117 b
+asml 116 b
+asml 115 b
+asml 114 b
+asml 113 b
+asml 112 b
+asml 111 b
+asml 110 b
+asml 109 b
+asml 108 b
+asml 107 b
+asml 106 b
+asml 105 b
+asml 104 b
+asml 103 b
+asml 102 b
+asml 101 b
 asml 100 b
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-No trade
-BSML 100 s
+asml 99 b
+asml 98 b
+asml 97 b
+asml 96 b
+asml 95 b
+asml 94 b
+asml 93 b
+asml 92 b
+asml 91 b
+asml 90 b
+asml 89 b
+asml 88 b
+asml 87 b
+asml 86 b
+asml 85 b
+asml 84 b
+asml 83 b
+asml 82 b
+asml 81 b
+asml 80 b
+asml 79 b
+asml 78 b
+asml 77 b
+asml 76 b
+asml 75 b
+asml 74 b
+asml 73 b
+asml 72 b
+asml 71 b
+asml 70 b
+asml 69 b
+asml 68 b
+asml 67 b
+asml 66 b
+asml 65 b
+asml 64 b
+asml 63 b
+asml 62 b
+asml 61 b
+asml 60 b
+asml 59 b
+asml 58 b
+asml 57 b
+asml 56 b
+asml 55 b
+asml 54 b
+asml 53 b
+asml 52 b
+asml 51 b
+asml 50 b
+asml 49 b
+asml 48 b
+asml 47 b
+asml 46 b
+asml 45 b
+asml 44 b
+asml 43 b
+asml 42 b
+asml 41 b
+asml 40 b
+asml 39 b
+asml 38 b
+asml 37 b
+asml 36 b
+asml 35 b
+asml 34 b
+asml 33 b
+asml 32 b
+asml 31 b
+asml 30 b
+asml 29 b
+asml 28 b
+asml 27 b
+asml 26 b
+asml 25 b
+asml 24 b
+asml 23 b
+asml 22 b
+asml 21 b
+asml 20 b
+asml 19 b
+asml 18 b
+asml 17 b
+asml 16 b
+asml 15 b
+asml 14 b
+asml 13 b
+asml 12 b
+asml 11 b
+asml 10 b
+asml 9 b
+asml 8 b
+asml 7 b
+asml 6 b
+asml 5 b
+asml 4 b
+asml 3 b
+asml 2 b
+asml 1 b

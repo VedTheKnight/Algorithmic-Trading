@@ -1,7 +1,7 @@
-KarGoExpress SELL x -1 y 1 $120 #32 1
+KarGoExpress SELL AMD $120 #32 1
 KarGoCorp BUY GE $200 #20 8
-KarGoTravels BUY x -1 y 1 $100 #50 10
-KarGoKrab BUY x -1 y 1 $130 #10 7
+KarGoTravels BUY AMD $100 #50 10
+KarGoKrab BUY AMD $130 #10 7
 KarGoExpress SELL GE $150 #50 6
 KarGoExpress BUY NFLX $80 #15 6
 KarGoTravels SELL AMZN $50 #22 -1
