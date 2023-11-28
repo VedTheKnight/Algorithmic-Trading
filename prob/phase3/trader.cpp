@@ -142,6 +142,19 @@ int stringToInt(const std::string& str) {
         return result;
 }
 
+void removeHiddenCharacters(std::string& str) {
+    std::string result;
+    for (char c : str) {
+        if (c != '\r' && c != '\n') {
+            result += c;
+        }
+    }
+    str = result;
+    int back = str.size()-1;
+    while(str[back--] == ' '){
+        str.pop_back();
+    }
+}
 
 //--------------------------------------------STRINGPROCESS-----------------------------------------------------
 
@@ -260,13 +273,13 @@ if(stocklist.size()==0)
     SMarket.push_back(S);
     BMarket.push_back(B);
 stocklist.push_back({stock,BMarket,SMarket});
+
 }
 auto i=stocklist.begin();
 for(i;i<stocklist.end();i++)
 {
-    if(checkEquality(i->name,stock)==1)
+    if(i->name==stock)
     {
-        stock=i->name;
         break;
     }
 }
@@ -279,8 +292,7 @@ if(i==stocklist.end())
     S.market=market;
     vector<MinHeap>SMarket;
     vector<MaxHeap>BMarket;
-    SMarket.push_back(S);
-    BMarket.push_back(B);
+
 
 
     S.sys_time=time_entry;
@@ -300,13 +312,17 @@ if(i==stocklist.end())
         else
         B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
+    
+    SMarket.push_back(S);
+    BMarket.push_back(B);
     stocklist.push_back({stock,BMarket,SMarket});
 
 }
 else
 {
+
     int j;
-    for(j=0;j<i->SMarkets.size();j++)
+    for(j=0;j< i->SMarkets.size();j++)
     if(i->SMarkets[j].market==market)
     break;
     if(j==i->SMarkets.size())//basically no market matched so its a new market
@@ -315,8 +331,6 @@ else
     B.market=market;
     MinHeap S;
     S.market=market;
-    i->SMarkets.push_back(S);
-    i->BMarkets.push_back(B);
 
 
     S.sys_time=time_entry;
@@ -336,10 +350,13 @@ else
         else
         B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
+    i->SMarkets.push_back(S);
+    i->BMarkets.push_back(B);
+
 }
 else
 {
-    
+
     i->BMarkets[j].sys_time=time_entry;
     i->SMarkets[j].sys_time=time_entry; 
      if (option=="SELL")
@@ -360,10 +377,13 @@ else
 }
 //now compute the stocks se self arbitrage
 {
-    int j;
-     for(j=0;j<i->BMarkets.size();j++)
+
+    //int j;
+    //cout<<stocklist.size()<<" "<<stocklist[0].SMarkets.size()<<endl;
+
+     //for(j=0;j<i->SMarkets.size();j++)
      {
-         //i->SMarkets[j].sys_time=time_entry;
+         //cout<<i->SMarkets[j].market;
          //i->BMarkets[j].sys_time=time_entry;
      }
     // for(j=0;j<i->BMarkets.size();j++)
@@ -432,14 +452,13 @@ void *handleClient(void *arg) {
 
 int main()
 {
-    for(int i=0;i<14;i++)
+    for(int i=0;i<16;i++)
     {
-        string line;
         int market;
+        string line="";
         cin>>market;
-        cin>>line;
-        vector<string> inputs;
-        inputs=final_tokenize(tokenize(line));
+        vector<string> inputs(7);
+        cin>>(inputs[0])>>inputs[1]>>inputs[2]>>inputs[3]>>inputs[4]>>inputs[5]>>inputs[6];
         neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
     }
 }
