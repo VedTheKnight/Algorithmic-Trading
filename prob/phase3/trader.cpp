@@ -22,6 +22,7 @@ struct stocks
     vector<MinHeap> SMarkets;
 };
 vector<stocks> stocklist;
+int profit;
 //-------------------------------------------------------------------------GlOBAL STUFF-----------------------------------------------------------------------
 //-------------------------------------------------------------------STRING PROCESSING----------------------------------------------------------------------
 vector<string> tokenize(string input){
@@ -415,14 +416,17 @@ for(i=stocklist.begin();i<stocklist.end();i++)
              min=i->SMarkets[j].min()->second[2];
 
              std::string fileName = "output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
-             std::fstream file(fileName, std::ios::out);
+             std::ofstream file(fileName,std::ios::app);
              file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
 
-            fileName = "output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
-             std::fstream file2(fileName, std::ios::out);
+             fileName = "output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
+             std::ofstream file2(fileName,std::ios::app);
              file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
+
+            
+
              i->SMarkets[j].min()->second[2]-=min;
              i->BMarkets[k].max()->second[2]-=min;
             }
@@ -441,12 +445,12 @@ for(i=stocklist.begin();i<stocklist.end();i++)
              min=i->SMarkets[k].min()->second[2];
 
              std::string fileName = "output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
-             std::fstream file(fileName, std::ios::out);
+             std::ofstream file(fileName,std::ios::app);
              file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
              
               fileName = "output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
-             std::fstream file2(fileName, std::ios::out);
+             std::ofstream file2(fileName,std::ios::app);
              file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
              i->SMarkets[k].min()->second[2]-=min;
