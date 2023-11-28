@@ -87,6 +87,7 @@ vector<string> final_tokenize(vector<string> tokens){
     }
     return final_tokens;
 }
+
 bool checkEquality(string old_order, string name){
 
     bool flag = false;
@@ -140,7 +141,173 @@ int stringToInt(const std::string& str) {
         return result;
 }
 
+// AMZN 1 -> AMZN automatically when checkValidity is called. 
+// check validity autocapitalizes BUY and SELL in an order
 
+// returns the stock bundle name
+string getStockName(vector<string> tokens){
+    string stock_name="";
+    for(int i = 3; i<tokens.size()-3; i++){
+        stock_name+= tokens[i];
+        stock_name+=" ";
+    }
+    stock_name.pop_back();
+    return stock_name;
+}
+
+//checks if the input string is a valid ticker
+bool isAlphabetical(string s){
+    for(char c : s){
+        if(!(static_cast<int>('a') <= tolower(c) && static_cast<int>('z') >= tolower(c))){
+            return false;
+        }
+    }
+    return true;
+}
+
+//checks if given string is a number both positive and negative included
+bool isNumber(string n){
+
+    for(int i =0 ; i<n.size(); i++){
+        if(n[i] == '-' && i == 0)
+            continue;
+        else if(!(48 <= n[i] && n[i]<=57)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//checks if given string is a positive number
+bool isPositiveNumber(string n){
+
+    for(int i =0 ; i<n.size(); i++){
+        if(!(48 <= n[i] && n[i]<=57)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//pass by reference makes the passed string into capitals
+void makeCapital(string& s){
+    for(auto &c : s){
+        c = toupper(c);
+    }
+}
+
+// checks order validity
+// also converts AMZN 1 type orders into AMZN
+bool checkOrderValidity(string order){
+
+    vector<string> tokens = tokenize(order);
+    if(tokens.size()<6){
+        return false;
+    }
+
+    //check first and last token entry time and exit time
+    if(!isNumber(tokens[0]) || !isNumber(tokens[tokens.size()-1]))
+        return false;
+    
+    //quantity check
+    if(!(tokens[tokens.size()-2][0] == '#' && isPositiveNumber(tokens[tokens.size()-2].substr(1)))){
+        return false;
+    }
+
+    //price check
+    if(!(tokens[tokens.size()-3][0] == '$' && isPositiveNumber(tokens[tokens.size()-3].substr(1)))){
+        return false;
+    }
+
+    makeCapital(tokens[2]);
+    if(!(tokens[2] == "BUY" || tokens[2] == "SELL")){
+        return false;
+    }
+
+    string name = getStockName(tokens);
+    makeCapital(name);
+
+    vector<string> name_tok = tokenize(name);
+
+    if(name_tok.size() == 1){
+        if(!isAlphabetical(name_tok[0])){
+            return false;
+        }
+    }
+    else{
+        if(name_tok.size()%2 == 1){
+            return false;
+        }
+        else{
+            for(int i = 0; i<name_tok.size(); i++){
+                if(i%2 == 0 && !isAlphabetical(name_tok[i])){
+                    return false;
+                }
+                if(i%2 == 1 && !isNumber(name_tok[i])){
+                    return false;
+                }
+            }
+        }
+    }
+
+    // if(name_tok.size() == 2 && name_tok[1] == "1"){
+    //     name = name_tok[0];
+    // }
+
+    //now reconstruct order
+    // order = "";
+    // order = order + tokens[0] + " " + tokens[1] + " " + tokens[2] + " " + name + " " + tokens[tokens.size()-3] + " " + tokens[tokens.size()-2] + " " + tokens[tokens.size()-1];
+    return true;
+}
+
+//_________________________________________________________________Update to checkMatching___________________________________________________________
+
+// checkMatching("AMZN 1", "AMZN") is true although redundant
+
+
+// function to check for matching stock combo : imported from phase 2 part 1
+bool checkMatching(string old_order, string name){
+
+    bool flag = false;
+   
+    vector<string> tokens = tokenize(old_order);
+    vector<string> name_tokens = tokenize(name);
+
+    if((tokens.size() == 2 && tokens[1] == "1" && name_tokens.size() == 1 && name_tokens[0] == tokens[0]) || (name_tokens.size() == 2 && name_tokens[1] == "1" && tokens.size() == 1 && name_tokens[0] == tokens[0])){
+        return 1;
+    }
+    int counter = 0;
+    if(tokens.size()==1 && name_tokens.size()==1)
+    {
+        if(name==old_order)
+        {
+            return 1;
+        }
+        else
+        return 0;
+        
+    }
+    
+    if(tokens.size()!= name_tokens.size())
+    {
+        return 0;
+    }
+
+    for(int j = 0; j<tokens.size(); j++){
+        for(int k = 0; k<name_tokens.size();k+=2){
+            if(tokens[j] == name_tokens[k] && tokens[j+1] == name_tokens[k+1])
+                counter++;
+        }
+    }
+
+    if(counter == name_tokens.size()/2 && counter == (tokens.size())/2){
+        flag = true;
+    }
+
+    return flag;
+}
 //--------------------------------------------STRINGPROCESS-----------------------------------------------------
 
 //--------------------------------------------STOCKS.CPP--------------------------------------------------------
@@ -170,15 +337,15 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if(B.max()->second[0]<price)//no more elements in the heap to trade with since the max element is lesser than my sell price
         break;
-        if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
-        {
-            if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;//default escape if its not valid 
-            arbitrage.push_back({B.max()->first,B.max()->second});
-            B.deleteMax();
-            //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;//default escape if its not valid 
+        //     arbitrage.push_back({B.max()->first,B.max()->second});
+        //     B.deleteMax();
+        //     //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=B.max()->second[2])
         {
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -233,10 +400,10 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
     S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        B.insert(arbitrage[i]);
-    }
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     B.insert(arbitrage[i]);
+    // }
 }
 
 void computeMinHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S,vector<accounts>& accountlist,int& trades,int& total,int& shares)//its a min heap implying the new order is a buy order ready to buy from someone with lowest sell price
@@ -249,15 +416,15 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if(S.min()->second[0]>price)//no more elements in the heap can be traded with since lowest sell is greater than our buy price
         break;
-        if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
-        {
-            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;
-            arbitrage.push_back({S.min()->first,S.min()->second});
-            S.deleteMin();
-            //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;
+        //     arbitrage.push_back({S.min()->first,S.min()->second});
+        //     S.deleteMin();
+        //     //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=S.min()->second[2])
         { 
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -312,10 +479,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        S.insert(arbitrage[i]);
-    }
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     S.insert(arbitrage[i]);
+    // }
 }
 
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)
@@ -462,13 +629,17 @@ void market::start()
         if (line.compare("!@") == 0 ) {
             break;
         }
+        
         removeHiddenCharacters(line);
+        if(!checkOrderValidity(line))
+            continue;
+        else
         inputs=final_tokenize(tokenize(line));//inputs ke tokens
         neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,accountlist,trades,total,shares);
     }
     //for (int i=0;i<lines.size();i++)
     // {
-    //     inputs=final_tokenize(tokenize(lines[i]));//inputs ke tokens
+    //     inputs=final_tokenize(tokenize(lines[i]));//inputs ke token
     //     neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,accountlist,trades,total,shares);
     // }
     cout<<endl<<"---End of Day---"<<endl;

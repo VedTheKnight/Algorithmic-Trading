@@ -6,14 +6,14 @@
 #include <thread>
 #include <chrono>
 #include <fstream>
+#include <string>
 
 using namespace std;
 extern mutex printMutex;
 extern std::atomic<int> commonTimer;
 
-#include <string>
 
-//___________________________________________________Utility Functions______________________________________________________
+//___________________________________________________Utility Functions_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 // removes /r and /n and extra spaces at the end of the line
 void removeHC(std::string& str) {
@@ -94,16 +94,6 @@ int findTicker(vector<string> tickers, string token){
     return -1;
 }
 
-//checks if the input string is a valid ticker
-bool isAlphabetical(string s){
-    for(char c : s){
-        if(!(static_cast<int>('a') <= tolower(c) && static_cast<int>('z') >= tolower(c))){
-            return false;
-        }
-    }
-    return true;
-}
-
 //given a number n and k being the size of inputs upto that point, get binary representation of n
 vector<int> getBinary(int n, int k){
 
@@ -124,15 +114,170 @@ vector<int> getBinary(int n, int k){
     return binary_vec;
 }
 
-//______________________________________Useful Functions from Previous Phases________________________________________________________________________________________
+// returns the stock bundle name
+string getSN(vector<string> tokens){
+    string stock_name="";
+    for(int i = 3; i<tokens.size()-3; i++){
+        stock_name+= tokens[i];
+        stock_name+=" ";
+    }
+    stock_name.pop_back();
+    return stock_name;
+}
 
-bool checkMatching(string old_order, string name){
+// prints the order to terminal
+void printOrder(vector<string> line_toks, int max_window_time){
+    string order="";
+    
+    order = order + to_string(min(commonTimer.load(), max_window_time)) + " ";
+
+    order = order + "brianmackwan_veddanait ";
+    order += (line_toks[2] == "BUY")? "SELL":"BUY";
+    order += " ";
+
+    for(int i=3; i<line_toks.size();i++){
+        if(line_toks[i][0] == '#'){
+            break;
+        }
+        order+= line_toks[i];
+        order+= " ";
+    }
+    
+    //now concatenate the quantity
+    order += line_toks[line_toks.size()-2];
+    order += " ";
+
+    if(line_toks[line_toks.size()-1]!= "-1")
+        order += to_string(s2I(line_toks[0]) + s2I(line_toks[line_toks.size()-1]) - commonTimer.load());
+    else    
+        order += "-1";
+
+    std::lock_guard<std::mutex> lock(printMutex);
+    std::cout<<order<<" \n";
+}
+
+//__________________________________________________________Order Processing___________________________________________________________________________________________________________________________________
+
+//checks if the input string is a valid ticker
+bool isPureString(string s){
+    for(char c : s){
+        if(!(static_cast<int>('a') <= tolower(c) && static_cast<int>('z') >= tolower(c))){
+            return false;
+        }
+    }
+    return true;
+}
+
+//checks if given string is a number both positive and negative included
+bool isNum(string n){
+
+    for(int i =0 ; i<n.size(); i++){
+        if(n[i] == '-' && i == 0)
+            continue;
+        else if(!(48 <= n[i] && n[i]<=57)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//checks if given string is a positive number
+bool isPositiveNum(string n){
+
+    for(int i =0 ; i<n.size(); i++){
+        if(!(48 <= n[i] && n[i]<=57)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//pass by reference makes the passed string into capitals
+void makeCap(string& s){
+    for(auto &c : s){
+        c = toupper(c);
+    }
+}
+
+// checks order validity
+// also converts AMZN 1 type orders into AMZN
+bool checkOrderVal(string& order){
+
+    vector<string> tokens = tokZ(order);
+    if(tokens.size()<6){
+        return false;
+    }
+
+    //check first and last token entry time and exit time
+    if(!isNum(tokens[0]) || !isNum(tokens[tokens.size()-1]))
+        return false;
+    
+    //quantity check
+    if(!(tokens[tokens.size()-2][0] == '#' && isPositiveNum(tokens[tokens.size()-2].substr(1)))){
+        return false;
+    }
+
+    //price check
+    if(!(tokens[tokens.size()-3][0] == '$' && isPositiveNum(tokens[tokens.size()-3].substr(1)))){
+        return false;
+    }
+
+    makeCap(tokens[2]);
+    if(!(tokens[2] == "BUY" || tokens[2] == "SELL")){
+        return false;
+    }
+
+    string name = getSN(tokens);
+    makeCap(name);
+
+    vector<string> name_tok = tokZ(name);
+
+    if(name_tok.size() == 1){
+        if(!isPureString(name_tok[0])){
+            return false;
+        }
+    }
+    else{
+        if(name_tok.size()%2 == 1){
+            return false;
+        }
+        else{
+            for(int i = 0; i<name_tok.size(); i++){
+                if(i%2 == 0 && !isPureString(name_tok[i])){
+                    return false;
+                }
+                if(i%2 == 1 && !isNum(name_tok[i])){
+                    return false;
+                }
+            }
+        }
+    }
+
+    if(name_tok.size() == 2 && name_tok[1] == "1"){
+        name = name_tok[0];
+    }
+
+    //now reconstruct order
+    order = "";
+    order = order + tokens[0] + " " + tokens[1] + " " + tokens[2] + " " + name + " " + tokens[tokens.size()-3] + " " + tokens[tokens.size()-2] + " " + tokens[tokens.size()-1];
+    return true;
+}
+
+//______________________________________Arbitrage Functions__________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+// function to check for matching stock combo : imported from phase 2 part 1
+bool checkMatch(string old_order, string name){
 
     bool flag = false;
    
     vector<string> tokens = tokZ(old_order);
     vector<string> name_tokens = tokZ(name);
 
+    if((tokens.size() == 2 && tokens[1] == "1" && name_tokens.size() == 1 && name_tokens[0] == tokens[0]) || (name_tokens.size() == 2 && name_tokens[1] == "1" && tokens.size() == 1 && name_tokens[0] == tokens[0])){
+        return 1;
+    }
     int counter = 0;
     if(tokens.size()==1 && name_tokens.size()==1)
     {
@@ -164,38 +309,62 @@ bool checkMatching(string old_order, string name){
     return flag;
 }
 
-//checks if any stock name is an exact match in the combination with one buy and one sell, in which case the arbitirage will never exist
+// checks if any stock name is an exact match in the combination with one buy and one sell, in which case the arbitirage will never exist
+// works for single line as well, can be used in median trading
 bool detectError(vector<string> combination){
-    for(int i=0; i<combination.size(); i++){
-        vector<string> tok1 = tokZ(combination[i]);
-        string s1;
-        //compile the bundle 1
-        int it = 3;
-        while(tok1[it][0]!='$'){
-            s1+=tok1[it];
-            s1+=" ";
-            it++;
-        }
-        s1.pop_back();
-        for(int j = i+1; j<combination.size(); j++){
-            vector<string> tok2 = tokZ(combination[j]);
 
-            if(tok1[2] != tok2[2] && tok1[1] != tok2[1]){ // we have a possible cancellation if BUY SELL combination not by the same person
-                //we the stock bundle is the same then we have a match anyways                
-                string s2;
-                it = 3;
-                while(tok2[it][0]!='$'){
-                    s2+=tok2[it];
-                    s2+=" ";
-                    it++;
-                }
-                s2.pop_back();
-                if(checkMatching(s1,s2))
-                    return 1;
-            }
+    // for single size combination
+    for(auto line : combination){
+        vector<string> tokens = tokZ(line);
+        if(tokens[tokens.size()-1] == "-1")
+            continue;
+        if(commonTimer.load() > s2I(tokens[0]) + s2I(tokens[tokens.size()-1])){ //expired order
+            return 1;
         }
     }
+
     return 0;
+
+    // //checks for invalid time
+    // for(int i = 0; i < combination.size(); i++){
+    //     vector<string> tokens = tokZ(combination[i]);
+    //     if(tokens[tokens.size()-1] == "-1")
+    //         continue;
+    //     if(commonTimer.load() > s2I(tokens[0]) + s2I(tokens[tokens.size()-1])){
+    //         return 1;
+    //     }
+    // }
+
+    // for(int i=0; i<combination.size(); i++){
+    //     vector<string> tok1 = tokZ(combination[i]);
+    //     string s1;
+    //     //compile the bundle 1
+    //     int it = 3;
+    //     while(tok1[it][0]!='$'){
+    //         s1+=tok1[it];
+    //         s1+=" ";
+    //         it++;
+    //     }
+    //     s1.pop_back();
+    //     for(int j = i+1; j<combination.size(); j++){
+    //         vector<string> tok2 = tokZ(combination[j]);
+
+    //         if(tok1[2] != tok2[2] && tok1[1] != tok2[1]){ // we have a possible cancellation if BUY SELL combination not by the same person
+    //             //the stock bundle is the same then we have a match anyways                
+    //             string s2;
+    //             it = 3;
+    //             while(tok2[it][0]!='$'){
+    //                 s2+=tok2[it];
+    //                 s2+=" ";
+    //                 it++;
+    //             }
+    //             s2.pop_back();
+    //             if(checkMatch(s1,s2))
+    //                 return 1;
+    //         }
+    //     }
+    // }
+    // return 0;
 }
 
 // recursive function to generate all possible quantities
@@ -228,7 +397,7 @@ vector<int> checkArbitrage(vector<string> combination){
         trunc_quantities.push_back(min(5,s2I(tokens[tokens.size()-2].substr(1,tokens[tokens.size()-2].size()-1))));
         quantities.push_back(s2I(tokens[tokens.size()-2].substr(1,tokens[tokens.size()-2].size()-1)));
         for(int i = 3; i<tokens.size()-3; i+=1){
-            if(isAlphabetical(tokens[i]) && findTicker(tickers,tokens[i])==-1){ //if string and it is not in tickers already we add it into tickers
+            if(isPureString(tokens[i]) && findTicker(tickers,tokens[i])==-1){ //if string and it is not in tickers already we add it into tickers
                 tickers.push_back(tokens[i]);
             }
         }
@@ -248,9 +417,9 @@ vector<int> checkArbitrage(vector<string> combination){
             string line = combination[j];
             vector<string> tokens = tokZ(line);
             for(int i = 3; i<tokens.size()-3; i+=1){
-                if(isAlphabetical(tokens[i])){ // update the quantities based on the bundle quantity and the quantity of the stock in the bundle itself
+                if(isPureString(tokens[i])){ // update the quantities based on the bundle quantity and the quantity of the stock in the bundle itself
                     int it = findTicker(tickers, tokens[i]);
-                    if(isAlphabetical(tokens[i+1]) || tokens[i+1][0] == '$'){ //quantity of 1
+                    if(isPureString(tokens[i+1]) || tokens[i+1][0] == '$'){ //quantity of 1
                         if(tokens[2] == "BUY")
                             corresponding_quantities[it] += quantity_combo[j];
                         else //in case it is a sell so we just invert it
@@ -302,8 +471,8 @@ vector<int> checkArbitrage(vector<string> combination){
     return vector<int>(combination.size(),0);
 }
 
-//finds the best arbitrage given valid orders upto a point and the number of lines
-//returns the relevant orders and their corresponding quantities
+// finds the best arbitrage given valid orders upto a point and the number of lines
+// returns the relevant orders and their corresponding quantities
 vector<pair<int,int>> findBestArbitrage(vector<string> inputs, int k){
 
     //code to find best arbitrage given k input lines
@@ -373,11 +542,119 @@ vector<pair<int,int>> findBestArbitrage(vector<string> inputs, int k){
     for(int i=0; i<best_arbitrage.size(); i++){
         best.push_back(make_pair(best_arbitrage[i], best_quantities[i]));
     }
+
     return best;
 }
 
-//runs our trading algorithm
-void trade(vector<string> window){
+// processes the window to get only the most efficient trades and avoid self arbitrage
+void processWindow(vector<string>& window){
+    for(int i = 0; i<window.size(); i++){
+        if(window[i] == "X"){
+            continue;
+        }
+
+        vector<string> tokens = tokZ(window[i]);
+        
+
+        for(int j = 0; j < i; j++){
+            if(window[j] == "X")
+                continue;
+            vector<string> tokensj = tokZ(window[j]);
+
+            if(checkMatch(getSN(tokens),getSN(tokensj))){ //possible cancellations
+                if(tokens[2] == "BUY"){
+                    if(tokensj[2] == "SELL"){
+                        if(s2I(tokensj[tokensj.size()-3].substr(1)) < s2I(tokens[tokens.size()-3].substr(1))){ //previous buy higher than current ka sell
+                            //update the quantities accordingly 
+                            if(s2I(tokensj[tokensj.size()-2].substr(1)) < s2I(tokens[tokens.size()-2].substr(1))){ // more quantity of the buy
+                                window[j] = "X";
+                                //update window[i] ka quantity
+                                tokens[tokens.size() - 2] = "#" + to_string(s2I(tokens[tokens.size()-2].substr(1)) - s2I(tokensj[tokensj.size()-2].substr(1)));
+                                //now recombine
+                                window[i] = "";
+                                for(auto tok : tokens){
+                                    window[i] = window[i] + tok + " ";
+                                }
+                                window[i].pop_back();
+
+                                continue;
+                            }
+                            else if(s2I(tokensj[tokensj.size()-2].substr(1)) > s2I(tokens[tokens.size()-2].substr(1))){ // less quantity of the previous buy
+                                window[i] = "X";
+
+                                //update window[j] ka quantity
+                                tokensj[tokensj.size() - 2] = "#" + to_string(s2I(tokensj[tokensj.size()-2].substr(1)) - s2I(tokens[tokens.size()-2].substr(1)));
+                                //now recombine
+                                window[j] = "";
+                                for(auto tok : tokensj){
+                                    window[j] = window[j] + tok + " ";
+                                }
+                                window[j].pop_back();
+                                break;
+                            } 
+                            else{ //same quantity dono khach khach
+                                window[j] = "X";
+                                window[i] = "X";
+                                break;
+                            }
+                        }
+                        //if less than or equal to the current sell we are good since no trade executed
+                    }
+                }
+                else{ // if tokens[2] = SELL 
+                    if(tokensj[2] == "BUY"){
+                        if(s2I(tokensj[tokensj.size()-3].substr(1)) > s2I(tokens[tokens.size()-3].substr(1))){ //previous sell lower than incoming buy -- self arbitrage
+                            //update the quantities accordingly 
+                            if(s2I(tokensj[tokensj.size()-2].substr(1)) < s2I(tokens[tokens.size()-2].substr(1))){ // more quantity of the sell
+                                window[j] = "X";
+                                //update window[i] ka quantity
+                                tokens[tokens.size() - 2] = "#" + to_string(s2I(tokens[tokens.size()-2].substr(1)) - s2I(tokensj[tokensj.size()-2].substr(1)));
+                                //now recombine
+                                window[i] = "";
+                                for(auto tok : tokens){
+                                    window[i] = window[i] + tok + " ";
+                                }
+                                window[i].pop_back();
+
+                                continue;
+                            }
+                            else if(s2I(tokensj[tokensj.size()-2].substr(1)) > s2I(tokens[tokens.size()-2].substr(1))){ // less quantity of the sell
+                                window[i] = "X";
+
+                                //update window[j] ka quantity
+                                tokensj[tokensj.size() - 2] = "#" + to_string(s2I(tokensj[tokensj.size()-2].substr(1)) - s2I(tokens[tokens.size()-2].substr(1)));
+                                //now recombine
+                                window[j] = "";
+                                for(auto tok : tokensj){
+                                    window[j] = window[j] + tok + " ";
+                                }
+                                window[j].pop_back();
+                                break;
+                            } 
+                            else{ //same quantity dono khach khach
+                                window[j] = "X";
+                                window[i] = "X";
+                                break;
+                            }
+                        }
+                        //if less than or equal to the old sell we are good since no trade executed
+                    }
+                }
+            }
+            //otherwise we are good for now
+        }
+    }
+    for(int i =0; i<window.size(); i++){
+        if(window[i] == "X"){
+            window.erase(window.begin()+i);
+            i--;
+        }
+    }
+}
+
+// runs our arbitrage detection and trading algorithm
+bool tradeArbitrage(vector<string> window, vector<pair<string,vector<int>>> stockline, int max_window_time){
+    
     vector<pair<int,int>> best_arbitrage = findBestArbitrage(window, window.size()); //given the number of lines
 
     //to check if valid arbitrage not present in which case output no trade and continue
@@ -389,52 +666,173 @@ void trade(vector<string> window){
         }
     }
 
+    if(flag)
+        return false;
     
-    // if there exists an arbitrage
-    // we display the arbitrage in reverse order
-    // as we display we update the quantities in the order book and delete the ones where quantities become zero
-    int min_time_to_expiry = 2147483647;
-    for(int iterator = 0; iterator<window.size(); iterator++){
-        if(best_arbitrage[iterator].first == 1 && s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1])!= -1)
-            min_time_to_expiry = min(min_time_to_expiry, s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1]));
-    }
-    for(int iterator = window.size()-1; iterator>=0; iterator--){
-        if(best_arbitrage[iterator].first == 1){ // this is a part of our arbitrage so we display it
-
-            vector<string> line_toks = tokZ(window[iterator]);
-            string order="";
-            order = order + to_string(commonTimer.load()) + " ";
-            order = order + "VD ";
-            order += (line_toks[2] == "BUY")? "SELL":"BUY";
-            order += " ";
-
-            for(int i=3; i<line_toks.size();i++){
-                if(line_toks[i][0] == '#'){
-                    break;
-                }
-                order+= line_toks[i];
-                order+= " ";
-            }
-            
-            //now concatenate the quantity
-            order += "#";
-            order +=to_string(best_arbitrage[iterator].second);
-            order += " ";
-
-            order += to_string(min_time_to_expiry);
-
-            std::lock_guard<std::mutex> lock(printMutex);
-            std::cout<<order<<" \n";
+    if(!flag){
+        // if there exists an arbitrage
+        // we display the arbitrage in reverse order
+        // as we display we update the quantities in the order book and delete the ones where quantities become zero
+        int min_time_to_expiry = 2147483647;
+        for(int iterator = 0; iterator<window.size(); iterator++){
+            if(best_arbitrage[iterator].first == 1 && s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1])!= -1)
+                min_time_to_expiry = min(min_time_to_expiry, s2I(tokZ(window[iterator])[tokZ(window[iterator]).size()-1])+ s2I(tokZ(window[iterator])[0]));
         }
+        if(min_time_to_expiry == 2147483647)
+            min_time_to_expiry = -1;
+        for(int iterator = window.size()-1; iterator>=0; iterator--){
+            if(best_arbitrage[iterator].first == 1){ // this is a part of our arbitrage so we display it
+
+                vector<string> line_toks = tokZ(window[iterator]);
+                string order="";
+                order = order + to_string(min(commonTimer.load(), max_window_time)) + " ";
+                order = order + "brianmackwan_veddanait ";
+                order += (line_toks[2] == "BUY")? "SELL":"BUY";
+                order += " ";
+
+                for(int i=3; i<line_toks.size();i++){
+                    if(line_toks[i][0] == '#'){
+                        break;
+                    }
+                    order+= line_toks[i];
+                    order+= " ";
+                }
+                
+                //now concatenate the quantity
+                order += "#";
+                order += to_string(best_arbitrage[iterator].second);
+                order += " ";
+
+                if(min_time_to_expiry != -1)
+                    order += to_string(min_time_to_expiry - commonTimer.load());
+                else    
+                    order += "-1";
+
+                std::lock_guard<std::mutex> lock(printMutex);
+                std::cout<<order<<" \n";
+
+            }
+        }
+        return true;
     }
 }
 
-//___________________________________________________Main Code______________________________________________________________
+//runs our median trading algorithm
+void tradeMedian(vector<string> window, vector<pair<string,vector<int>>> stockline, int max_window_time){
+
+    vector<vector<string>> orders; 
+
+    // we collect the relevant lines for each stock 
+    //int min_time_to_expiry = 2147483647;
+    for(auto line : window){
+        
+        if(detectError(vector<string>{line}))
+            continue; //no point of executing any trades there
+        
+        //now if the line is tradable, we try and trade with it, in a way as to maximize our profits
+
+        
+        vector<string> tokens = tokZ(line);
+        string name = getSN(tokens);
+        string type = tokens[2];
+        int price = s2I(tokens[tokens.size()-3].substr(1,tokens[tokens.size()-3].size()-1));
+        int quantity = s2I(tokens[tokens.size()-2].substr(1,tokens[tokens.size()-2].size()-1));
+        
+
+        // fetch median
+        double median_price = 0;
+        for(auto stock:stockline){
+            if(checkMatch(stock.first,name)){
+                //hack
+                if(stock.second.size() == 0)    
+                    break;
+                median_price = (stock.second.size()%2==0)? ((stock.second[stock.second.size()/2]+stock.second[stock.second.size()/2-1])/2.0):stock.second[stock.second.size()/2];
+                break;
+            }
+        }
+
+        if(type == "BUY"){
+            // we want to sell above the median price
+            if(median_price != 0 && price >= median_price){
+                orders.push_back(tokens);
+                // if(min_time_to_expiry > s2I(tokens[tokens.size()-1]))
+                //     min_time_to_expiry = s2I(tokens[tokens.size()-1]);
+
+            }
+        }
+        else{
+            if(median_price != 0 && price <= median_price){
+                orders.push_back(tokens);
+                // if(min_time_to_expiry > s2I(tokens[tokens.size()-1]) && s2I(tokens[tokens.size()-1])!= -1)
+                //     min_time_to_expiry = s2I(tokens[tokens.size()-1]);
+            }
+        }
+        
+    }
+    // if(min_time_to_expiry == 2147483647)
+    //     min_time_to_expiry = -1;
+
+    for(auto order : orders){
+        printOrder(order, max_window_time);
+    }
+
+    return; //once we go through the lines we return since no arbitrage anyway 
+}
+
+//_______________________________________________Moving Median Functions______________________________________________________________________________________________________________________________________________________________________________________________________
+
+void CollectInfo(vector<pair<string,vector<int>>>& stockline, vector<string> window){
+    for(auto order : window){
+        vector<string> tokens = tokZ(order);
+        string name = getSN(tokens);
+        int price = s2I(tokens[tokens.size()-3].substr(1,tokens[tokens.size()-3].size()-1));
+        int quantity = s2I(tokens[tokens.size()-2].substr(1,tokens[tokens.size()-2].size()-1));
+
+        bool flag = 0;
+        for(auto& line : stockline){
+            if(checkMatch(line.first,name)){
+                if(line.second.size() == 0){ //the case where the first occurence has 0 size
+                    for(int j = 1; j <= quantity; j++){
+                        line.second.push_back(price);
+                    }
+                    flag = 1;
+                    break;
+                }
+                bool check = false;
+                for(int i=0; i<line.second.size(); i++){
+                    if(line.second[i] >= price){
+                        check = true;
+                        for(int j = 1; j <= quantity; j++){
+                            line.second.insert(line.second.begin() + i, price);
+                        }
+                        break;
+                    }
+                }
+                //the case where we end up with max value as the newest
+                if(!check){
+                    for(int j = 1; j <= quantity; j++){
+                        line.second.push_back(price);
+                    }
+                }
+                flag = 1;
+                break;
+            }
+        }
+
+        if(flag == 0)
+            stockline.push_back(make_pair(name, vector<int>(quantity,price)));
+    }
+}
+
+//___________________________________________________Main Code________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 //our strategy is to break the orderbook into windows of size 4 and run our arbitrage strategy on it 
 int reader(int time)
 {
     vector<string> order_book;
+    vector<pair<string,vector<int>>> stockline;
+    vector<pair<string,int>> window;
+
     string line;
     std::this_thread::sleep_for(std::chrono::seconds(1));
     bool flag = true;
@@ -450,30 +848,55 @@ int reader(int time)
                 break;
             }
             int index = find(order_book,line);
-            if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "VD"){
+            if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "brianmackwan_veddanait"){
                 removeHC(line);
-                order_book.push_back(line);
+                if(checkOrderVal(line))
+                    order_book.push_back(line);  
             }
         }
         
         if(!flag)
             break;
-        //cout<<commonTimer.load()<<" VD SELL AMD $1 #32 "<<order_book.size()<<endl;
-        //TESTING
-        // std::lock_guard<std::mutex> lock(printMutex);
-        // for(auto line:order_book){
-        //     cout<<line<<endl;
-        // }
-        // cout<<"hi"<<order_book.size()<<endl;
 
-        // now that we have the order book let us run phase 1 part 3 on it 
-        // find the best arbitrage and update the quantities in the order book as well and update the total profit
-        vector<string> window = vector<string>{order_book[order_book.size()-1],order_book[order_book.size()-2],order_book[order_book.size()-3],order_book[order_book.size()-4]};
-        trade(window);
+        // now that we have the order book let us execute our trading quantity 
         
+        //first compile the new lines into our window
+        for(int i = 0; i<order_book.size(); i++){
+            if(i < window.size()){
+                window[i].second = 0;
+            }
+            if(i >= window.size()){
+                window.push_back(make_pair(order_book[i], 1));
+            }
+        }
+
+        vector<string> neworders;
+        int max_window_time = s2I(tokZ(order_book[order_book.size()-1])[0]);
+        
+        for(auto i : window){
+            if(i.second == 1 && tokZ(i.first)[tokZ(i.first).size()-2].substr(1) != "0"){ //filters out zero quantity
+                neworders.push_back(i.first);
+            }
+        }
+        //now we process the window to remove overhead and avoid self arbitrage
+
+        processWindow(neworders);
+
+        if(neworders.size() > 5){
+            tradeMedian(neworders, stockline, max_window_time);
+        }
+        else{ //small window size we can check arbitrage
+            if(!tradeArbitrage(neworders,stockline, max_window_time)){
+                tradeMedian(neworders, stockline, max_window_time);
+            }
+        }
+
+        CollectInfo(stockline, neworders);
+
         std::this_thread::sleep_for(std::chrono::seconds(1));
         order_book.clear();
     }
+
     return 1;
 }
 

@@ -27,7 +27,6 @@ void* workerThread(void* arg) {
     int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
         std::cerr << "Error creating socket." << std::endl;
-     
     }
 
     // Connect to the receiver
@@ -87,9 +86,9 @@ void* workerThread(void* arg) {
 
 int main(int argc, char* argv[]) {
     
-NUM_THREADS = std::stoi(argv[1]);
-std::vector<pthread_t> clientThreads;
-for (int i=0;i<NUM_THREADS;i++){
+    NUM_THREADS = std::stoi(argv[1]);
+    std::vector<pthread_t> clientThreads;
+    for (int i=0;i<NUM_THREADS;i++){
         int* arg = new int;
         *arg = i + 1;
         pthread_t clientThread;
@@ -97,7 +96,7 @@ for (int i=0;i<NUM_THREADS;i++){
             perror("Thread creation error");
             continue;  // Continue listening for other connections
         }
-    // Store the thread ID for later joining
+        // Store the thread ID for later joining
         clientThreads.push_back(clientThread);
     }
     // Join all client threads (clean up)

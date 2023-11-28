@@ -1,79 +1,367 @@
 TL
-0 A BUY AMZN 1 APPL -1 $100 #30 10 
-0 A BUY AMZN 1 APPL -1 $100 #30 10 
-1 B BUY AMZN -1 APPL 1 $30 #12 0 
-1 B BUY AMZN -1 APPL 1 $30 #12 0 
-2 VD SELL AMZN 1 APPL -1 $100 #24 0 
-2 VD SELL AMZN -1 APPL 1 $30 #12 0 
-2 VD SELL AMZN -1 APPL 1 $30 #12 0 
-2 C BUY AMZN 1 BBL -1 $50 #30 5 
-2 C BUY AMZN 1 BBL -1 $50 #30 5 
-3 D BUY AMZN -2 BBL 2 $50 #5 0 
-3 D BUY AMZN -2 BBL 2 $50 #5 0 
-4 VD SELL AMZN 1 BBL -1 $50 #20 0 
-4 VD SELL AMZN -2 BBL 2 $50 #5 0 
-4 VD SELL AMZN -2 BBL 2 $50 #5 0 
-4 A BUY AMZN 3 APPL -3 $100 #30 10 
-4 A BUY AMZN 3 APPL -3 $100 #30 10 
-5 B BUY AMZN -1 APPL 1 $30 #12 0 
-5 B BUY AMZN -1 APPL 1 $30 #12 0 
-6 VD SELL AMZN 3 APPL -3 $100 #6 0 
-6 VD SELL AMZN -1 APPL 1 $30 #12 0 
-6 VD SELL AMZN -1 APPL 1 $30 #6 0 
-6 C BUY AMZN 3 BBL -3 $50 #30 5 
-6 C BUY AMZN 3 BBL -3 $50 #30 5 
-7 D BUY AMZN -2 BBL 2 $50 #5 0 
-7 D BUY AMZN -2 BBL 2 $50 #5 0 
-8 VD SELL AMZN 3 BBL -3 $50 #4 0 
-8 VD SELL AMZN -2 BBL 2 $50 #4 0 
-8 VD SELL AMZN -2 BBL 2 $50 #2 0 
-8 A BUY AMZN 1 APPL -1 $100 #30 10 
-8 A BUY AMZN 1 APPL -1 $100 #30 10 
-9 B BUY AMZN -1 APPL 1 $30 #12 0 
-9 B BUY AMZN -1 APPL 1 $30 #12 0 
-10 VD SELL AMZN 1 APPL -1 $100 #24 0 
-10 VD SELL AMZN -1 APPL 1 $30 #12 0 
-10 VD SELL AMZN -1 APPL 1 $30 #12 0 
-10 C BUY AMZN 1 BBL -1 $50 #30 5 
-10 C BUY AMZN 1 BBL -1 $50 #30 5 
-11 D BUY AMZN -2 BBL 2 $50 #5 0 
-11 D BUY AMZN -2 BBL 2 $50 #5 0 
-12 VD SELL AMZN 1 BBL -1 $50 #20 0 
-12 VD SELL AMZN -2 BBL 2 $50 #5 0 
-12 VD SELL AMZN -2 BBL 2 $50 #5 0 
-12 A BUY AMZN 1 APPL -1 $100 #30 10 
-12 A BUY AMZN 1 APPL -1 $100 #30 10 
-13 B BUY AMZN -1 APPL 1 $30 #12 0 
-13 B BUY AMZN -1 APPL 1 $30 #12 0 
-14 VD SELL AMZN 1 APPL -1 $100 #24 0 
-14 VD SELL AMZN -1 APPL 1 $30 #12 0 
-14 VD SELL AMZN -1 APPL 1 $30 #12 0 
-14 C BUY AMZN 1 BBL -1 $50 #30 5 
-14 C BUY AMZN 1 BBL -1 $50 #30 5 
-15 D BUY AMZN -2 BBL 2 $50 #5 0 
-15 D BUY AMZN -2 BBL 2 $50 #5 0 
-16 VD SELL AMZN 1 BBL -1 $50 #20 0 
-16 VD SELL AMZN -2 BBL 2 $50 #5 0 
-16 VD SELL AMZN -2 BBL 2 $50 #5 0 
+0 KarGoExpress SELL AMD $120 #32 1
+0 KarGoCorp SELL AMZN $100 #30 10
+1 KarGoCorp BUY GE $200 #20 8
+1 KarGoKrab BUY AMZN $130 #12 0
+2 KarGoTravels BUY AMD $100 #50 10
+2 KarGoCorp BUY AMZN $50 #30 5
+3 KarGoKrab BUY AMD $130 #10 7
+3 KarGoCorp SELL AMZN $50 #5 0
+3 brianmackwan_veddanait SELL AMD $130 #10 6 
+4 KarGoExpress SELL GE $150 #50 6
+4 KarGoTravels BUY AMD $150 #25 0
+5 KarGoExpress BUY NFLX $80 #15 6
+5 KarGoExpress SELL AMD $80 #100 -1
+5 brianmackwan_veddanait BUY GE $150 #50 4 
+5 brianmackwan_veddanait BUY AMD $80 #75 -1 
+6 KarGoTravels SELL AMZN $50 #22 -1
+6 KarGoCorp BUY AMD $120 #10 1
+7 KarGoCorp SELL GE $50 #15 -1
+7 KarGoKrab BUY GE $110 #10 3
+7 brianmackwan_veddanait BUY AMZN $50 #22 -1 
+7 brianmackwan_veddanait BUY GE $50 #5 -1 
+8 AKG SELL AMD $23 #3 15
+8 AKG SELL NFLX $290 #7 -1
+9 SM BUY GE $107 #2 11
+9 SM BUY NFLX $496 #7 5
+9 brianmackwan_veddanait BUY AMD $23 #3 13 
+10 AKG BUY NFLX $143 #2 12
+10 AKG SELL GE $43 #5 7
+11 SV BUY GE $486 #12 7
+11 SV SELL GE $230 #9 17
+11 brianmackwan_veddanait SELL NFLX $143 #2 10 
+12 GS SELL GE $138 #16 -1
+12 SV SELL GE $300 #14 -1
+13 SM SELL GE $87 #5 7
+13 SV BUY AMD $200 #1 3
+13 brianmackwan_veddanait BUY GE $138 #16 -1 
+13 brianmackwan_veddanait BUY GE $87 #5 6 
+13 brianmackwan_veddanait SELL AMD $200 #1 2 
+14 OT BUY AMD $144 #9 2
+14 GS BUY NFLX $74 #9 13
+15 AKG BUY NFLX $93 #14 0
+15 KG SELL AMZN $433 #8 -1
+15 brianmackwan_veddanait SELL AMD $144 #9 0 
+16 AKG SELL AMZN $421 #1 19
+16 KA BUY AMD $139 #12 16
+17 KA BUY NFLX $459 #12 19
+17 SV SELL GE $85 #14 0
+17 brianmackwan_veddanait SELL AMD $139 #12 14 
+17 brianmackwan_veddanait SELL NFLX $459 #12 18 
+18 AA SELL NFLX $94 #9 16
+18 KG SELL AAPL $456 #0 0
+19 AKG SELL GE $211 #12 4
+19 AKG BUY GE $260 #15 9
+19 brianmackwan_veddanait SELL GE $260 #3 8 
+19 SV SELL AMZN $134 #10 18
+20 AA BUY AMZN $116 #0 17
+21 SV SELL AMD $72 #1 11
+21 OT BUY GE $290 #10 4
+21 brianmackwan_veddanait BUY AMD $72 #1 10 
+21 brianmackwan_veddanait SELL GE $290 #10 3 
+22 SM SELL AAPL $204 #2 12
+22 KG SELL GE $160 #4 5
+23 KG BUY NFLX $416 #6 10
+23 OT SELL NFLX $466 #1 10
+23 brianmackwan_veddanait SELL NFLX $416 #6 9 
+24 OT SELL AMZN $425 #16 9
+24 SM BUY AMD $15 #14 1
+25 OT SELL AMD $429 #9 6
+25 SM BUY AMZN $477 #5 19
+26 SM BUY AMD $397 #7 12
+26 OT SELL GE $29 #6 7
+27 AKG SELL GE $30 #3 3
+27 SM BUY GE $449 #7 11
+27 brianmackwan_veddanait SELL AMD $397 #7 10 
+27 brianmackwan_veddanait BUY GE $30 #2 2 
+28 KG SELL AMZN $166 #5 10
+28 AA BUY AMD $242 #8 12
+28 SM BUY AMD $192 #6 9
+29 OT SELL AMD $271 #11 -1
+29 brianmackwan_veddanait SELL AMD $242 #8 10 
+29 brianmackwan_veddanait SELL AMD $192 #6 7 
+30 SV SELL AAPL $396 #4 -1
+30 OT BUY AMD $422 #16 10
+31 AA SELL AMD $67 #6 9
+31 KA BUY GE $337 #6 16
+31 brianmackwan_veddanait SELL AMD $422 #10 8 
+31 brianmackwan_veddanait SELL GE $337 #6 15 
+32 AA BUY AMZN $379 #14 14
+32 OT BUY AAPL $377 #14 -1
+33 SV BUY AMZN $350 #7 4
+33 KA SELL AMZN $7 #7 16
+33 brianmackwan_veddanait SELL AMZN $379 #7 12 
+33 brianmackwan_veddanait SELL AMZN $350 #7 3 
+33 KA SELL NFLX $350 #3 5
+34 SM SELL NFLX $415 #16 1
+35 SV SELL AMZN $4 #9 16
+35 GS SELL AMD $65 #9 9
+35 brianmackwan_veddanait BUY AMZN $4 #9 15 
+35 brianmackwan_veddanait BUY AMD $65 #9 8 
+36 KA BUY AMD $354 #13 6
+36 SV BUY GE $206 #5 3
+37 SM BUY GE $249 #10 17
+37 KG SELL GE $35 #3 19
+37 brianmackwan_veddanait SELL AMD $354 #13 4 
+37 brianmackwan_veddanait SELL GE $206 #2 1 
+37 brianmackwan_veddanait SELL GE $249 #10 16 
+38 GS BUY AMZN $417 #0 18
+38 SM BUY AMD $297 #4 16
+39 GS SELL AMD $212 #0 16
+39 AA BUY NFLX $449 #1 14
+39 brianmackwan_veddanait SELL AMD $297 #4 14 
+39 brianmackwan_veddanait SELL NFLX $449 #1 13 
+39 OT SELL AMD $242 #13 15
+40 GS SELL AAPL $357 #3 15
+40 AKG SELL AMZN $111 #14 16
+41 OT BUY AAPL $380 #8 12
+41 brianmackwan_veddanait SELL AAPL $380 #5 11 
+42 KG BUY AAPL $214 #4 7
+42 SM SELL AMZN $187 #8 1
+43 KA BUY AMD $300 #16 6
+43 KA BUY GE $284 #3 19
+43 brianmackwan_veddanait SELL AMD $300 #16 5 
+43 brianmackwan_veddanait SELL GE $284 #3 18 
+43 OT SELL GE $99 #15 5
+44 AA SELL AMZN $426 #7 16
+45 OT SELL GE $356 #14 7
+45 OT SELL NFLX $472 #15 6
+45 brianmackwan_veddanait BUY GE $99 #15 2 
+45 GS SELL AMD $430 #5 8
+46 SV BUY GE $401 #14 17
+47 SV SELL AAPL $292 #0 -1
+47 SM SELL GE $387 #15 0
+47 KG BUY AAPL $118 #12 14
+48 GS BUY AMZN $218 #2 2
+49 AA BUY GE $157 #14 -1
+49 SV BUY AMZN $407 #11 18
+49 brianmackwan_veddanait SELL AMZN $218 #2 0 
+49 brianmackwan_veddanait SELL GE $157 #14 -1 
+49 brianmackwan_veddanait SELL AMZN $407 #11 17 
+50 KA BUY AMZN $261 #0 15
+50 AA SELL NFLX $188 #13 14
+51 KA BUY AMD $206 #9 17
+51 OT SELL AAPL $58 #13 19
+51 brianmackwan_veddanait BUY NFLX $188 #13 12 
+51 brianmackwan_veddanait SELL AMD $206 #9 16 
+51 brianmackwan_veddanait BUY AAPL $58 #13 18 
+52 SM BUY AAPL $211 #5 9
+52 AKG SELL AAPL $22 #13 13
+53 GS SELL AMD $242 #8 16
+53 SM BUY GE $231 #5 16
+53 brianmackwan_veddanait BUY AAPL $22 #8 11 
+53 brianmackwan_veddanait SELL GE $231 #5 15 
+54 KG SELL AAPL $129 #16 19
+54 OT SELL AMD $83 #9 11
+55 SM BUY AMZN $14 #16 0
+55 AA SELL AMD $279 #2 6
+55 brianmackwan_veddanait BUY AMD $83 #9 9 
+56 AKG SELL AAPL $331 #6 -1
+56 OT SELL AMD $132 #6 13
+56 KG BUY GE $270 #0 -1
+57 GS BUY AMZN $238 #0 8
+58 KG BUY AMZN $97 #11 10
+58 SM SELL GE $267 #10 -1
+59 SM BUY NFLX $480 #13 8
+59 SM BUY GE $96 #8 -1
+59 brianmackwan_veddanait SELL NFLX $480 #13 7 
+60 SM SELL AAPL $102 #15 2
+60 KA BUY AMZN $29 #4 8
+61 AA BUY AAPL $455 #16 8
+61 AKG BUY NFLX $182 #11 13
+61 brianmackwan_veddanait SELL AAPL $455 #1 7 
+62 AKG BUY GE $94 #9 18
+62 AA BUY NFLX $477 #11 0
+63 AKG SELL NFLX $370 #1 16
+63 AA BUY GE $166 #0 17
+64 OT SELL NFLX $468 #9 -1
+64 GS SELL GE $286 #14 -1
+65 AA BUY AMZN $390 #16 6
+65 SM SELL AAPL $308 #10 11
+65 brianmackwan_veddanait SELL AMZN $390 #16 5 
+66 AKG BUY NFLX $74 #16 5
+66 SV SELL AAPL $483 #12 8
+66 SM SELL AAPL $406 #16 7
+67 GS SELL NFLX $333 #15 19
+67 brianmackwan_veddanait BUY NFLX $333 #15 18 
+67 AA SELL AAPL $88 #5 0
+68 AA SELL NFLX $469 #5 2
+69 AA SELL AMD $70 #14 4
+69 GS BUY AMZN $92 #8 18
+69 brianmackwan_veddanait BUY AMD $70 #14 3 
+70 SM SELL AMD $250 #10 8
+70 GS SELL GE $165 #6 15
+70 GS SELL NFLX $256 #9 0
+71 OT BUY AMZN $256 #3 10
+72 KA BUY AMZN $23 #8 8
+72 KG BUY AMD $322 #14 10
+72 brianmackwan_veddanait SELL AMZN $256 #3 8 
+72 brianmackwan_veddanait SELL AMD $322 #4 9 
+72 KA BUY AAPL $98 #6 16
+73 AKG SELL GE $363 #2 13
+74 SM BUY AMD $289 #12 7
+74 GS BUY AMD $193 #2 5
+74 brianmackwan_veddanait SELL AMD $289 #12 6 
+74 brianmackwan_veddanait SELL AMD $193 #2 4 
+75 KG BUY NFLX $137 #3 15
+75 KG BUY NFLX $310 #9 -1
+76 KA BUY AMD $494 #5 -1
+76 OT BUY NFLX $270 #6 -1
+76 brianmackwan_veddanait SELL AMD $494 #5 -1 
+77 KA SELL NFLX $204 #9 7
+77 AKG BUY NFLX $397 #7 -1
+78 AKG SELL GE $218 #14 14
+78 OT BUY AMZN $274 #12 10
+78 brianmackwan_veddanait BUY NFLX $204 #2 5 
+78 brianmackwan_veddanait SELL AMZN $274 #12 9 
+79 AA BUY NFLX $396 #1 7
+79 AKG SELL AMZN $295 #12 12
+80 SM SELL AMZN $162 #11 10
+80 KG BUY AMZN $113 #16 13
+80 brianmackwan_veddanait SELL NFLX $396 #1 5 
+80 brianmackwan_veddanait SELL AMZN $113 #16 12 
+81 SM BUY GE $221 #0 15
+81 GS SELL AMD $202 #12 8
+82 KG BUY AMD $105 #0 10
+82 GS SELL GE $103 #1 19
+82 brianmackwan_veddanait BUY GE $103 #1 18 
+83 AA BUY AMZN $305 #16 19
+83 KA BUY AMD $184 #13 16
+84 KA BUY NFLX $3 #0 4
+84 AKG BUY GE $240 #7 17
+84 brianmackwan_veddanait SELL AMZN $305 #16 17 
+84 brianmackwan_veddanait SELL AMD $184 #13 14 
+84 brianmackwan_veddanait SELL GE $240 #7 16 
+85 AKG BUY AMD $100 #13 9
+85 GS BUY NFLX $437 #5 -1
+86 KG SELL NFLX $59 #7 18
+86 OT SELL AMZN $404 #7 -1
+86 brianmackwan_veddanait BUY NFLX $59 #2 17 
+86 KG BUY AMZN $133 #8 1
+87 GS SELL NFLX $296 #15 16
 !@
 @!
 Successfully Initiated!
-A purchased 24 share of AMZN 1 APPL -1 from VD for $100/share
-C purchased 20 share of AMZN 1 BBL -1 from VD for $50/share
-A purchased 6 share of AMZN 3 APPL -3 from VD for $100/share
-C purchased 4 share of AMZN 3 BBL -3 from VD for $50/share
-A purchased 24 share of AMZN 1 APPL -1 from VD for $100/share
-C purchased 20 share of AMZN 1 BBL -1 from VD for $50/share
-A purchased 6 share of AMZN 1 APPL -1 from VD for $100/share
-A purchased 18 share of AMZN 1 APPL -1 from VD for $100/share
-C purchased 20 share of AMZN 1 BBL -1 from VD for $50/share
+KarGoKrab purchased 12 share of AMZN from KarGoCorp for $100/share
+KarGoCorp purchased 5 share of AMZN from KarGoCorp for $50/share
+KarGoKrab purchased 10 share of AMD from brianmackwan_veddanait for $130/share
+KarGoCorp purchased 20 share of GE from KarGoExpress for $200/share
+KarGoTravels purchased 50 share of AMD from KarGoExpress for $100/share
+brianmackwan_veddanait purchased 30 share of GE from KarGoExpress for $150/share
+brianmackwan_veddanait purchased 50 share of AMD from KarGoExpress for $80/share
+KarGoCorp purchased 22 share of AMZN from KarGoTravels for $50/share
+brianmackwan_veddanait purchased 15 share of GE from KarGoCorp for $150/share
+brianmackwan_veddanait purchased 3 share of AMD from AKG for $80/share
+SM purchased 7 share of NFLX from AKG for $290/share
+SM purchased 2 share of GE from AKG for $107/share
+brianmackwan_veddanait purchased 3 share of GE from AKG for $50/share
+SV purchased 9 share of GE from SV for $486/share
+AKG purchased 2 share of NFLX from brianmackwan_veddanait for $143/share
+SV purchased 3 share of GE from GS for $486/share
+brianmackwan_veddanait purchased 5 share of GE from SM for $87/share
+brianmackwan_veddanait purchased 11 share of GE from GS for $138/share
+SV purchased 1 share of AMD from brianmackwan_veddanait for $200/share
+OT purchased 9 share of AMD from brianmackwan_veddanait for $144/share
+brianmackwan_veddanait purchased 5 share of GE from SV for $87/share
+KA purchased 12 share of AMD from brianmackwan_veddanait for $139/share
+KA purchased 12 share of NFLX from brianmackwan_veddanait for $459/share
+AKG purchased 2 share of GE from GS for $138/share
+AKG purchased 12 share of GE from AKG for $211/share
+AKG purchased 1 share of GE from brianmackwan_veddanait for $260/share
+brianmackwan_veddanait purchased 1 share of AMD from SV for $80/share
+OT purchased 2 share of GE from brianmackwan_veddanait for $260/share
+OT purchased 8 share of GE from brianmackwan_veddanait for $290/share
+KG purchased 6 share of NFLX from AA for $94/share
+SM purchased 5 share of AMZN from SV for $134/share
+brianmackwan_veddanait purchased 2 share of GE from OT for $50/share
+SM purchased 4 share of GE from OT for $29/share
+SM purchased 3 share of GE from AKG for $30/share
+SM purchased 7 share of AMD from brianmackwan_veddanait for $397/share
+AA purchased 8 share of AMD from brianmackwan_veddanait for $242/share
+SM purchased 6 share of AMD from brianmackwan_veddanait for $192/share
+OT purchased 11 share of AMD from OT for $271/share
+OT purchased 5 share of AMD from AA for $422/share
+brianmackwan_veddanait purchased 1 share of AMD from AA for $80/share
+KA purchased 6 share of GE from SV for $300/share
+AA purchased 5 share of AMZN from SV for $134/share
+AA purchased 5 share of AMZN from KG for $166/share
+OT purchased 2 share of AAPL from SM for $204/share
+AA purchased 4 share of AMZN from KA for $379/share
+SV purchased 3 share of AMZN from KA for $350/share
+SV purchased 4 share of AMZN from brianmackwan_veddanait for $350/share
+brianmackwan_veddanait purchased 9 share of AMZN from SV for $50/share
+brianmackwan_veddanait purchased 9 share of AMD from GS for $80/share
+SM purchased 3 share of GE from KG for $249/share
+KA purchased 13 share of AMD from brianmackwan_veddanait for $354/share
+SM purchased 2 share of GE from brianmackwan_veddanait for $249/share
+SM purchased 5 share of GE from brianmackwan_veddanait for $249/share
+SM purchased 4 share of AMD from brianmackwan_veddanait for $297/share
+AA purchased 1 share of NFLX from brianmackwan_veddanait for $449/share
+OT purchased 3 share of AAPL from GS for $377/share
+OT purchased 5 share of AAPL from brianmackwan_veddanait for $380/share
+KA purchased 13 share of AMD from OT for $242/share
+KA purchased 3 share of GE from brianmackwan_veddanait for $249/share
+KA purchased 3 share of AMD from brianmackwan_veddanait for $300/share
+brianmackwan_veddanait purchased 15 share of GE from OT for $99/share
+SV purchased 2 share of GE from brianmackwan_veddanait for $249/share
+SV purchased 3 share of GE from brianmackwan_veddanait for $284/share
+SV purchased 8 share of GE from SV for $300/share
+SV purchased 1 share of GE from OT for $356/share
+GS purchased 2 share of AMZN from AKG for $111/share
+SV purchased 11 share of AMZN from AKG for $111/share
+AA purchased 14 share of GE from brianmackwan_veddanait for $157/share
+OT purchased 3 share of AAPL from OT for $380/share
+OT purchased 9 share of AAPL from OT for $377/share
+KG purchased 1 share of AAPL from OT for $118/share
+brianmackwan_veddanait purchased 13 share of NFLX from AA for $188/share
+KA purchased 9 share of AMD from brianmackwan_veddanait for $206/share
+SM purchased 5 share of AAPL from AKG for $211/share
+KG purchased 8 share of AAPL from AKG for $118/share
+SM purchased 5 share of GE from brianmackwan_veddanait for $231/share
+brianmackwan_veddanait purchased 9 share of AMD from OT for $83/share
+SM purchased 13 share of NFLX from brianmackwan_veddanait for $480/share
+KG purchased 3 share of AAPL from SM for $118/share
+AA purchased 12 share of AAPL from SM for $102/share
+AA purchased 4 share of AAPL from KG for $129/share
+AA purchased 16 share of AMZN from brianmackwan_veddanait for $390/share
+brianmackwan_veddanait purchased 15 share of NFLX from GS for $333/share
+brianmackwan_veddanait purchased 11 share of AMD from AA for $80/share
+brianmackwan_veddanait purchased 3 share of AMD from AA for $70/share
+KG purchased 10 share of AMD from SM for $250/share
+OT purchased 3 share of AMZN from brianmackwan_veddanait for $256/share
+KG purchased 4 share of AMD from brianmackwan_veddanait for $322/share
+SM purchased 12 share of AMD from brianmackwan_veddanait for $289/share
+GS purchased 2 share of AMD from brianmackwan_veddanait for $193/share
+KA purchased 5 share of AMD from brianmackwan_veddanait for $494/share
+KG purchased 9 share of NFLX from KA for $310/share
+AKG purchased 1 share of NFLX from AKG for $370/share
+OT purchased 12 share of AMZN from brianmackwan_veddanait for $274/share
+AKG purchased 1 share of NFLX from brianmackwan_veddanait for $397/share
+KG purchased 16 share of AMZN from brianmackwan_veddanait for $113/share
+brianmackwan_veddanait purchased 1 share of GE from GS for $103/share
+AA purchased 11 share of AMZN from SM for $162/share
+AA purchased 5 share of AMZN from AKG for $295/share
+AKG purchased 6 share of GE from GS for $165/share
+AKG purchased 1 share of GE from AKG for $218/share
+KA purchased 13 share of AMD from brianmackwan_veddanait for $184/share
+GS purchased 5 share of NFLX from KG for $437/share
+AKG purchased 2 share of NFLX from KG for $397/share
+AKG purchased 3 share of NFLX from GS for $397/share
 
 ---End of Day---
-Total Amount of Money Transferred: $11000
-Number of Completed Trades: 9
-Number of Shares Traded: 142
-A bought 78 and sold 0 for a net transfer of $-7800
-B bought 0 and sold 0 for a net transfer of $0
-VD bought 0 and sold 142 for a net transfer of $11000
-C bought 64 and sold 0 for a net transfer of $-3200
-D bought 0 and sold 0 for a net transfer of $0
+Total Amount of Money Transferred: $160779
+Number of Completed Trades: 105
+Number of Shares Traded: 801
+KarGoExpress bought 0 and sold 150 for a net transfer of $17500
+KarGoCorp bought 47 and sold 32 for a net transfer of $-1650
+KarGoKrab bought 22 and sold 0 for a net transfer of $-2500
+KarGoTravels bought 50 and sold 22 for a net transfer of $-3900
+brianmackwan_veddanait bought 211 and sold 248 for a net transfer of $41634
+AKG bought 31 and sold 63 for a net transfer of $3447
+SM bought 83 and sold 43 for a net transfer of $-15944
+SV bought 45 and sold 48 for a net transfer of $-2930
+GS bought 9 and sold 53 for a net transfer of $9589
+OT bought 72 and sold 68 for a net transfer of $-7673
+KG bought 57 and sold 19 for a net transfer of $-5294
+KA bought 89 and sold 16 for a net transfer of $-19731
+AA bought 85 and sold 39 for a net transfer of $-12548

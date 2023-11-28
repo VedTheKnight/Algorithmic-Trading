@@ -4,7 +4,6 @@
 #include <vector>
 #include <iostream>
 #include <cassert>
-#include <bits/stdc++.h>
 
 using namespace std;
 
