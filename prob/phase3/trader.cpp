@@ -18,8 +18,8 @@ int NUM_THREADS = 2;
 struct stocks
 {
     string name;
-    MaxHeap B;
-    MinHeap S;
+    vector<MaxHeap> BMarkets;
+    vector<MinHeap> SMarkets;
 };
 vector<stocks> stocklist;
 //-------------------------------------------------------------------------GlOBAL STUFF-----------------------------------------------------------------------
@@ -149,11 +149,11 @@ int stringToInt(const std::string& str) {
 
 
 //u->(price,time-entry,quantity,time exit)
-void computeMaxHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S)//its a max heap implying the new order is a sell order ready to sell to someone with highest buy price
+void computeMaxHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S,int market)//its a max heap implying the new order is a sell order ready to sell to someone with highest buy price
 {//name is the new order wala 
 //so basically abhi we have a new sell order which i will sell to the highest possible buy order if it is valid and has all other quantity and time valid
 // fix the issue of infinite time
-    vector<pair<string,vector<int>>> arbitrage; 
+    // vector<pair<string,vector<int>>> arbitrage; 
     while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
 
@@ -161,15 +161,15 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         break;
         if(B.max()->second[0]<price)//no more elements in the heap to trade with since the max element is lesser than my sell price
         break;
-        if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
-        {
-            if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;//default escape if its not valid 
-            arbitrage.push_back({B.max()->first,B.max()->second});
-            B.deleteMax();
-            //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;//default escape if its not valid 
+        //     arbitrage.push_back({B.max()->first,B.max()->second});
+        //     B.deleteMax();
+        //     //S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=B.max()->second[2])
         {
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -191,32 +191,32 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
-    S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        B.insert(arbitrage[i]);
-    }
+    // S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     B.insert(arbitrage[i]);
+    // }
 }
 
-void computeMinHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S)//its a min heap implying the new order is a buy order ready to buy from someone with lowest sell price
+void computeMinHeap(string stock,int price,int time_entry, string name,int quantity,int time_exit,MaxHeap& B,MinHeap& S,int market)//its a min heap implying the new order is a buy order ready to buy from someone with lowest sell price
 {
 //so basically abhi we have a new buy order which i will buy from the lowest possible sell order if it is valid and has all other quantity and time valid
-    vector<pair<string,vector<int>>> arbitrage;
+    // vector<pair<string,vector<int>>> arbitrage;
     while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
         if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
         break;
         if(S.min()->second[0]>price)//no more elements in the heap can be traded with since lowest sell is greater than our buy price
         break;
-        if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
-        {
-            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
-            break;
-            arbitrage.push_back({S.min()->first,S.min()->second});
-            S.deleteMin();
-            //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-            //return;
-        }
+        // if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
+        // {
+        //     if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     break;
+        //     arbitrage.push_back({S.min()->first,S.min()->second});
+        //     S.deleteMin();
+        //     //B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
+        //     //return;
+        // }
         if(quantity<=S.min()->second[2])
         { 
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
@@ -238,22 +238,28 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
-    B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit}});
-    for(int i=0;i<arbitrage.size();i++)
-    {
-        S.insert(arbitrage[i]);
-    }
+    // B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
+    // for(int i=0;i<arbitrage.size();i++)
+    // {
+    //     S.insert(arbitrage[i]);
+    // }
 }
 
-void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist)
+void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,int market)
 //stock is the name of the new incoming stock whereas name is the name of the trader
 {
 
 if(stocklist.size()==0)
 {
     MaxHeap B;
+    B.market=market;
     MinHeap S;
-stocklist.push_back({stock,B,S});
+    S.market=market;
+    vector<MinHeap>SMarket;
+    vector<MaxHeap>BMarket;
+    SMarket.push_back(S);
+    BMarket.push_back(B);
+stocklist.push_back({stock,BMarket,SMarket});
 }
 auto i=stocklist.begin();
 for(i;i<stocklist.end();i++)
@@ -266,47 +272,111 @@ for(i;i<stocklist.end();i++)
 }
 if(i==stocklist.end())
 {
+
     MaxHeap B;
+    B.market=market;
     MinHeap S;
-  
+    S.market=market;
+    vector<MinHeap>SMarket;
+    vector<MaxHeap>BMarket;
+    SMarket.push_back(S);
+    BMarket.push_back(B);
+
+
     S.sys_time=time_entry;
     B.sys_time=time_entry;   
     
     if (option=="SELL")
     {
         if(delay==-1)
-        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999}});
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
         else
-        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay}});
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
     if( option=="BUY")
     {
         if(delay==-1)
-        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999}});
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
         else
-        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay}});
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
-    stocklist.push_back({stock,B,S}); 
+    stocklist.push_back({stock,BMarket,SMarket});
 
 }
 else
 {
-    i->S.sys_time=time_entry;
-    i->B.sys_time=time_entry;   
+    int j;
+    for(j=0;j<i->SMarkets.size();j++)
+    if(i->SMarkets[j].market==market)
+    break;
+    if(j==i->SMarkets.size())//basically no market matched so its a new market
+{
+    MaxHeap B;
+    B.market=market;
+    MinHeap S;
+    S.market=market;
+    i->SMarkets.push_back(S);
+    i->BMarkets.push_back(B);
+
+
+    S.sys_time=time_entry;
+    B.sys_time=time_entry;   
     
     if (option=="SELL")
     {
         if(delay==-1)
-        computeMaxHeap(stock,price,time_entry,name,quantity,time_entry+9999999,i->B,i->S);
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
         else
-        computeMaxHeap(stock,price,time_entry,name,quantity,time_entry+delay,i->B,i->S);
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
     if( option=="BUY")
     {
         if(delay==-1)
-        computeMinHeap(stock,price,time_entry,name,quantity,time_entry+9999999,i->B,i->S);
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
         else
-        computeMinHeap(stock,price,time_entry,name,quantity,time_entry+delay,i->B,i->S);
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }
+}
+else
+{
+    
+    i->BMarkets[j].sys_time=time_entry;
+    i->SMarkets[j].sys_time=time_entry; 
+     if (option=="SELL")
+    {
+        if(delay==-1)
+        i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }
+    if( option=="BUY")
+    {
+        if(delay==-1)
+        i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }   
+}
+}
+//now compute the stocks se self arbitrage
+{
+    int j;
+    for(j=0;j<i->BMarkets.size();j++)
+    {
+        i->SMarkets[j].sys_time=time_entry;
+        i->BMarkets[j].sys_time=time_entry;
+    }
+    for(j=0;j<i->BMarkets.size();j++)
+    for(int k=j+1;k<i->BMarkets.size();k++)
+    {
+        while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
+        {
+            //go to markets and print
+        }
+        while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
+        {
+            //go to markets and print
+        }
     }
 }
 }
@@ -343,7 +413,9 @@ void *handleClient(void *arg) {
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
             inputs=final_tokenize(tokenize(buffer));
-            neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist);
+            int market=ntohs(clientInfo->address.sin_port);
+            neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
+
         }
     }
 

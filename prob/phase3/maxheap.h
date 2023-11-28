@@ -16,6 +16,7 @@ public:
   unsigned sz = 0;
   int sys_time=0;//if sys_timr>exp_time for order then we cant access that order
   int swap_count = 0;
+  int market;
   // Constructor
   MaxHeap() {};
 
