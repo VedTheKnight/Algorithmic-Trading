@@ -1,48 +1,60 @@
 TL
-0 KarGoCorp SELL AMZN $100 #30 10
+0 A SELL AMZN 3 AAPL -3 $120 #25 5
 0 KarGoExpress SELL AMD $120 #32 1
-0 KarGoKrab BUY AMZN $130 #12 0
-0 KarGoCorp SELL AMZN $100 #30 10
+0 A SELL AMZN -2 GOOGL 2 $40 #15 8
 1 KarGoCorp BUY GE $200 #20 8
-1 KarGoCorp BUY AMZN $50 #30 5
-0 KarGoKrab BUY AMZN $130 #12 0
+1 B BUY MSFT 1 AAPL -1 $80 #20 15
 2 KarGoTravels BUY AMD $100 #50 10
-2 KarGoCorp SELL AMZN $50 #5 0
-1 KarGoCorp BUY GE $200 #20 8
+2 A SELL TSLA 2 BBL -2 $60 #10 10
 3 KarGoKrab BUY AMD $130 #10 7
-3 KarGoTravels BUY y 1 x -1 $150 #25 0
-0 KarGoKrab BUY AMZN $130 #12 0
+3 A SELL NFLX 3 BBL -3 $70 #25 5
 4 KarGoExpress SELL GE $150 #50 6
-4 KarGoExpress SELL y 1 x -1 $80 #100 -1
-2 KarGoCorp SELL AMZN $50 #5 0
+5 B BUY AAPL -1 MSFT 1 $50 #15 12
 5 KarGoExpress BUY NFLX $80 #15 6
-5 KarGoCorp BUY y 1 x -1 $120 #10 1
-3 KarGoKrab BUY AMD $130 #10 7
+6 A SELL GOOGL 2 MSFT -2 $90 #18 7
 6 KarGoTravels SELL AMZN $50 #22 -1
-6 KarGoKrab BUY GE $110 #10 3
-0 KarGoKrab BUY AMZN $130 #12 0
+7 B BUY TSLA 1 BBL -1 $110 #22 6
 7 KarGoCorp SELL GE $50 #15 -1
-4 KarGoExpress SELL y 1 x -1 $80 #100 -1
+7 A SELL AMZN -2 GOOGL 2 $40 #15 8
+8 B BUY TSLA 3 BBL -3 $50 #10 10
+9 B BUY MSFT 2 AAPL -2 $70 #15 10
+9 A SELL TSLA 2 BBL -2 $60 #10 10
+9 A SELL GOOGL 1 AAPL -1 $80 #20 15
+9 B BUY MSFT 2 AAPL -2 $70 #15 10
+9 A SELL GOOGL 1 AAPL -1 $80 #20 15
+9 B BUY MSFT 1 AAPL -1 $80 #20 15
+9 B BUY MSFT -1 TSLA 1 $120 #12 8
+9 A SELL NFLX 3 BBL -3 $70 #25 5
+9 B BUY AAPL 2 BBL -2 $90 #15 10
+9 A SELL TSLA -1 MSFT 1 $100 #20 7
+9 A SELL GOOGL -1 MSFT 1 $60 #12 15
+9 A SELL NFLX 2 BBL -2 $80 #20 8
+9 B BUY TSLA 1 BBL -1 $110 #22 6
+9 A SELL AMZN 2 BBL -2 $70 #14 7
+9 A SELL GOOGL 3 AAPL -3 $60 #15 5
+9 A SELL GOOGL -1 MSFT 1 $60 #12 15
+9 B BUY AAPL 1 BBL -1 $100 #20 10
+9 B BUY TSLA -1 MSFT 1 $100 #20 7
+9 A SELL AMZN 1 BBL -1 $40 #8 5
+9 A SELL GOOGL 2 AAPL -2 $50 #10 10
+9 B BUY TSLA 1 BBL -1 $110 #22 6
+9 B BUY MSFT 1 AAPL -1 $80 #20 15
+9 A SELL TSLA 2 BBL -2 $60 #10 10
+9 B BUY AAPL 1 BBL -1 $100 #20 10
+9 B BUY TSLA -1 MSFT 1 $120 #12 8
 !@
-5 KarGoExpress BUY NFLX $80 #15 6
 @!
 Successfully Initiated!
-KarGoKrab purchased 12 share of AMZN from KarGoCorp for $100/share
-KarGoKrab purchased 12 share of AMZN from KarGoCorp for $100/share
-KarGoCorp purchased 5 share of AMZN from KarGoCorp for $50/share
-KarGoKrab purchased 12 share of AMZN from KarGoCorp for $100/share
 KarGoCorp purchased 20 share of GE from KarGoExpress for $200/share
-KarGoCorp purchased 20 share of GE from KarGoExpress for $200/share
-KarGoCorp purchased 5 share of AMZN from KarGoCorp for $50/share
-KarGoCorp purchased 10 share of y 1 x -1 from KarGoExpress for $80/share
-KarGoKrab purchased 12 share of AMZN from KarGoTravels for $50/share
-KarGoKrab purchased 10 share of GE from KarGoCorp for $110/share
+B purchased 20 share of TSLA -1 MSFT 1 from A for $100/share
 
 ---End of Day---
-Total Amount of Money Transferred: $14600
-Number of Completed Trades: 10
-Number of Shares Traded: 118
-KarGoCorp bought 60 and sold 56 for a net transfer of $-4100
-KarGoExpress bought 0 and sold 50 for a net transfer of $8800
-KarGoKrab bought 58 and sold 0 for a net transfer of $-5300
-KarGoTravels bought 0 and sold 12 for a net transfer of $600
+Total Amount of Money Transferred: $6000
+Number of Completed Trades: 2
+Number of Shares Traded: 40
+A bought 0 and sold 20 for a net transfer of $2000
+KarGoExpress bought 0 and sold 20 for a net transfer of $4000
+KarGoCorp bought 20 and sold 0 for a net transfer of $-4000
+B bought 20 and sold 0 for a net transfer of $-2000
+KarGoTravels bought 0 and sold 0 for a net transfer of $0
+KarGoKrab bought 0 and sold 0 for a net transfer of $0

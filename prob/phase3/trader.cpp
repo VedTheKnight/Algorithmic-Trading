@@ -175,7 +175,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];//just in case calling max twice cleans the top making max inaccessible
-            cout<<B.max()->first<<" purchased "<<quantity<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            //cout<<B.max()->first<<" purchased "<<quantity<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             B.max()->second[2]-=quantity;
             quantity=0;
             return;//if it is possible for the heap to satisfy our order it exits here
@@ -185,13 +185,13 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];
-            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            //cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             quantity-=B.max()->second[2];
             B.max()->second[2]=0;
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
-    // S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
+     S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
     // for(int i=0;i<arbitrage.size();i++)
     // {
     //     B.insert(arbitrage[i]);
@@ -222,7 +222,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<quantity<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            //cout<<name<<" purchased "<<quantity<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             S.min()->second[2]-=quantity;
             quantity=0;
             return;//if it is possible for the heap to satisfy our order it exits here
@@ -232,13 +232,13 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<S.min()->second[2]<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            //cout<<name<<" purchased "<<S.min()->second[2]<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             quantity-=S.min()->second[2];
             S.min()->second[2]=0;
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
-    // B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
+     B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_exit,market}});
     // for(int i=0;i<arbitrage.size();i++)
     // {
     //     S.insert(arbitrage[i]);
@@ -361,23 +361,29 @@ else
 //now compute the stocks se self arbitrage
 {
     int j;
-    for(j=0;j<i->BMarkets.size();j++)
-    {
-        i->SMarkets[j].sys_time=time_entry;
-        i->BMarkets[j].sys_time=time_entry;
-    }
-    for(j=0;j<i->BMarkets.size();j++)
-    for(int k=j+1;k<i->BMarkets.size();k++)
-    {
-        while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
-        {
-            //go to markets and print
-        }
-        while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
-        {
-            //go to markets and print
-        }
-    }
+     for(j=0;j<i->BMarkets.size();j++)
+     {
+         //i->SMarkets[j].sys_time=time_entry;
+         //i->BMarkets[j].sys_time=time_entry;
+     }
+    // for(j=0;j<i->BMarkets.size();j++)
+    // for(int k=j+1;k<i->BMarkets.size();k++)
+    // {
+    //     while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
+    //     {
+    //         //go to markets and print
+    //         cout<<"hi";
+    //         i->SMarkets[j].deleteMin();
+    //         i->BMarkets[k].deleteMax();
+    //     }
+    //     while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
+    //     {
+    //         //go to markets and print
+    //         cout<<"hi";
+    //         i->SMarkets[k].deleteMin();
+    //         i->BMarkets[j].deleteMax();
+    //     }
+    // }
 }
 }
 //---------------------------------------------------------------------STOCK.CPP-------------------------------------------------------------------------------
@@ -412,10 +418,9 @@ void *handleClient(void *arg) {
             buffer[bytesRead] = '\0';
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
-            inputs=final_tokenize(tokenize(buffer));
-            int market=ntohs(clientInfo->address.sin_port);
-            neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
-
+             inputs=final_tokenize(tokenize(buffer));
+             int market=ntohs(clientInfo->address.sin_port);
+             neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
         }
     }
 
@@ -425,67 +430,81 @@ void *handleClient(void *arg) {
     pthread_exit(NULL);
 }
 
-int main() {
-    int serverSocket;
-    struct sockaddr_in serverAddr, clientAddr;
-    socklen_t clientAddrLen = sizeof(clientAddr);
-
-    // Create server socket
-    if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-        perror("Socket creation error");
-        exit(EXIT_FAILURE);
+int main()
+{
+    for(int i=0;i<14;i++)
+    {
+        string line;
+        int market;
+        cin>>market;
+        cin>>line;
+        vector<string> inputs;
+        inputs=final_tokenize(tokenize(line));
+        neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
     }
-
-    // Initialize server address struct
-    memset(&serverAddr, 0, sizeof(serverAddr));
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(8888);  // Port number
-    serverAddr.sin_addr.s_addr = INADDR_ANY;
-
-    // Bind server socket to the specified address and port
-    if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
-        perror("Bind error");
-        exit(EXIT_FAILURE);
-    }
-
-    // Listen for incoming connections
-    if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
-        perror("Listen error");
-        exit(EXIT_FAILURE);
-    }
-
-    std::cout << "Trader is listening on port 8888..." << std::endl;
-
-    std::vector<pthread_t> clientThreads;
-
-    for(int i = 0; i < NUM_THREADS; i++) {
-        // Accept incoming connections
-        int clientSocket;
-        if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
-            perror("Accept error");
-            continue;  // Continue listening for other connections
-        }
-
-        // Create a thread to handle this client
-        ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
-        pthread_t clientThread;
-        if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
-            perror("Thread creation error");
-            delete clientInfo;
-            continue;  // Continue listening for other connections
-        }
-
-        // Store the thread ID for later joining
-        clientThreads.push_back(clientThread);
-    }
-
-    // Join all client threads (clean up)
-    for (auto &thread : clientThreads) {
-        pthread_join(thread, NULL);
-    }
-
-    // Close the server socket (never reached in this example)
-    close(serverSocket);
-
-    return 0;
 }
+
+// int main() {
+//     int serverSocket;
+//     struct sockaddr_in serverAddr, clientAddr;
+//     socklen_t clientAddrLen = sizeof(clientAddr);
+
+//     // Create server socket
+//     if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+//         perror("Socket creation error");
+//         exit(EXIT_FAILURE);
+//     }
+
+//     // Initialize server address struct
+//     memset(&serverAddr, 0, sizeof(serverAddr));
+//     serverAddr.sin_family = AF_INET;
+//     serverAddr.sin_port = htons(10000);  // Port number
+//     serverAddr.sin_addr.s_addr = INADDR_ANY;
+
+//     // Bind server socket to the specified address and port
+//     if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
+//         perror("Bind error");
+//         exit(EXIT_FAILURE);
+//     }
+
+//     // Listen for incoming connections
+//     if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
+//         perror("Listen error");
+//         exit(EXIT_FAILURE);
+//     }
+
+//     std::cout << "Trader is listening on port 8888..." << std::endl;
+
+//     std::vector<pthread_t> clientThreads;
+
+//     for(int i = 0; i < NUM_THREADS; i++) {
+//         // Accept incoming connections
+//         int clientSocket;
+//         if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
+//             perror("Accept error");
+//             continue;  // Continue listening for other connections
+//         }
+
+//         // Create a thread to handle this client
+//         ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
+//         pthread_t clientThread;
+//         if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
+//             perror("Thread creation error");
+//             delete clientInfo;
+//             continue;  // Continue listening for other connections
+//         }
+
+//         // Store the thread ID for later joining
+//         clientThreads.push_back(clientThread);
+//     }
+
+//     // Join all client threads (clean up)
+//     for (auto &thread : clientThreads) {
+//         pthread_join(thread, NULL);
+//     }
+
+//     // Close the server socket (never reached in this example)
+//     close(serverSocket);
+
+//     return 0;
+// }

@@ -17,7 +17,7 @@
 
 int NUM_THREADS = 2;
 const int BUFFER_SIZE = 1024;
-#define PORT 8888
+#define PORT 10000
 // std::atomic<int> commonTimer = 0; // Shared timer
 std::atomic<int> commonTimer(0); // For MAC/Unix
 
