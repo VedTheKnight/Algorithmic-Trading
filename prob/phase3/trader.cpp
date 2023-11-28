@@ -378,32 +378,82 @@ else
 //now compute the stocks se self arbitrage
 {
 
-    //int j;
+for(i=stocklist.begin();i<stocklist.end();i++)
+{
+    
+    {
+        if(i->name==stock)
+    {
+        break;
+    }
+        
+    }
+}
+
+    int j;
     //cout<<stocklist.size()<<" "<<stocklist[0].SMarkets.size()<<endl;
 
-     //for(j=0;j<i->SMarkets.size();j++)
+     for(j=0;j<i->SMarkets.size();j++)
      {
-         //cout<<i->SMarkets[j].market;
-         //i->BMarkets[j].sys_time=time_entry;
+         i->SMarkets[j].sys_time=time_entry;
+         i->BMarkets[j].sys_time=time_entry;
      }
-    // for(j=0;j<i->BMarkets.size();j++)
-    // for(int k=j+1;k<i->BMarkets.size();k++)
-    // {
-    //     while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
-    //     {
-    //         //go to markets and print
-    //         cout<<"hi";
-    //         i->SMarkets[j].deleteMin();
-    //         i->BMarkets[k].deleteMax();
-    //     }
-    //     while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
-    //     {
-    //         //go to markets and print
-    //         cout<<"hi";
-    //         i->SMarkets[k].deleteMin();
-    //         i->BMarkets[j].deleteMax();
-    //     }
-    // }
+     for(j=0;j<i->BMarkets.size();j++)
+     for(int k=j+1;k<i->BMarkets.size();k++)
+     {
+         while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
+         {
+            if(i->SMarkets[j].min()->second[0]==0||i->BMarkets[k].max()->second[0]==0)//empty heap basically
+            break;
+            else{
+            //go to markets and print
+
+             int min;
+             if(i->SMarkets[j].min()->second[2]>i->BMarkets[k].max()->second[2])
+             min=i->BMarkets[k].max()->second[2];
+             else
+             min=i->SMarkets[j].min()->second[2];
+
+             std::string fileName = "output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
+             std::fstream file(fileName, std::ios::out);
+             file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file.close();
+
+            fileName = "output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
+             std::fstream file2(fileName, std::ios::out);
+             file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2.close();
+             i->SMarkets[j].min()->second[2]-=min;
+             i->BMarkets[k].max()->second[2]-=min;
+            }
+         }
+         while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
+         {
+            if(i->SMarkets[k].min()->second[0]==0||i->BMarkets[j].max()->second[0]==0)//empty heap basically
+            break;
+            else{
+            //go to markets and print
+
+             int min;
+             if(i->SMarkets[k].min()->second[2]>i->BMarkets[j].max()->second[2])
+             min=i->BMarkets[j].max()->second[2];
+             else
+             min=i->SMarkets[k].min()->second[2];
+
+             std::string fileName = "output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
+             std::fstream file(fileName, std::ios::out);
+             file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file.close();
+             
+              fileName = "output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
+             std::fstream file2(fileName, std::ios::out);
+             file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2.close();
+             i->SMarkets[k].min()->second[2]-=min;
+             i->BMarkets[j].max()->second[2]-=min;
+            }
+         }
+     }
 }
 }
 //---------------------------------------------------------------------STOCK.CPP-------------------------------------------------------------------------------
@@ -450,80 +500,80 @@ void *handleClient(void *arg) {
     pthread_exit(NULL);
 }
 
-int main()
-{
-    for(int i=0;i<16;i++)
-    {
-        int market;
-        string line="";
-        cin>>market;
-        vector<string> inputs(7);
-        cin>>(inputs[0])>>inputs[1]>>inputs[2]>>inputs[3]>>inputs[4]>>inputs[5]>>inputs[6];
-        neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
-    }
-}
-
-// int main() {
-//     int serverSocket;
-//     struct sockaddr_in serverAddr, clientAddr;
-//     socklen_t clientAddrLen = sizeof(clientAddr);
-
-//     // Create server socket
-//     if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-//         perror("Socket creation error");
-//         exit(EXIT_FAILURE);
+// int main()
+// {
+//     for(int i=0;i<16;i++)
+//     {
+//         int market;
+//         string line="";
+//         cin>>market;
+//         vector<string> inputs(7);
+//         cin>>(inputs[0])>>inputs[1]>>inputs[2]>>inputs[3]>>inputs[4]>>inputs[5]>>inputs[6];
+//         neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
 //     }
-
-//     // Initialize server address struct
-//     memset(&serverAddr, 0, sizeof(serverAddr));
-//     serverAddr.sin_family = AF_INET;
-//     serverAddr.sin_port = htons(10000);  // Port number
-//     serverAddr.sin_addr.s_addr = INADDR_ANY;
-
-//     // Bind server socket to the specified address and port
-//     if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
-//         perror("Bind error");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     // Listen for incoming connections
-//     if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
-//         perror("Listen error");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     std::cout << "Trader is listening on port 8888..." << std::endl;
-
-//     std::vector<pthread_t> clientThreads;
-
-//     for(int i = 0; i < NUM_THREADS; i++) {
-//         // Accept incoming connections
-//         int clientSocket;
-//         if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
-//             perror("Accept error");
-//             continue;  // Continue listening for other connections
-//         }
-
-//         // Create a thread to handle this client
-//         ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
-//         pthread_t clientThread;
-//         if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
-//             perror("Thread creation error");
-//             delete clientInfo;
-//             continue;  // Continue listening for other connections
-//         }
-
-//         // Store the thread ID for later joining
-//         clientThreads.push_back(clientThread);
-//     }
-
-//     // Join all client threads (clean up)
-//     for (auto &thread : clientThreads) {
-//         pthread_join(thread, NULL);
-//     }
-
-//     // Close the server socket (never reached in this example)
-//     close(serverSocket);
-
-//     return 0;
 // }
+
+int main() {
+    int serverSocket;
+    struct sockaddr_in serverAddr, clientAddr;
+    socklen_t clientAddrLen = sizeof(clientAddr);
+
+    // Create server socket
+    if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("Socket creation error");
+        exit(EXIT_FAILURE);
+    }
+
+    // Initialize server address struct
+    memset(&serverAddr, 0, sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(10000);  // Port number
+    serverAddr.sin_addr.s_addr = INADDR_ANY;
+
+    // Bind server socket to the specified address and port
+    if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
+        perror("Bind error");
+        exit(EXIT_FAILURE);
+    }
+
+    // Listen for incoming connections
+    if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
+        perror("Listen error");
+        exit(EXIT_FAILURE);
+    }
+
+    std::cout << "Trader is listening on port 8888..." << std::endl;
+
+    std::vector<pthread_t> clientThreads;
+
+    for(int i = 0; i < NUM_THREADS; i++) {
+        // Accept incoming connections
+        int clientSocket;
+        if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
+            perror("Accept error");
+            continue;  // Continue listening for other connections
+        }
+
+        // Create a thread to handle this client
+        ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
+        pthread_t clientThread;
+        if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
+            perror("Thread creation error");
+            delete clientInfo;
+            continue;  // Continue listening for other connections
+        }
+
+        // Store the thread ID for later joining
+        clientThreads.push_back(clientThread);
+    }
+
+    // Join all client threads (clean up)
+    for (auto &thread : clientThreads) {
+        pthread_join(thread, NULL);
+    }
+
+    // Close the server socket (never reached in this example)
+    close(serverSocket);
+
+    return 0;
+}
