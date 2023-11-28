@@ -15,9 +15,9 @@
 #include <pthread.h>
 #include <vector>
 
-int NUM_THREADS = 2;
+int NUM_THREADS = 3;
 const int BUFFER_SIZE = 1024;
-#define PORT 10000
+#define PORT 10001
 // std::atomic<int> commonTimer = 0; // Shared timer
 std::atomic<int> commonTimer(0); // For MAC/Unix
 

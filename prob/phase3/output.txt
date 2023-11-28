@@ -1,20 +1,104 @@
 Trader is listening on port 8888...
-Connected to client, IP: 127.0.0.1, Port: 38080
-Connected to client, IP: 127.0.0.1, Port: 38082
-Received message from client, IP: Received message from client, IP: 127.0.0.1127.0.0.1, Port: , Port: 3808238080: 0 KarGoCorp SELL AMZN $100 #30 10: 0 KarGoExpress SELL AMD $120 #32 1
+Connected to client, IP: 127.0.0.1, Port: 59896
+Connected to client, IP: Connected to client, IP: 127.0.0.1, Port: 59902
+127.0.0.1, Port: 59898
+Received message from client, IP: 127.0.0.1, Port: 59896: 0 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59902: 0 KarGoCorp BUY TSLA $260 #12 6
+Received message from client, IP: 127.0.0.1, Port: 59898: 0 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59902: 1 KarGoTravels SELL TSLA $270 #20 9
+Received message from client, IP: 127.0.0.1, Port: 59898: 1 KarGoExpress BUY TSLA $280 #12 10
+Received message from client, IP: 127.0.0.1, Port: 59896: 1 KarGoExpress BUY TSLA $280 #12 10
+Received message from client, IP: 127.0.0.1, Port: 59898: 2 KarGoCorp BUY AMZN $1510 #30 14
+Received message from client, IP: 127.0.0.1, Port: 59896: 2 KarGoKrab SELL MSFT $190 #10 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 2 KarGoKrab BUY AAPL $145 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 3 KarGoExpress BUY AAPL $135 #25 8
+Received message from client, IP: 127.0.0.1, Port: 59902: 3 KarGoCorp BUY MSFT $185 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59896: 3 KarGoCorp SELL NVDA $230 #15 6
+Received message from client, IP: 127.0.0.1, Port: 59902: 4 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59898: 4 KarGoKrab BUY NVDA $220 #8 4
+Received message from client, IP: 127.0.0.1, Port: 59896: 4 KarGoCorp BUY MSFT $185 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59902: 5 KarGoTravels BUY AAPL $130 #35 6
+Received message from client, IP: 127.0.0.1, Port: 59898: 5 KarGoTravels SELL NVDA $215 #18 8
+Received message from client, IP: 127.0.0.1, Port: 59896: 5 KarGoTravels BUY TSLA $280 #12 10
+Received message from client, IP: 127.0.0.1, Port: 59902: 6 KarGoKrab SELL AMZN $1510 #30 14
+Received message from client, IP: 127.0.0.1, Port: 59898: 6 KarGoKrab SELL FB $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59896: 6 KarGoExpress SELL FB $190 #12 6
+Received message from client, IP: 127.0.0.1, Port: 59902: 7 KarGoExpress BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 7 KarGoExpress SELL GOOGL $310 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59896: 7 KarGoKrab SELL GOOGL $312 #22 12
+Received message from client, IP: 127.0.0.1, Port: 59902: 8 KarGoTravels SELL GOOGL $310 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59898: 8 KarGoTravels SELL TSLA $305 #25 11
+Received message from client, IP: 127.0.0.1, Port: 59896: 8 KarGoTravels BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 9 KarGoCorp BUY AAPL $140 #30 7
+Received message from client, IP: 127.0.0.1, Port: 59898: 9 KarGoKrab BUY NVDA $220 #8 4
+Received message from client, IP: 127.0.0.1, Port: 59896: 9 KarGoTravels SELL GOOGL $310 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59902: 10 KarGoCorp SELL AMZN $1490 #18 11
+Received message from client, IP: 127.0.0.1, Port: 59896: 10 KarGoCorp SELL AMD $118 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59898: 11 KarGoTravels SELL AAPL $130 #35 6
+Received message from client, IP: 127.0.0.1, Port: 59902: 11 KarGoExpress BUY FB $200 #10 4
+Received message from client, IP: 127.0.0.1, Port: 59896: 11 KarGoExpress BUY AAPL $130 #35 6
+Received message from client, IP: 127.0.0.1, Port: 59898: 12 KarGoTravels BUY AAPL $130 #35 6
+Received message from client, IP: 127.0.0.1, Port: 59896: 12 KarGoTravels BUY TSLA $270 #20 9
+Received message from client, IP: 127.0.0.1, Port: 59902: 13 KarGoKrab BUY TSLA $260 #12 6
+Received message from client, IP: 127.0.0.1, Port: 59898: 13 KarGoKrab BUY NVDA $220 #8 4
+Received message from client, IP: 127.0.0.1, Port: 59896: 13 KarGoExpress BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 14 KarGoTravels BUY AMZN $1550 #22 13
+Received message from client, IP: 127.0.0.1, Port: 59898: 14 KarGoCorp SELL GOOGL $320 #30 7
+Received message from client, IP: 127.0.0.1, Port: Received message from client, IP: 59902: 14 KarGoCorp SELL FB $180 #20 7
+127.0.0.1, Port: 59896: 14 KarGoKrab BUY TSLA $265 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59898: 15 KarGoExpress BUY MSFT $188 #20 9
+Received message from client, IP: 127.0.0.1, Port: 59896: 15 KarGoKrab SELL AMD $122 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59902: 16 KarGoExpress SELL AMD $110 #15 9
+Received message from client, IP: 127.0.0.1, Port: 59898: 16 KarGoCorp SELL NVDA $230 #15 6
+Received message from client, IP: 127.0.0.1, Port: 59896: 16 KarGoCorp BUY AAPL $140 #30 7
+Received message from client, IP: 127.0.0.1, Port: 59902: 17 KarGoKrab SELL FB $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 16 KarGoTravels BUY NVDA $218 #30 13
+Received message from client, IP: 127.0.0.1, Port: 59898: 17 KarGoTravels BUY AMZN $1550 #22 13
+Received message from client, IP: 127.0.0.1, Port: 59902: 17 KarGoExpress BUY AAPL $135 #25 8
+Received message from client, IP: 127.0.0.1, Port: 59896: 17 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59902: 18 KarGoCorp BUY NVDA $220 #8 4
+Received message from client, IP: 127.0.0.1, Port: 59896: 18 KarGoExpress SELL GOOGL $310 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59898: 19 KarGoKrab BUY AAPL $142 #12 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 19 KarGoExpress SELL MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 19 KarGoKrab SELL FB $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59896: 19 KarGoKrab BUY TSLA $265 #15 7
+Received message from client, IP: Received message from client, IP: 127.0.0.1127.0.0.1, Port: , Port: 5990259898: 21 KarGoKrab BUY TSLA $255 #25 10: 21 KarGoCorp SELL NVDA $230 #15 6
 
-Received message from client, IP: 127.0.0.1, Port: 38080: 1 KarGoCorp BUY GE $200 #20 8
-Received message from client, IP: 127.0.0.1, Port: 38082: 1 KarGoKrab BUY AMZN $130 #12 0
-Received message from client, IP: 127.0.0.1, Port: 38080: 2 KarGoTravels BUY AMD $100 #50 10
-Received message from client, IP: 127.0.0.1, Port: 38082: 3 KarGoCorp BUY AMZN $50 #30 5
-Received message from client, IP: 127.0.0.1, Port: 38080: 3 KarGoKrab BUY AMD $130 #10 7
-Received message from client, IP: 127.0.0.1, Port: 38082: 4 KarGoCorp SELL AMZN $50 #5 0
-Received message from client, IP: 127.0.0.1, Port: 38080: 4 KarGoExpress SELL GE $150 #50 6
-Received message from client, IP: 127.0.0.1, Port: 38082: 5 KarGoTravels BUY AMD $150 #25 0
-Received message from client, IP: 127.0.0.1, Port: 38080: 5 KarGoExpress BUY NFLX $80 #15 6
-Received message from client, IP: 127.0.0.1, Port: 38082: 6 KarGoExpress SELL AMD $80 #100 -1
-Received message from client, IP: 127.0.0.1, Port: 38080: 6 KarGoTravels SELL AMZN $50 #22 -1
-Received message from client, IP: 127.0.0.1, Port: 38082: 7 KarGoCorp BUY AMD $120 #10 1
-Received message from client, IP: 127.0.0.1, Port: 38080: 7 KarGoCorp SELL GE $50 #15 -1
-Received message from client, IP: 127.0.0.1, Port: 38082: 8 KarGoKrab BUY GE $110 #10 3
-Received message from client, IP: 127.0.0.1, Port: 38080: $
+Received message from client, IP: 127.0.0.1, Port: 59896: 20 KarGoExpress BUY TSLA $280 #12 10
+Received message from client, IP: 127.0.0.1, Port: 59902: 21 KarGoKrab SELL AMD $125 #12 7
+Received message from client, IP: 127.0.0.1, Port: 59896: 21 KarGoCorp BUY AAPL $140 #30 7
+Received message from client, IP: 127.0.0.1, Port: 59898: 22 KarGoKrab BUY NVDA $220 #8 4
+Received message from client, IP: 127.0.0.1, Port: 59902: 22 KarGoTravels BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59896: 22 KarGoKrab SELL NVDA $215 #18 8
+Received message from client, IP: 127.0.0.1, Port: 59898: 22 KarGoCorp BUY AMZN $1490 #18 11
+Received message from client, IP: 127.0.0.1, Port: 59902: 23 KarGoKrab SELL TSLA $255 #25 10
+Received message from client, IP: 127.0.0.1, Port: 59898: 23 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59896: 23 KarGoCorp BUY MSFT $185 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59896: 24 KarGoExpress BUY MSFT $185 #15 7
+Received message from client, IP: 127.0.0.1, Port: 59902: 25 KarGoExpress BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 25 KarGoExpress BUY TSLA $280 #12 10
+Received message from client, IP: 127.0.0.1, Port: 59896: 25 KarGoKrab BUY TSLA $260 #12 6
+Received message from client, IP: Received message from client, IP: 127.0.0.1127.0.0.1, Port: , Port: 5989859902: 26 KarGoKrab SELL AMD $118 #15 7: 
+26 KarGoTravels BUY AMZN $1500 #25 15
+Received message from client, IP: 127.0.0.1, Port: 59896: 26 KarGoExpress SELL GOOGL $310 #22 10
+Received message from client, IP: 127.0.0.1, Port: 59898: 27 KarGoExpress SELL MSFT $188 #20 9
+Received message from client, IP: 127.0.0.1, Port: 59902: 27 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59896: 27 KarGoCorp SELL MSFT $230 #25 11
+Received message from client, IP: 127.0.0.1, Port: 59902: 28 KarGoExpress SELL GOOGL $300 #40 8
+Received message from client, IP: 127.0.0.1, Port: 59898: 28 KarGoCorp BUY TSLA $255 #25 10
+Received message from client, IP: 127.0.0.1, Port: 59896: 28 KarGoKrab SELL MSFT $190 #10 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 29 KarGoCorp SELL FB $180 #20 7
+Received message from client, IP: 127.0.0.1, Port: 59898: 29 KarGoTravels BUY TSLA $270 #20 9
+Received message from client, IP: 127.0.0.1, Port: 59896: 29 KarGoKrab SELL AMZN $1520 #25 12
+Received message from client, IP: 127.0.0.1, Port: 59902: 30 KarGoKrab SELL NVDA $215 #18 8
+Received message from client, IP: 127.0.0.1, Port: 59898: 30 KarGoKrab SELL FB $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59896: 30 KarGoKrab BUY FB $200 #10 4
+Received message from client, IP: 127.0.0.1, Port: 59902: 31 KarGoExpress BUY FB $195 #25 8
+Received message from client, IP: 127.0.0.1, Port: 59898: 31 KarGoKrab BUY MSFT $180 #12 3
+Received message from client, IP: 127.0.0.1, Port: 59896: 31 KarGoCorp BUY TSLA $255 #25 10
+Received message from client, IP: 127.0.0.1, Port: 59902: 32 KarGoTravels BUY AAPL $130 #35 6
+Received message from client, IP: 127.0.0.1, Port: 59898: 32 KarGoCorp BUY AAPL $140 #30 7
+Received message from client, IP: 127.0.0.1, Port: 59896: 32 KarGoTravels BUY MSFT $190 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59902: 33 KarGoKrab BUY AAPL $145 #18 5
+Received message from client, IP: 127.0.0.1, Port: 59898: 33 KarGoTravels SELL FB $180 #20 7
+Received message from client, IP: 127.0.0.1, Port: 59902: $

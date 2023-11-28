@@ -14,7 +14,9 @@
 using namespace std;
 //--------------------------------------------------------------------------GLOBAL STUFF---------------------------------------------------------------------
 const int BUFFER_SIZE = 1024;
-int NUM_THREADS = 2;
+int NUM_THREADS = 3;
+int flag=1;
+vector<int> ids;
 struct stocks
 {
     string name;
@@ -157,6 +159,28 @@ void removeHiddenCharacters(std::string& str) {
     }
 }
 
+void sort( vector<int>& v)
+{
+for(int i=0;i<v.size()-1;i++)
+{
+    for(int j=0;j<v.size()-i-1;j++)
+    {
+        if (v[j] > v[j + 1]) {
+            int temp=v[j+1];
+            v[j+1]=v[j];
+            v[j]=temp;
+    }
+}
+}
+}
+
+int search(vector<int> v,int value)
+{
+    for(int i=0;i<v.size();i++)
+    {if(v[i]==value)
+    { return i+1;}
+}
+}
 //--------------------------------------------STRINGPROCESS-----------------------------------------------------
 
 //--------------------------------------------STOCKS.CPP--------------------------------------------------------
@@ -406,6 +430,8 @@ for(i=stocklist.begin();i<stocklist.end();i++)
          {
             if(i->SMarkets[j].min()->second[0]==0||i->BMarkets[k].max()->second[0]==0)//empty heap basically
             break;
+            if(i->SMarkets[j].min()->second[2]<0||i->BMarkets[k].max()->second[2]<0)
+            break;
             else{
             //go to markets and print
 
@@ -415,17 +441,17 @@ for(i=stocklist.begin();i<stocklist.end();i++)
              else
              min=i->SMarkets[j].min()->second[2];
 
-             std::string fileName = "output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
+             std::string fileName = "outputs/output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
              std::ofstream file(fileName,std::ios::app);
              file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
 
-             fileName = "output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
+             fileName = "outputs/output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
              std::ofstream file2(fileName,std::ios::app);
              file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
 
-            
+             profit+=(i->BMarkets[k].max()->second[0]-i->SMarkets[j].min()->second[0])*min;
 
              i->SMarkets[j].min()->second[2]-=min;
              i->BMarkets[k].max()->second[2]-=min;
@@ -434,6 +460,8 @@ for(i=stocklist.begin();i<stocklist.end();i++)
          while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
          {
             if(i->SMarkets[k].min()->second[0]==0||i->BMarkets[j].max()->second[0]==0)//empty heap basically
+            break;
+            if(i->SMarkets[k].min()->second[2]<0||i->BMarkets[j].max()->second[2]<0)
             break;
             else{
             //go to markets and print
@@ -444,15 +472,18 @@ for(i=stocklist.begin();i<stocklist.end();i++)
              else
              min=i->SMarkets[k].min()->second[2];
 
-             std::string fileName = "output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
+             std::string fileName = "outputs/output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
              std::ofstream file(fileName,std::ios::app);
              file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
              
-              fileName = "output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
+              fileName = "outputs/output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
              std::ofstream file2(fileName,std::ios::app);
              file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
+
+             profit+=(i->BMarkets[j].max()->second[0]-i->SMarkets[k].min()->second[0])*min;
+
              i->SMarkets[k].min()->second[2]-=min;
              i->BMarkets[j].max()->second[2]-=min;
             }
@@ -475,9 +506,14 @@ void *handleClient(void *arg) {
     char buffer[BUFFER_SIZE];
 
     std::cout << "Connected to client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << std::endl;
-
+    int v=(clientInfo->address.sin_port);
+    ids.push_back(v);
+    sort(ids);
     while (true) {
         // Receive data from the client
+        if(flag!=1)
+        continue;
+        flag=0;
         ssize_t bytesRead = recv(clientInfo->socket, buffer, sizeof(buffer), 0);
         if (bytesRead <= 0) {
             // Error or connection closed
@@ -487,17 +523,19 @@ void *handleClient(void *arg) {
                 perror("Recv error");
             }
             break;
+            flag=1;
         } else {
             // Print the received message
             buffer[bytesRead] = '\0';
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
              inputs=final_tokenize(tokenize(buffer));
-             int market=ntohs(clientInfo->address.sin_port);
+             //int market=ntohs(clientInfo->address.sin_port);
+             int market=search(ids,(clientInfo->address.sin_port));
              neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
+             flag=1;
         }
     }
-
     // Close the client socket
     close(clientInfo->socket);
     delete clientInfo;
@@ -531,7 +569,7 @@ int main() {
     // Initialize server address struct
     memset(&serverAddr, 0, sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(10000);  // Port number
+    serverAddr.sin_port = htons(8888);  // Port number
     serverAddr.sin_addr.s_addr = INADDR_ANY;
 
     // Bind server socket to the specified address and port
