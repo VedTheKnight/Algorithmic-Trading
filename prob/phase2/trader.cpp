@@ -131,7 +131,7 @@ void printOrder(vector<string> line_toks, int max_window_time){
     
     order = order + to_string(min(commonTimer.load(), max_window_time)) + " ";
 
-    order = order + "brianmackwan_veddanait ";
+    order = order + "22b0413_22b1818 ";
     order += (line_toks[2] == "BUY")? "SELL":"BUY";
     order += " ";
 
@@ -686,7 +686,7 @@ bool tradeArbitrage(vector<string> window, vector<pair<string,vector<int>>> stoc
                 vector<string> line_toks = tokZ(window[iterator]);
                 string order="";
                 order = order + to_string(min(commonTimer.load(), max_window_time)) + " ";
-                order = order + "brianmackwan_veddanait ";
+                order = order + "22b0413_22b1818 ";
                 order += (line_toks[2] == "BUY")? "SELL":"BUY";
                 order += " ";
 
@@ -848,7 +848,7 @@ int reader(int time)
                 break;
             }
             int index = find(order_book,line);
-            if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "brianmackwan_veddanait"){
+            if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "22b0413_22b1818"){
                 removeHC(line);
                 if(checkOrderVal(line))
                     order_book.push_back(line);  
