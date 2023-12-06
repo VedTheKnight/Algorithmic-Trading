@@ -45,7 +45,7 @@ pair<string,vector<int>>* MaxHeap::max() //it will always return a valid
        pair<string,vector <int>>* p=new  pair<string,vector <int>>{"",{0,0,0,0,0}};
        return p;
     }//we want to return an invalid vector for an empty heap;
-  while(sz!=0 && sys_time>=store[0].second[3])//keep deleteing the max till the max is not one which is expired already
+  while(sz!=0 && sys_time>store[0].second[3])//keep deleteing the max till the max is not one which is expired already
   deleteMax();
   while(sz!=0 && store[0].second[2]==0)//keep deleting the max till the max is not one which has quantity 0 i.e a used up order
   deleteMax();

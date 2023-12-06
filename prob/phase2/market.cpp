@@ -335,7 +335,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];//just in case calling max twice cleans the top making max inaccessible
-            cout<<B.max()->first<<" purchased "<<quantity<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             total+=p*quantity;
             trades++;
             shares+=quantity;
@@ -361,7 +361,7 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
              if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];
-            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=B.max()->second[2];
             total+=B.max()->second[2]*p;
@@ -414,7 +414,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<quantity<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=quantity;
             total+=quantity*p;
@@ -440,7 +440,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
             if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<S.min()->second[2]<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<S.min()->second[2]<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=S.min()->second[2];
             total+=S.min()->second[2]*p;
@@ -586,7 +586,7 @@ else
     
 // }
 
-//--------------------------------------------STOCKS.CPP--------------------------------------------------------
+//--------------------------------------------STOCKS.CPP-------------------------------------------------------
 
 
 
@@ -598,7 +598,7 @@ market::market(int argc, char** argv)
 void market::start()
 {
     vector<stocks> stocklist;
-    vector<accounts> accountlist;
+    vector<accounts> accountlist; 
      int trades=0;
      int total=0;
      int shares=0;

@@ -506,7 +506,7 @@ void *handleClient(void *arg) {
     char buffer[BUFFER_SIZE];
 
     std::cout << "Connected to client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << std::endl;
-    int v=(clientInfo->address.sin_port);
+    int v=ntohs(clientInfo->address.sin_port);
     ids.push_back(v);
     sort(ids);
     while (true) {
@@ -524,22 +524,33 @@ void *handleClient(void *arg) {
             }
             break;
             flag=1;
+
         } else {
+            string msg;
             // Print the received message
             buffer[bytesRead] = '\0';
+            msg=buffer;
+            if(msg=="$")
+             {
+                    flag=1;
+    close(clientInfo->socket);
+    delete clientInfo;
+    pthread_exit(NULL);
+                
+
+             }
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
              inputs=final_tokenize(tokenize(buffer));
              //int market=ntohs(clientInfo->address.sin_port);
-             int market=search(ids,(clientInfo->address.sin_port));
+             int market=search(ids,ntohs(clientInfo->address.sin_port));
              neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
              flag=1;
         }
     }
     // Close the client socket
-    close(clientInfo->socket);
-    delete clientInfo;
-    pthread_exit(NULL);
+
+
 }
 
 // int main()
@@ -569,7 +580,7 @@ int main() {
     // Initialize server address struct
     memset(&serverAddr, 0, sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(8888);  // Port number
+    serverAddr.sin_port = htons(42069);  // Port number
     serverAddr.sin_addr.s_addr = INADDR_ANY;
 
     // Bind server socket to the specified address and port

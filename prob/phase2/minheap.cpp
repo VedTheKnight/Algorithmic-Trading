@@ -18,7 +18,7 @@ bool comparemin(pair<string,vector<int>>u,pair<string,vector<int>>v)//function s
     return 0;
     else
     {
-      if (u.first>v.first)
+      if (u.first>=v.first)
       return 0;
       else if(u.first<=v.first)
       return 1;//greater value for a name which appears first in alphabetical order
@@ -44,7 +44,7 @@ pair<string,vector<int>>* MinHeap::min() {
       pair<string,vector <int>>* p= new pair<string,vector <int>> {"",{0,0,0,0,0}};
       return p;
     }//we want to return an invalid vector for an empty heap
-  while(sz!=0 && sys_time>=store[0].second[3])//keep deleteing the Min till the Min is not one which is expired already
+  while(sz!=0 && sys_time>store[0].second[3])//keep deleteing the Min till the Min is not one which is expired already
   deleteMin();
   while(sz!=0 && store[0].second[2]==0)//keep deleting the Min till the Min is not one which has quantity 0 i.e a used up order
   deleteMin();

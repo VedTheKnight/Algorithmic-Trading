@@ -10,7 +10,7 @@
 #include "market.h"
 
 
-int NUM_THREADS = 2; // Number of worker threads
+int NUM_THREADS = 50; // Number of worker threads     
 extern const int NUM_STEPS;  // Number of time steps
 
 // std::atomic<int> commonTimer = 0; // Shared timer

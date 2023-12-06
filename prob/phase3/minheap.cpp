@@ -18,7 +18,7 @@ bool comparemin(pair<string,vector<int>>u,pair<string,vector<int>>v)//function s
     return 0;
     else
     {
-      if (u.first>v.first)
+      if (u.first>=v.first)
       return 0;
       else if(u.first<=v.first)
       return 1;//greater value for a name which appears first in alphabetical order
