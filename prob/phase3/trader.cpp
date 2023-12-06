@@ -14,7 +14,9 @@
 using namespace std;
 //--------------------------------------------------------------------------GLOBAL STUFF---------------------------------------------------------------------
 const int BUFFER_SIZE = 1024;
-int NUM_THREADS = 2;
+int NUM_THREADS = 3;
+int flag=1;
+vector<int> ids;
 struct stocks
 {
     string name;
@@ -22,6 +24,7 @@ struct stocks
     vector<MinHeap> SMarkets;
 };
 vector<stocks> stocklist;
+int profit;
 //-------------------------------------------------------------------------GlOBAL STUFF-----------------------------------------------------------------------
 //-------------------------------------------------------------------STRING PROCESSING----------------------------------------------------------------------
 vector<string> tokenize(string input){
@@ -156,6 +159,28 @@ void removeHiddenCharacters(std::string& str) {
     }
 }
 
+void sort( vector<int>& v)
+{
+for(int i=0;i<v.size()-1;i++)
+{
+    for(int j=0;j<v.size()-i-1;j++)
+    {
+        if (v[j] > v[j + 1]) {
+            int temp=v[j+1];
+            v[j+1]=v[j];
+            v[j]=temp;
+    }
+}
+}
+}
+
+int search(vector<int> v,int value)
+{
+    for(int i=0;i<v.size();i++)
+    {if(v[i]==value)
+    { return i+1;}
+}
+}
 //--------------------------------------------STRINGPROCESS-----------------------------------------------------
 
 //--------------------------------------------STOCKS.CPP--------------------------------------------------------
@@ -262,147 +287,208 @@ void neworder(int time_entry,string name,string option,string stock,int price, i
 //stock is the name of the new incoming stock whereas name is the name of the trader
 {
 
-    if(stocklist.size()==0)
+if(stocklist.size()==0)
+{
+    MaxHeap B;
+    B.market=market;
+    MinHeap S;
+    S.market=market;
+    vector<MinHeap>SMarket;
+    vector<MaxHeap>BMarket;
+    SMarket.push_back(S);
+    BMarket.push_back(B);
+stocklist.push_back({stock,BMarket,SMarket});
+
+}
+auto i=stocklist.begin();
+for(i;i<stocklist.end();i++)
+{
+    if(i->name==stock)
     {
-        MaxHeap B;
-        B.market=market;
-        MinHeap S;
-        S.market=market;
-        vector<MinHeap>SMarket;
-        vector<MaxHeap>BMarket;
-        SMarket.push_back(S);
-        BMarket.push_back(B);
-        stocklist.push_back({stock,BMarket,SMarket});
+        break;
     }
-    auto i=stocklist.begin();
-    for(i;i<stocklist.end();i++)
+}
+if(i==stocklist.end())
+{
+
+    MaxHeap B;
+    B.market=market;
+    MinHeap S;
+    S.market=market;
+    vector<MinHeap>SMarket;
+    vector<MaxHeap>BMarket;
+
+
+
+    S.sys_time=time_entry;
+    B.sys_time=time_entry;   
+    
+    if (option=="SELL")
     {
-        if(i->name==stock)
-        {
-            break;
-        }
+        if(delay==-1)
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
-    if(i==stocklist.end())
+    if( option=="BUY")
     {
-
-        MaxHeap B;
-        B.market=market;
-        MinHeap S;
-        S.market=market;
-        vector<MinHeap>SMarket;
-        vector<MaxHeap>BMarket;
-
-
-
-        S.sys_time=time_entry;
-        B.sys_time=time_entry;   
-        
-        if (option=="SELL")
-        {
-            if(delay==-1)
-            S.insert(pair<string,vector<int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-            else
-            S.insert(pair<string,vector<int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-        }
-        if( option=="BUY")
-        {
-            if(delay==-1)
-            B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-            else
-            B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-        }
-        
-        SMarket.push_back(S);
-        BMarket.push_back(B);
-        stocklist.push_back({stock,BMarket,SMarket});
-
+        if(delay==-1)
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
-    else
+    
+    SMarket.push_back(S);
+    BMarket.push_back(B);
+    stocklist.push_back({stock,BMarket,SMarket});
+
+}
+else
+{
+
+    int j;
+    for(j=0;j< i->SMarkets.size();j++)
+    if(i->SMarkets[j].market==market)
+    break;
+    if(j==i->SMarkets.size())//basically no market matched so its a new market
+{
+    MaxHeap B;
+    B.market=market;
+    MinHeap S;
+    S.market=market;
+
+
+    S.sys_time=time_entry;
+    B.sys_time=time_entry;   
+    
+    if (option=="SELL")
     {
-
-        int j;
-        for(j=0;j< i->SMarkets.size();j++){
-            if(i->SMarkets[j].market==market)
-                break;
-        }
-        if(j==i->SMarkets.size())//basically no market matched so its a new market
-        {
-            MaxHeap B;
-            B.market=market;
-            MinHeap S;
-            S.market=market;
-
-
-            S.sys_time=time_entry;
-            B.sys_time=time_entry;   
-            
-            if (option=="SELL")
-            {
-                if(delay==-1)
-                S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-                else
-                S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-            }
-            if( option=="BUY")
-            {
-                if(delay==-1)
-                B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-                else
-                B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-            }
-            i->SMarkets.push_back(S);
-            i->BMarkets.push_back(B);
-
-        }
-        else{
-            
-            i->BMarkets[j].sys_time=time_entry;
-            i->SMarkets[j].sys_time=time_entry; 
-            if (option=="SELL")
-            {
-                if(delay==-1)
-                i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-                else
-                i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-            }
-            if( option=="BUY")
-            {
-                if(delay==-1)
-                i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
-                else
-                i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
-            }   
-        }
+        if(delay==-1)
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        S.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
     }
+    if( option=="BUY")
+    {
+        if(delay==-1)
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        B.insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }
+    i->SMarkets.push_back(S);
+    i->BMarkets.push_back(B);
+
+}
+else
+{
+
+    i->BMarkets[j].sys_time=time_entry;
+    i->SMarkets[j].sys_time=time_entry; 
+     if (option=="SELL")
+    {
+        if(delay==-1)
+        i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        i->SMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }
+    if( option=="BUY")
+    {
+        if(delay==-1)
+        i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+9999999,market}});
+        else
+        i->BMarkets[j].insert(pair<string,vector <int>>{name,{price,time_entry,quantity,time_entry+delay,market}});
+    }   
+}
+}
 //now compute the stocks se self arbitrage
 {
 
-    //int j;
+for(i=stocklist.begin();i<stocklist.end();i++)
+{
+    
+    {
+        if(i->name==stock)
+    {
+        break;
+    }
+        
+    }
+}
+
+    int j;
     //cout<<stocklist.size()<<" "<<stocklist[0].SMarkets.size()<<endl;
 
-     //for(j=0;j<i->SMarkets.size();j++)
+     for(j=0;j<i->SMarkets.size();j++)
      {
-         //cout<<i->SMarkets[j].market;
-         //i->BMarkets[j].sys_time=time_entry;
+         i->SMarkets[j].sys_time=time_entry;
+         i->BMarkets[j].sys_time=time_entry;
      }
-    // for(j=0;j<i->BMarkets.size();j++)
-    // for(int k=j+1;k<i->BMarkets.size();k++)
-    // {
-    //     while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
-    //     {
-    //         //go to markets and print
-    //         cout<<"hi";
-    //         i->SMarkets[j].deleteMin();
-    //         i->BMarkets[k].deleteMax();
-    //     }
-    //     while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
-    //     {
-    //         //go to markets and print
-    //         cout<<"hi";
-    //         i->SMarkets[k].deleteMin();
-    //         i->BMarkets[j].deleteMax();
-    //     }
-    // }
+     for(j=0;j<i->BMarkets.size();j++)
+     for(int k=j+1;k<i->BMarkets.size();k++)
+     {
+         while(i->SMarkets[j].min()->second[0]<i->BMarkets[k].max()->second[0])
+         {
+            if(i->SMarkets[j].min()->second[0]==0||i->BMarkets[k].max()->second[0]==0)//empty heap basically
+            break;
+            if(i->SMarkets[j].min()->second[2]<0||i->BMarkets[k].max()->second[2]<0)
+            break;
+            else{
+            //go to markets and print
+
+             int min;
+             if(i->SMarkets[j].min()->second[2]>i->BMarkets[k].max()->second[2])
+             min=i->BMarkets[k].max()->second[2];
+             else
+             min=i->SMarkets[j].min()->second[2];
+
+             std::string fileName = "outputs/output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
+             std::ofstream file(fileName,std::ios::app);
+             file<<(time_entry+1)<<" 22B0413_22B1818 BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file.close();
+
+             fileName = "outputs/output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
+             std::ofstream file2(fileName,std::ios::app);
+             file2<<(time_entry+1)<<" 22B0413_22B1818 SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2.close();
+
+             profit+=(i->BMarkets[k].max()->second[0]-i->SMarkets[j].min()->second[0])*min;
+
+             i->SMarkets[j].min()->second[2]-=min;
+             i->BMarkets[k].max()->second[2]-=min;
+            }
+         }
+         while(i->SMarkets[k].min()->second[0]<i->BMarkets[j].max()->second[0])
+         {
+            if(i->SMarkets[k].min()->second[0]==0||i->BMarkets[j].max()->second[0]==0)//empty heap basically
+            break;
+            if(i->SMarkets[k].min()->second[2]<0||i->BMarkets[j].max()->second[2]<0)
+            break;
+            else{
+            //go to markets and print
+
+             int min;
+             if(i->SMarkets[k].min()->second[2]>i->BMarkets[j].max()->second[2])
+             min=i->BMarkets[j].max()->second[2];
+             else
+             min=i->SMarkets[k].min()->second[2];
+
+             std::string fileName = "outputs/output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
+             std::ofstream file(fileName,std::ios::app);
+             file<<(time_entry+1)<<" 22B0413_22B1818 BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file.close();
+             
+              fileName = "outputs/output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
+             std::ofstream file2(fileName,std::ios::app);
+             file2<<(time_entry+1)<<" 22B0413_22B1818 SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2.close();
+
+             profit+=(i->BMarkets[j].max()->second[0]-i->SMarkets[k].min()->second[0])*min;
+
+             i->SMarkets[k].min()->second[2]-=min;
+             i->BMarkets[j].max()->second[2]-=min;
+            }
+         }
+     }
 }
 }
 //---------------------------------------------------------------------STOCK.CPP-------------------------------------------------------------------------------
@@ -420,9 +506,14 @@ void *handleClient(void *arg) {
     char buffer[BUFFER_SIZE];
 
     std::cout << "Connected to client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << std::endl;
-
+    int v=(clientInfo->address.sin_port);
+    ids.push_back(v);
+    sort(ids);
     while (true) {
         // Receive data from the client
+        if(flag!=1)
+        continue;
+        flag=0;
         ssize_t bytesRead = recv(clientInfo->socket, buffer, sizeof(buffer), 0);
         if (bytesRead <= 0) {
             // Error or connection closed
@@ -432,97 +523,99 @@ void *handleClient(void *arg) {
                 perror("Recv error");
             }
             break;
+            flag=1;
         } else {
             // Print the received message
             buffer[bytesRead] = '\0';
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
              inputs=final_tokenize(tokenize(buffer));
-             int market=ntohs(clientInfo->address.sin_port);
+             //int market=ntohs(clientInfo->address.sin_port);
+             int market=search(ids,(clientInfo->address.sin_port));
              neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
+             flag=1;
         }
     }
-
     // Close the client socket
     close(clientInfo->socket);
     delete clientInfo;
     pthread_exit(NULL);
 }
 
-int main()
-{
-    for(int i=0;i<16;i++)
-    {
-        int market;
-        string line="";
-        cin>>market;
-        vector<string> inputs(7);
-        cin>>(inputs[0])>>inputs[1]>>inputs[2]>>inputs[3]>>inputs[4]>>inputs[5]>>inputs[6];
-        neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
-    }
-}
-
-// int main() {
-//     int serverSocket;
-//     struct sockaddr_in serverAddr, clientAddr;
-//     socklen_t clientAddrLen = sizeof(clientAddr);
-
-//     // Create server socket
-//     if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-//         perror("Socket creation error");
-//         exit(EXIT_FAILURE);
+// int main()
+// {
+//     for(int i=0;i<16;i++)
+//     {
+//         int market;
+//         string line="";
+//         cin>>market;
+//         vector<string> inputs(7);
+//         cin>>(inputs[0])>>inputs[1]>>inputs[2]>>inputs[3]>>inputs[4]>>inputs[5]>>inputs[6];
+//         neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
 //     }
-
-//     // Initialize server address struct
-//     memset(&serverAddr, 0, sizeof(serverAddr));
-//     serverAddr.sin_family = AF_INET;
-//     serverAddr.sin_port = htons(10000);  // Port number
-//     serverAddr.sin_addr.s_addr = INADDR_ANY;
-
-//     // Bind server socket to the specified address and port
-//     if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
-//         perror("Bind error");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     // Listen for incoming connections
-//     if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
-//         perror("Listen error");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     std::cout << "Trader is listening on port 8888..." << std::endl;
-
-//     std::vector<pthread_t> clientThreads;
-
-//     for(int i = 0; i < NUM_THREADS; i++) {
-//         // Accept incoming connections
-//         int clientSocket;
-//         if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
-//             perror("Accept error");
-//             continue;  // Continue listening for other connections
-//         }
-
-//         // Create a thread to handle this client
-//         ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
-//         pthread_t clientThread;
-//         if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
-//             perror("Thread creation error");
-//             delete clientInfo;
-//             continue;  // Continue listening for other connections
-//         }
-
-//         // Store the thread ID for later joining
-//         clientThreads.push_back(clientThread);
-//     }
-
-//     // Join all client threads (clean up)
-//     for (auto &thread : clientThreads) {
-//         pthread_join(thread, NULL);
-//     }
-
-//     // Close the server socket (never reached in this example)
-//     close(serverSocket);
-
-//     return 0;
 // }
+
+int main() {
+    int serverSocket;
+    struct sockaddr_in serverAddr, clientAddr;
+    socklen_t clientAddrLen = sizeof(clientAddr);
+
+    // Create server socket
+    if ((serverSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("Socket creation error");
+        exit(EXIT_FAILURE);
+    }
+
+    // Initialize server address struct
+    memset(&serverAddr, 0, sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(8888);  // Port number
+    serverAddr.sin_addr.s_addr = INADDR_ANY;
+
+    // Bind server socket to the specified address and port
+    if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) == -1) {
+        perror("Bind error");
+        exit(EXIT_FAILURE);
+    }
+
+    // Listen for incoming connections
+    if (listen(serverSocket, 5) == -1) {  // Maximum 5 pending connections
+        perror("Listen error");
+        exit(EXIT_FAILURE);
+    }
+
+    std::cout << "Trader is listening on port 8888..." << std::endl;
+
+    std::vector<pthread_t> clientThreads;
+
+    for(int i = 0; i < NUM_THREADS; i++) {
+        // Accept incoming connections
+        int clientSocket;
+        if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientAddrLen)) == -1) {
+            perror("Accept error");
+            continue;  // Continue listening for other connections
+        }
+
+        // Create a thread to handle this client
+        ClientInfo *clientInfo = new ClientInfo(clientSocket, clientAddr);
+        pthread_t clientThread;
+        if (pthread_create(&clientThread, NULL, handleClient, clientInfo) != 0) {
+            perror("Thread creation error");
+            delete clientInfo;
+            continue;  // Continue listening for other connections
+        }
+
+        // Store the thread ID for later joining
+        clientThreads.push_back(clientThread);
+    }
+
+    // Join all client threads (clean up)
+    for (auto &thread : clientThreads) {
+        pthread_join(thread, NULL);
+    }
+
+    // Close the server socket (never reached in this example)
+    close(serverSocket);
+
+    return 0;
+}
