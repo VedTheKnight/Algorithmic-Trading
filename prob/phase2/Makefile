@@ -7,7 +7,7 @@ all: trader
 # For part1: marked with a blank trader
 market: main.cpp market.cpp worker.cpp blank_trader.cpp maxheap.cpp minheap.cpp
 	g++ -std=c++20 main.cpp market.cpp worker.cpp blank_trader.cpp maxheap.cpp minheap.cpp -lpthread -o market
-	./market 50 > output.txt
+	./market 1 > output.txt
 
 # For part2
 trader: main.cpp market.cpp worker.cpp trader.cpp maxheap.cpp minheap.cpp

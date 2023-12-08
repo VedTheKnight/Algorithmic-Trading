@@ -21,7 +21,7 @@ bool comparemax(pair<string,vector<int>>u,pair<string,vector<int>>v)//function s
       if (u.first>v.first)
       return 0;
       else if(u.first<=v.first)
-      return 1;//greater value for a name which appears first in alphabetical order
+      return 1;//greater value for a name which appears ly in alphabetical order
     }
   }
 }
@@ -47,12 +47,12 @@ pair<string,vector<int>>* MaxHeap::max() //it will always return a valid
     }//we want to return an invalid vector for an empty heap;
   while(sz!=0 && sys_time>store[0].second[3])//keep deleteing the max till the max is not one which is expired already
   deleteMax();
-  while(sz!=0 && store[0].second[2]==0)//keep deleting the max till the max is not one which has quantity 0 i.e a used up order
+  while(sz!=0 && store[0].second[2]<0)//keep deleting the max till the max is not one which has quantity 0 i.e a used up order
   deleteMax();
   if(sz!=0)
   return &store[0];//returns the valid max element for the trade
   else
-  {
+  { 
     pair<string,vector <int>>* p= new pair<string,vector <int>> {"",{0,0,0,0,0}};
     return p;
   }//we want to return an invalid vector for an empty heap

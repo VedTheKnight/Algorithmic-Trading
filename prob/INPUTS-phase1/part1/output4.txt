@@ -1,0 +1,6 @@
+Receiver is listening on port 50000
+TakeMeHomeCountryRoads 100 s
+No trade
+No trade
+No trade
+TakeMeHomeCountryRoads 140 s

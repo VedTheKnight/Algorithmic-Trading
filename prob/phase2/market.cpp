@@ -211,7 +211,6 @@ bool checkOrderValidity(string& order){
     }
 
     string name = getStockName(tokens);
-    makeCapital(name);
 
     vector<string> name_tok = tokenize(name);
 
@@ -314,16 +313,16 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
 //so basically abhi we have a new sell order which i will sell to the highest possible buy order if it is valid and has all other quantity and time valid
 // fix the issue of infinite time
     vector<pair<string,vector<int>>> arbitrage; 
-    while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
+    while(quantity>=0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
 
-        if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        if(B.max()->first=="")//price=0 entry no one would put so basically our heap is empty
         break;
         if(B.max()->second[0]<price)//no more elements in the heap to trade with since the max element is lesser than my sell price
         break;
         // if (B.max()->first==name && B.max()->second[0]!=price)//prevent arbitrage
         // {
-        //     if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     if(B.max()->first=="")//price=0 entry no one would put so basically our heap is empty
         //     break;//default escape if its not valid 
         //     arbitrage.push_back({B.max()->first,B.max()->second});
         //     B.deleteMax();
@@ -332,10 +331,10 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
         // }
         if(quantity<=B.max()->second[2])
         {
-             if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+             if(B.max()->first=="")//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];//just in case calling max twice cleans the top making max inaccessible
-            cout<<B.max()->first<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<quantity<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             total+=p*quantity;
             trades++;
             shares+=quantity;
@@ -353,15 +352,17 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
                 }
             }
             B.max()->second[2]-=quantity;
-            quantity=0;
+            if(B.max()->second[2]==0)
+            B.max()->second[2]=-1;
+            quantity=-1;
             return;//if it is possible for the heap to satisfy our order it exits here
         }
         else
         {
-             if(B.max()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+             if(B.max()->first=="")//price=0 entry no one would put so basically our heap is empty
             break;
             int p=B.max()->second[0];
-            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" shares of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
+            cout<<B.max()->first<<" purchased "<<B.max()->second[2]<<" share of "<<stock<<" from "<<name<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=B.max()->second[2];
             total+=B.max()->second[2]*p;
@@ -373,13 +374,14 @@ void computeMaxHeap(string stock,int price,int time_entry, string name,int quant
                     i->net+=B.max()->second[2]*p;
                 }
                 if(i->name==B.max()->first)
+
                 {
                     i->buy_no+=B.max()->second[2];
                     i->net-=B.max()->second[2]*p;
                 }
             }
             quantity-=B.max()->second[2];
-            B.max()->second[2]=0;
+            B.max()->second[2]=-1;
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MinHeap of S
@@ -394,15 +396,15 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
 {
 //so basically abhi we have a new buy order which i will buy from the lowest possible sell order if it is valid and has all other quantity and time valid
     vector<pair<string,vector<int>>> arbitrage;
-    while(quantity>0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
+    while(quantity>=0)//if quantity has become 0 we will be exiting aage hi but we also need to see if price of sell orders exceed our max buy limit price
     {
-        if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        if(S.min()->first=="")//price=0 entry no one would put so basically our heap is empty
         break;
         if(S.min()->second[0]>price)//no more elements in the heap can be traded with since lowest sell is greater than our buy price
         break;
         // if (S.min()->first==name && S.min()->second[0]!=price)//prevent arbitrage
         // {
-        //     if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+        //     if(S.min()->first=="")//price=0 entry no one would put so basically our heap is empty
         //     break;
         //     arbitrage.push_back({S.min()->first,S.min()->second});
         //     S.deleteMin();
@@ -411,10 +413,10 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
         // }
         if(quantity<=S.min()->second[2])
         { 
-            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+            if(S.min()->first=="")//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<quantity<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<quantity<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=quantity;
             total+=quantity*p;
@@ -427,20 +429,22 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
                 }
                 if(i->name==S.min()->first)
                 {
-                    i->sell_no+=quantity;
+                    i->sell_no+=quantity;  
                     i->net+=quantity*p;
                 }
             }
             S.min()->second[2]-=quantity;
-            quantity=0;
+            if(S.min()->second[2]==0)
+            S.min()->second[2]=-1;
+            quantity=-1;
             return;//if it is possible for the heap to satisfy our order it exits here
         }
         else
         {
-            if(S.min()->second[0]==0)//price=0 entry no one would put so basically our heap is empty
+            if(S.min()->first=="")//price=0 entry no one would put so basically our heap is empty
             break;
             int p=S.min()->second[0];
-            cout<<name<<" purchased "<<S.min()->second[2]<<" shares of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
+            cout<<name<<" purchased "<<S.min()->second[2]<<" share of "<<stock<<" from "<<S.min()->first<<" for $"<<p<<"/share"<<endl;
             trades++;
             shares+=S.min()->second[2];
             total+=S.min()->second[2]*p;
@@ -458,7 +462,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
                 }
             }
             quantity-=S.min()->second[2];
-            S.min()->second[2]=0;
+            S.min()->second[2]=-1;
         }
     }
     //once it comes here we have not satisfied the entire order so we must add it to the MaxHeap of B
@@ -472,6 +476,7 @@ void computeMinHeap(string stock,int price,int time_entry, string name,int quant
 void neworder(int time_entry,string name,string option,string stock,int price, int quantity,int delay,vector<stocks>& stocklist,vector<accounts>& accountlist,int& trades,int& total,int& shares)
 //stock is the name of the new incoming stock whereas name is the name of the trader
 {
+
 auto j=accountlist.begin();
 for(j;j<accountlist.end();j++)
 {
@@ -485,7 +490,7 @@ if(j==accountlist.end())//basically we do not have the new guys name in the list
 {
     accountlist.push_back({name,0,0,0});
 }
-if(stocklist.size()==0)
+if(stocklist.size()==0) 
 {
     MaxHeap B;
     MinHeap S;
@@ -572,7 +577,7 @@ else
 //     }
 //     cout<<endl<<"---End of Day---"<<endl;
 //     cout<<"Total Amount of Money Transferred: $"<<total<<endl;
-//     cout<<"Number of Completed Trades: "<<trades<<endl;
+//     cout<<"Number of Completed Trades: "<<trades<<endl; 
 //     cout<<"Number of Shares Traded: "<<shares<<endl;
 //     for(int i=0;i<accountlist.size();i++)
 //     {
@@ -604,7 +609,7 @@ void market::start()
      int shares=0;
     vector<string> lines;
     vector<string> inputs;
-	std::ifstream inputFile ("output.txt");
+	std::ifstream inputFile ("test.txt");
     std::string line;
     while (std::getline(inputFile,line)) {
         if (line.compare("TL") == 0) {

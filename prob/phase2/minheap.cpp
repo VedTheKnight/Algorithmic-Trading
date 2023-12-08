@@ -13,9 +13,9 @@ bool comparemin(pair<string,vector<int>>u,pair<string,vector<int>>v)//function s
   else
   {
     if (u.second[1]<v.second[1])
-    return 1;//greater value for earlier entry into the order book
+    return 0;//greater value for earlier entry into the order book
     else if(u.second[1]>v.second[1])
-    return 0;
+    return 1;
     else
     {
       if (u.first>=v.first)
@@ -46,7 +46,7 @@ pair<string,vector<int>>* MinHeap::min() {
     }//we want to return an invalid vector for an empty heap
   while(sz!=0 && sys_time>store[0].second[3])//keep deleteing the Min till the Min is not one which is expired already
   deleteMin();
-  while(sz!=0 && store[0].second[2]==0)//keep deleting the Min till the Min is not one which has quantity 0 i.e a used up order
+  while(sz!=0 && store[0].second[2]<0)//keep deleting the Min till the Min is not one which has quantity 0 i.e a used up order
   deleteMin();
   if(sz!=0)
   return &store[0];//returns the valid Min element for the trade

@@ -1,107 +1,3 @@
-TL
-0 Ved SELL Brian $263 #16 -1
-1 Riddle SELL VOLK $322 #8 9
-2 Dolores BUY GE $291 #34 -1
-3 DarthVader BUY GE $330 #6 -1
-4 Lannister BUY VOLK $225 #24 18
-5 Dolores SELL NFLX $257 #15 6
-6 Marvolo SELL NFLX $380 #13 2
-7 Dolores SELL VOLK $111 #32 -1
-8 Riddle SELL VOLK $314 #30 1
-9 Riddle BUY GE $193 #14 3
-10 Godfrey BUY AMZN $373 #44 16
-11 Stark SELL Leyndell $120 #33 11
-12 Luke BUY VOLK $17 #5 11
-13 Godrick BUY Leyndell $357 #35 5
-14 Margit BUY VOLK $215 #10 8
-15 Dolores SELL TSMC $175 #18 15
-16 Gandu BUY AAPL $119 #29 2
-17 Morgott SELL TSMC $196 #33 -1
-18 Lannister SELL VOLK $176 #12 12
-19 Morgott BUY AMD $248 #34 -1
-20 Godrick SELL NFLX $38 #13 1
-21 Anakin SELL VOLK $368 #12 13
-22 Ranni SELL AAPL $180 #3 0
-23 Morgott BUY GE $322 #40 4
-24 Riddle SELL Leyndell $227 #1 -1
-25 Godfrey SELL AMD $287 #17 4
-26 Anakin SELL AMZN $372 #30 11
-27 Ranni SELL Leyndell $379 #7 16
-28 Godrick BUY NFLX $137 #30 13
-29 Gandu SELL AMD $48 #34 -1
-30 Anakin SELL NFLX $294 #11 8
-31 Godrick SELL GE $290 #16 7
-32 Dolores SELL TSMC $303 #40 17
-33 Morgott SELL AMZN $188 #31 19
-34 Margit BUY TSMC $213 #19 0
-35 Margit SELL AMD $9 #42 3
-36 Margit SELL TSMC $117 #23 4
-37 Marvolo SELL GE $197 #1 1
-38 Lannister BUY TSMC $139 #24 14
-39 Morgott BUY GE $378 #38 16
-40 Godfrey BUY AAPL $342 #36 9
-41 Margit SELL TSMC $61 #21 4
-42 Gandu SELL AMZN $213 #1 -1
-43 Dolores SELL TSMC $24 #26 1
-44 Anakin BUY NFLX $121 #10 -1
-45 Margit BUY AMD $331 #22 0
-46 Anakin BUY NFLX $50 #44 19
-47 Godrick BUY GE $208 #42 8
-48 Godrick SELL AAPL $292 #10 16
-49 Luke BUY NFLX $32 #15 0
-50 Anakin BUY GE $377 #42 -1
-51 Godrick BUY NFLX $323 #39 7
-52 Marvolo SELL TSMC $331 #44 12
-53 Morgott BUY AAPL $26 #14 19
-54 Dolores BUY AMD $247 #35 17
-55 Godrick BUY AAPL $2 #3 3
-56 Luke BUY AMZN $25 #10 2
-57 Ranni SELL AMZN $306 #26 9
-58 Luke SELL GE $395 #30 1
-59 Stark BUY TSMC $304 #22 5
-60 Gandu SELL AMD $247 #20 6
-61 Dolores BUY AAPL $328 #19 2
-62 Riddle SELL VOLK $287 #7 8
-63 Dolores SELL Leyndell $30 #42 9
-64 Godfrey BUY AMZN $21 #17 8
-65 Morgott BUY AMZN $46 #33 13
-66 Godrick BUY AAPL $393 #27 7
-67 Riddle SELL GE $252 #7 -1
-68 Ranni BUY AMD $79 #16 7
-69 Dolores SELL Leyndell $385 #1 1
-70 Luke BUY AAPL $141 #3 18
-71 Stark SELL TSMC $358 #42 19
-72 Anakin BUY AMD $358 #6 16
-73 Lannister BUY TSMC $156 #39 10
-74 Stark SELL GE $141 #29 3
-75 Godfrey BUY AMD $377 #40 4
-76 Gandu SELL NFLX $43 #0 3
-77 Godrick BUY AAPL $217 #21 4
-78 Margit BUY TSMC $191 #12 4
-79 Riddle SELL TSMC $190 #41 -1
-80 Stark BUY TSMC $91 #24 7
-81 Marvolo SELL Leyndell $274 #11 19
-82 Marvolo SELL AAPL $361 #8 2
-83 Luke BUY NFLX $200 #42 -1
-84 DarthVader SELL TSMC $330 #10 14
-85 Gandu SELL NFLX $350 #29 9
-86 DarthVader BUY AAPL $45 #15 1
-87 Gandu SELL VOLK $156 #43 19
-88 Dolores BUY VOLK $178 #17 -1
-89 Godrick SELL GE $364 #26 11
-90 Anakin BUY VOLK $11 #22 10
-91 Godrick SELL TSMC $376 #26 13
-92 Godfrey SELL Leyndell $13 #1 13
-93 Luke BUY TSMC $392 #28 1
-94 Lannister BUY Leyndell $107 #16 16
-95 Anakin SELL AMD $13 #10 -1
-96 Ranni BUY GE $182 #18 10
-97 Gandu SELL Leyndell $78 #41 11
-98 Stark SELL TSMC $82 #5 5
-99 Riddle SELL TSMC $226 #14 5
-100 Anakin BUY AMD $140 #4 12
-!@
-@!
 Successfully Initiated!
 Stark purchased 1 share of AAPL from Godrick for $208/share
 Margit purchased 8 share of VOLK from Riddle for $360/share
@@ -921,7 +817,7 @@ Ranni purchased 10 share of AMZN from Anakin for $240/share
 Ranni purchased 9 share of AMZN from DarthVader for $241/share
 Morgott purchased 34 share of AMZN from Ranni for $112/share
 Godfrey purchased 6 share of AMD from Lannister for $218/share
-Marvolo purchased 6 share of TSMC from 22b0413_22b1818 for $213/share
+Marvolo purchased 6 share of TSMC from 22b0413_22b1818 for $209/share
 Marvolo purchased 10 share of TSMC from 22b0413_22b1818 for $187/share
 Tom purchased 7 share of AAPL from Margit for $224/share
 Marvolo purchased 10 share of GE from 22b0413_22b1818 for $248/share
@@ -1535,7 +1431,7 @@ Godfrey purchased 6 share of GE from Riddle for $295/share
 Tom purchased 10 share of GE from Riddle for $267/share
 Luke purchased 14 share of NFLX from Anakin for $204/share
 Luke purchased 6 share of NFLX from DarthVader for $218/share
-Morgott purchased 14 share of TSMC from 22b0413_22b1818 for $238/share
+Morgott purchased 14 share of TSMC from 22b0413_22b1818 for $233/share
 Riddle purchased 28 share of AAPL from 22b0413_22b1818 for $226/share
 Riddle purchased 6 share of AAPL from 22b0413_22b1818 for $301/share
 Luke purchased 28 share of AMZN from Morgott for $228/share
@@ -2228,13 +2124,12 @@ Godrick purchased 23 share of AMD from Lannister for $236/share
 Dolores purchased 2 share of AMD from Lannister for $200/share
 Margit purchased 12 share of AMZN from Tom for $190/share
 Ranni purchased 8 share of NFLX from Stark for $343/share
-Ranni purchased 4 share of GE from 22b0413_22b1818 for $340/share
-Riddle purchased 12 share of GE from 22b0413_22b1818 for $316/share
-Riddle purchased 22 share of GE from 22b0413_22b1818 for $316/share
-Luke purchased 7 share of GE from 22b0413_22b1818 for $291/share
-Luke purchased 1 share of GE from 22b0413_22b1818 for $291/share
-Dolores purchased 12 share of GE from 22b0413_22b1818 for $236/share
-Dolores purchased 23 share of GE from 22b0413_22b1818 for $236/share
+Ranni purchased 4 share of GE from 22b0413_22b1818 for $255/share
+Riddle purchased 29 share of GE from 22b0413_22b1818 for $199/share
+Riddle purchased 5 share of GE from 22b0413_22b1818 for $264/share
+Luke purchased 8 share of GE from 22b0413_22b1818 for $264/share
+Dolores purchased 12 share of GE from 22b0413_22b1818 for $190/share
+Dolores purchased 23 share of GE from 22b0413_22b1818 for $177/share
 Margit purchased 15 share of GE from 22b0413_22b1818 for $177/share
 Godfrey purchased 14 share of NFLX from Godfrey for $137/share
 Margit purchased 15 share of GE from Morgott for $177/share
@@ -2581,10 +2476,10 @@ Marvolo purchased 9 share of AMZN from Stark for $169/share
 Tom purchased 13 share of AMZN from Stark for $169/share
 Tom purchased 18 share of AMZN from Godfrey for $194/share
 Tom purchased 12 share of AMZN from Ranni for $254/share
-Riddle purchased 10 share of NFLX from Dolores for $166/share
-Riddle purchased 27 share of NFLX from Anakin for $166/share
+Riddle purchased 37 share of NFLX from Anakin for $166/share
 Luke purchased 7 share of Leyndell from Margit for $246/share
-Morgott purchased 12 share of NFLX from Anakin for $166/share
+Morgott purchased 2 share of NFLX from Anakin for $166/share
+Morgott purchased 10 share of NFLX from Dolores for $166/share
 Morgott purchased 20 share of NFLX from Luke for $167/share
 Margit purchased 2 share of TSMC from DarthVader for $173/share
 Godrick purchased 2 share of TSMC from DarthVader for $155/share
@@ -3259,12 +3154,12 @@ Dolores purchased 11 share of AAPL from DarthVader for $302/share
 DarthVader purchased 16 share of VOLK from Margit for $105/share
 Morgott purchased 2 share of VOLK from Margit for $105/share
 Lannister purchased 18 share of Leyndell from Margit for $174/share
-Dolores purchased 9 share of AAPL from 22b0413_22b1818 for $302/share
-Morgott purchased 13 share of NFLX from 22b0413_22b1818 for $186/share
-Marvolo purchased 1 share of NFLX from 22b0413_22b1818 for $140/share
+Morgott purchased 13 share of NFLX from 22b0413_22b1818 for $118/share
+Marvolo purchased 1 share of NFLX from 22b0413_22b1818 for $118/share
+Dolores purchased 9 share of AAPL from Godrick for $302/share
 Morgott purchased 12 share of AAPL from Godrick for $276/share
 Morgott purchased 19 share of AAPL from Godrick for $220/share
-Lannister purchased 12 share of AAPL from Godrick for $138/share
+Lannister purchased 3 share of AAPL from Godrick for $138/share
 Ranni purchased 3 share of VOLK from Marvolo for $107/share
 Marvolo purchased 20 share of NFLX from Margit for $140/share
 Luke purchased 13 share of NFLX from Margit for $130/share
@@ -3645,21 +3540,22 @@ Anakin purchased 20 share of VOLK from Dolores for $168/share
 Anakin purchased 14 share of VOLK from Godrick for $170/share
 
 ---End of Day---
-Total Amount of Money Transferred: $8701685
-Number of Completed Trades: 3540
-Number of Shares Traded: 40752
-Luke bought 2829 and sold 2924 for a net transfer of $1848
-Stark bought 2948 and sold 3796 for a net transfer of $179393
-Morgott bought 3081 and sold 2483 for a net transfer of $-142806
-Marvolo bought 2398 and sold 2887 for a net transfer of $89370
-Margit bought 3168 and sold 2544 for a net transfer of $-171760
-Godrick bought 2839 and sold 2844 for a net transfer of $-28985
-Riddle bought 3756 and sold 2786 for a net transfer of $-176266
+Total Amount of Money Transferred: $8693325
+Number of Completed Trades: 3539
+Number of Shares Traded: 40743
+22b0413_22b1818 bought 70 and sold 669 for a net transfer of $146779
 Anakin bought 3007 and sold 2863 for a net transfer of $-23430
-Ranni bought 2206 and sold 2391 for a net transfer of $38853
-Godfrey bought 2680 and sold 3093 for a net transfer of $52380
-Tom bought 2940 and sold 3216 for a net transfer of $103685
-Lannister bought 2802 and sold 2150 for a net transfer of $-96001
-Dolores bought 3123 and sold 3177 for a net transfer of $5804
 DarthVader bought 2905 and sold 2920 for a net transfer of $11300
-22b0413_22b1818 bought 70 and sold 678 for a net transfer of $156615
+Dolores bought 3123 and sold 3177 for a net transfer of $7713
+Godfrey bought 2680 and sold 3093 for a net transfer of $52380
+Godrick bought 2839 and sold 2844 for a net transfer of $-27509
+Lannister bought 2793 and sold 2150 for a net transfer of $-94759
+Luke bought 2829 and sold 2924 for a net transfer of $2064
+Margit bought 3168 and sold 2544 for a net transfer of $-171760
+Marvolo bought 2398 and sold 2887 for a net transfer of $89416
+Morgott bought 3081 and sold 2483 for a net transfer of $-141852
+Ranni bought 2206 and sold 2391 for a net transfer of $39193
+Riddle bought 3756 and sold 2786 for a net transfer of $-172613
+Stark bought 2948 and sold 3796 for a net transfer of $179393
+Tom bought 2940 and sold 3216 for a net transfer of $103685
+

@@ -1,0 +1,8 @@
+Receiver is listening on port 50000
+TradeOutOfLove 500 b
+No trade
+No trade
+No trade
+No trade
+TradeOutOfLove 600 s
+No trade
