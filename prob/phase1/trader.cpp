@@ -192,7 +192,7 @@ void process_problem1(TrieNode* root,string message)
     }
     else
     {
-       cout<<"No trade"<<endl;
+       cout<<"No Trade"<<endl;
     }
 
 }

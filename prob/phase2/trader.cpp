@@ -13,7 +13,7 @@ extern mutex printMutex;
 extern std::atomic<int> commonTimer;
 
 
-//___________________________________________________Utility Functions_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+//__________________Utility Functions________________________________________________________________________________
 
 // removes /r and /n and extra spaces at the end of the line
 void removeHC(std::string& str) {
@@ -153,10 +153,10 @@ void printOrder(vector<string> line_toks, int max_window_time){
         order += "-1";
 
     std::lock_guard<std::mutex> lock(printMutex);
-    std::cout<<order<<" \n";
+    std::cout<<order<<"\n";
 }
 
-//__________________________________________________________Order Processing___________________________________________________________________________________________________________________________________
+//___________________Order Processing____________________________________________
 
 //checks if the input string is a valid ticker
 bool isPureString(string s){
@@ -265,7 +265,7 @@ bool checkOrderVal(string& order){
     return true;
 }
 
-//______________________________________Arbitrage Functions__________________________________________________________________________________________________________________________________________________________________________________________________________________
+//_____________Arbitrage Functions_______________________________________________________________________
 
 // function to check for matching stock combo : imported from phase 2 part 1
 bool checkMatch(string old_order, string name){
@@ -709,7 +709,7 @@ bool tradeArbitrage(vector<string> window, vector<pair<string,vector<int>>> stoc
                     order += "-1";
 
                 std::lock_guard<std::mutex> lock(printMutex);
-                std::cout<<order<<" \n";
+                std::cout<<order<<"\n";
 
             }
         }
@@ -779,7 +779,7 @@ void tradeMedian(vector<string> window, vector<pair<string,vector<int>>> stockli
     return; //once we go through the lines we return since no arbitrage anyway 
 }
 
-//_______________________________________________Moving Median Functions______________________________________________________________________________________________________________________________________________________________________________________________________
+//________________Moving Median Functions___________________________________________________________________
 
 void CollectInfo(vector<pair<string,vector<int>>>& stockline, vector<string> window){
     for(auto order : window){
@@ -824,7 +824,7 @@ void CollectInfo(vector<pair<string,vector<int>>>& stockline, vector<string> win
     }
 }
 
-//___________________________________________________Main Code________________________________________________________________________________________________________________________________________________________________________________________________________________
+//__________________Main Code_____________________________________________________________________
 
 //our strategy is to break the orderbook into windows of size 4 and run our arbitrage strategy on it 
 int reader(int time)
@@ -834,7 +834,7 @@ int reader(int time)
     vector<pair<string,int>> window;
 
     string line;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     bool flag = true;
     while(flag){
         ifstream inputFile("output.txt");
@@ -850,8 +850,7 @@ int reader(int time)
             int index = find(order_book,line);
             if(index == -1 && 48 <= line[0] && line[0]<=57 && tokZ(line)[1] != "22b0413_22b1818"){
                 removeHC(line);
-                if(checkOrderVal(line))
-                    order_book.push_back(line);  
+                order_book.push_back(line);  
             }
         }
         
@@ -893,7 +892,7 @@ int reader(int time)
 
         CollectInfo(stockline, neworders);
 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         order_book.clear();
     }
 

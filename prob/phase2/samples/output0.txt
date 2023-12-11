@@ -1,0 +1,137 @@
+TL
+0 AA BUY AMD $242 #8 12
+0 AKG SELL AMD $23 #3 15
+0 AKG SELL NFLX $290 #7 -1
+0 KG SELL AMZN $166 #5 10
+0 OT SELL AMD $271 #11 -1
+0 SM BUY GE $107 #2 11
+0 SM BUY NFLX $496 #7 5
+1 SM BUY AMD $192 #6 9
+1 OT BUY AMD $422 #16 10
+1 AKG BUY NFLX $143 #2 12
+1 AKG SELL GE $43 #5 7
+2 SV SELL AAPL $396 #4 -1
+2 KA BUY GE $337 #6 16
+3 SV BUY GE $486 #12 7
+3 SV SELL GE $230 #9 17
+3 AA SELL AMD $67 #6 9
+3 OT BUY AAPL $377 #14 -1
+3 GS SELL GE $138 #16 -1
+3 SV SELL GE $300 #14 -1
+4 AA BUY AMZN $379 #14 14
+4 KA SELL AMZN $7 #7 16
+4 SM SELL GE $87 #5 7
+4 SV BUY AMD $200 #1 3
+5 SV BUY AMZN $350 #7 4
+5 SM SELL NFLX $415 #16 1
+5 OT BUY AMD $144 #9 2
+5 GS BUY NFLX $74 #9 13
+6 KA SELL NFLX $350 #3 5
+6 GS SELL AMD $65 #9 9
+6 AKG BUY NFLX $93 #14 0
+6 KG SELL AMZN $433 #8 -1
+7 SV SELL AMZN $4 #9 16
+7 SV BUY GE $206 #5 3
+7 AKG SELL AMZN $421 #1 19
+8 KA BUY AMD $139 #12 16
+8 KA BUY AMD $354 #13 6
+8 KG SELL GE $35 #3 19
+8 KA BUY NFLX $459 #12 19
+8 SV SELL GE $85 #14 0
+9 SM BUY GE $249 #10 17
+9 SM BUY AMD $297 #4 16
+9 AA SELL NFLX $94 #9 16
+9 KG SELL AAPL $456 #0 0
+10 GS BUY AMZN $417 #0 18
+10 AA BUY NFLX $449 #1 14
+10 AKG SELL GE $211 #12 4
+10 AKG BUY GE $260 #15 9
+11 GS SELL AMD $212 #0 16
+11 GS SELL AAPL $357 #3 15
+11 SV SELL AMZN $134 #10 18
+12 AA BUY AMZN $116 #0 17
+12 OT SELL AMD $242 #13 15
+12 OT BUY AAPL $380 #8 12
+12 SV SELL AMD $72 #1 11
+13 OT BUY GE $290 #10 4
+13 AKG SELL AMZN $111 #14 16
+13 SM SELL AMZN $187 #8 1
+13 SM SELL AAPL $204 #2 12
+13 KG SELL GE $160 #4 5
+14 KG BUY AAPL $214 #4 7
+14 KA BUY GE $284 #3 19
+14 KG BUY NFLX $416 #6 10
+15 OT SELL NFLX $466 #1 10
+15 KA BUY AMD $300 #16 6
+15 AA SELL AMZN $426 #7 16
+15 OT SELL AMZN $425 #16 9
+15 SM BUY AMD $15 #14 1
+16 OT SELL GE $99 #15 5
+16 OT SELL NFLX $472 #15 6
+16 OT SELL AMD $429 #9 6
+16 SM BUY AMZN $477 #5 19
+17 OT SELL GE $356 #14 7
+17 SV BUY GE $401 #14 17
+17 SM BUY AMD $397 #7 12
+17 OT SELL GE $29 #6 7
+18 GS SELL AMD $430 #5 8
+18 SM SELL GE $387 #15 0
+18 AKG SELL GE $30 #3 3
+18 SM BUY GE $449 #7 11
+19 SV SELL AAPL $292 #0 -1
+!@
+@!
+Successfully Initiated!
+AA purchased 3 share of AMD from AKG for $242/share
+SM purchased 7 share of NFLX from AKG for $290/share
+OT purchased 11 share of AMD from OT for $271/share
+SM purchased 2 share of GE from AKG for $107/share
+KA purchased 3 share of GE from AKG for $43/share
+SV purchased 9 share of GE from SV for $486/share
+OT purchased 5 share of AMD from AA for $422/share
+AA purchased 1 share of AMD from AA for $242/share
+SV purchased 3 share of GE from GS for $486/share
+KA purchased 3 share of GE from GS for $337/share
+AA purchased 5 share of AMZN from KG for $166/share
+AA purchased 7 share of AMZN from KA for $379/share
+AA purchased 4 share of AMD from GS for $242/share
+SV purchased 1 share of AMD from GS for $200/share
+SM purchased 4 share of AMD from GS for $192/share
+AA purchased 2 share of AMZN from SV for $379/share
+SV purchased 7 share of AMZN from SV for $350/share
+SV purchased 5 share of GE from SM for $87/share
+KA purchased 3 share of NFLX from KA for $350/share
+SM purchased 3 share of GE from KG for $35/share
+SM purchased 7 share of GE from GS for $138/share
+KA purchased 9 share of NFLX from AA for $459/share
+AKG purchased 3 share of GE from GS for $138/share
+AKG purchased 12 share of GE from AKG for $211/share
+KA purchased 0 share of AMD from GS for $354/share
+OT purchased 3 share of AAPL from GS for $377/share
+GS purchased 0 share of AMZN from SV for $417/share
+KA purchased 13 share of AMD from OT for $354/share
+SM purchased 1 share of AMD from SV for $297/share
+AA purchased 0 share of AMZN from AKG for $116/share
+OT purchased 2 share of AAPL from SM for $380/share
+OT purchased 4 share of GE from KG for $290/share
+OT purchased 6 share of GE from OT for $290/share
+KA purchased 3 share of GE from OT for $284/share
+SM purchased 5 share of AMZN from AKG for $111/share
+SV purchased 6 share of GE from OT for $99/share
+SV purchased 8 share of GE from SV for $300/share
+SM purchased 6 share of GE from OT for $29/share
+SM purchased 1 share of GE from AKG for $30/share
+OT purchased 0 share of AAPL from SV for $380/share
+
+---End of Day--- 
+Total Amount of Money Transferred: $47830
+Number of Completed Trades: 40
+Number of Shares Traded: 177
+KG bought 0 and sold 12 for a net transfer of $2095
+GS bought 0 and sold 28 for a net transfer of $6916
+SV bought 39 and sold 27 for a net transfer of $-1632
+KA bought 34 and sold 10 for a net transfer of $-8072
+OT bought 31 and sold 45 for a net transfer of $1061
+SM bought 36 and sold 7 for a net transfer of $-3944
+AKG bought 15 and sold 33 for a net transfer of $3270
+AA bought 22 and sold 15 for a net transfer of $306

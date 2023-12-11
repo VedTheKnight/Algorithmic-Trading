@@ -13,13 +13,13 @@ iml: iml.cpp
 runpart1: iml trader
 	./trader 1 > output.txt &
 	sleep 1
-	./iml inputs/data1.txt
+	./iml inputs/input22.txt
 	diff outputs/out1.txt output.txt
 
 runpart2: iml trader
 	./trader 2 > output.txt &
 	sleep 1
-	./iml inputs/data2.txt
+	./iml inputs/input5.txt
 	diff outputs/out2.txt output.txt
 
 runpart3: iml trader

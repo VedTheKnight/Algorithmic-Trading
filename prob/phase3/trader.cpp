@@ -443,12 +443,12 @@ for(i=stocklist.begin();i<stocklist.end();i++)
 
              std::string fileName = "outputs/output" + to_string(i->SMarkets[j].min()->second[4]) + ".txt";
              std::ofstream file(fileName,std::ios::app);
-             file<<(time_entry+1)<<" 22B0413_22B1818 BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[j].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
 
              fileName = "outputs/output" + to_string(i->BMarkets[k].max()->second[4]) + ".txt";
              std::ofstream file2(fileName,std::ios::app);
-             file2<<(time_entry+1)<<" 22B0413_22B1818 SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[k].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
 
              profit+=(i->BMarkets[k].max()->second[0]-i->SMarkets[j].min()->second[0])*min;
@@ -474,12 +474,12 @@ for(i=stocklist.begin();i<stocklist.end();i++)
 
              std::string fileName = "outputs/output" + to_string(i->SMarkets[k].min()->second[4]) + ".txt";
              std::ofstream file(fileName,std::ios::app);
-             file<<(time_entry+1)<<" 22B0413_22B1818 BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
+             file<<(time_entry+1)<<" BMVD BUY "<<i->name<<" "<<i->SMarkets[k].min()->second[0]<<" "<<min<<" 0"<<endl;
              file.close();
              
               fileName = "outputs/output" + to_string(i->BMarkets[j].max()->second[4]) + ".txt";
              std::ofstream file2(fileName,std::ios::app);
-             file2<<(time_entry+1)<<" 22B0413_22B1818 SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
+             file2<<(time_entry+1)<<" BMVD SELL "<<i->name<<" "<<i->BMarkets[j].max()->second[0]<<" "<<min<<" 0"<<endl;
              file2.close();
 
              profit+=(i->BMarkets[j].max()->second[0]-i->SMarkets[k].min()->second[0])*min;
@@ -506,7 +506,7 @@ void *handleClient(void *arg) {
     char buffer[BUFFER_SIZE];
 
     std::cout << "Connected to client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << std::endl;
-    int v=(clientInfo->address.sin_port);
+    int v=ntohs(clientInfo->address.sin_port);
     ids.push_back(v);
     sort(ids);
     while (true) {
@@ -524,22 +524,33 @@ void *handleClient(void *arg) {
             }
             break;
             flag=1;
+
         } else {
+            string msg;
             // Print the received message
             buffer[bytesRead] = '\0';
+            msg=buffer;
+            if(msg=="$")
+             {
+                    flag=1;
+    close(clientInfo->socket);
+    delete clientInfo;
+    pthread_exit(NULL);
+                
+
+             }
             std::cout << "Received message from client, IP: " << inet_ntoa(clientInfo->address.sin_addr) << ", Port: " << ntohs(clientInfo->address.sin_port) << ": " << buffer << std::endl;
             vector<string> inputs;
              inputs=final_tokenize(tokenize(buffer));
              //int market=ntohs(clientInfo->address.sin_port);
-             int market=search(ids,(clientInfo->address.sin_port));
+             int market=search(ids,ntohs(clientInfo->address.sin_port));
              neworder(stringToInt(inputs[0]),inputs[1], inputs[2],inputs[3], stringToInt(inputs[4]),stringToInt(inputs[5]),stringToInt(inputs[6]),stocklist,market);
              flag=1;
         }
     }
     // Close the client socket
-    close(clientInfo->socket);
-    delete clientInfo;
-    pthread_exit(NULL);
+
+
 }
 
 // int main()
